@@ -32,3 +32,32 @@ yarn-error.log*
 # typescript
 /apps/frontend/*.tsbuildinfo
 /apps/frontend/next-env.d.ts
+
+# FastAPI
+/apps/backend/.idea
+/apps/backend/.ipynb_checkpoints
+/apps/backend/.mypy_cache
+/apps/backend/.vscode
+/apps/backend/__pycache__
+/apps/backend/.pytest_cache
+/apps/backend/htmlcov
+/apps/backend/dist
+/apps/backend/site
+/apps/backend/.coverage
+/apps/backend/coverage.xml
+/apps/backend/.netlify
+/apps/backend/test.db
+/apps/backend/log.txt
+/apps/backend/Pipfile.lock
+/apps/backend/env3.*
+/apps/backend/env
+/apps/backend/docs_build
+/apps/backend/site_build
+/apps/backend/venv
+/apps/backend/docs.zip
+/apps/backend/archive.zip
+
+# vim temporary files
+/apps/backend/*~
+/apps/backend/.*.sw?
+/apps/backend/.cache
