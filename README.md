@@ -52,5 +52,5 @@
 | ツール　| ポート　|
 |--------|---------|
 | フロントエンド | http://localhost:3000 |
-| バックエンド   | http://localhost:8080  |
+| バックエンド   | http://localhost:8000  |
 | DB            | http://localhost:5432 |
