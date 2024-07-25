@@ -1,6 +1,9 @@
 from typing import Union
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.core.logging_config import setup_logging
+
+logger = setup_logging(__name__)
 
 app = FastAPI()
 
@@ -19,6 +22,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
+    logger.info("Root endpoint called")
     return {"Hello": "World"}
 
 
