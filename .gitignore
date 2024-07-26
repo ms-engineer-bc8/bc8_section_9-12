@@ -52,7 +52,7 @@ yarn-error.log*
 /apps/backend/log.txt
 /apps/backend/Pipfile.lock
 /apps/backend/env3.*
-/apps/backend/env
+/apps/backend/.env
 /apps/backend/docs_build
 /apps/backend/site_build
 /apps/backend/venv
