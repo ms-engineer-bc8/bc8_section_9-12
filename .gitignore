@@ -38,7 +38,9 @@ yarn-error.log*
 /apps/backend/.ipynb_checkpoints
 /apps/backend/.mypy_cache
 /apps/backend/.vscode
-/apps/backend/__pycache__
+/apps/backend/app/__pycache__
+/apps/backend/app/tests/__pycache__
+/apps/backend/app/core/__pycache__
 /apps/backend/.pytest_cache
 /apps/backend/htmlcov
 /apps/backend/dist
@@ -50,7 +52,7 @@ yarn-error.log*
 /apps/backend/log.txt
 /apps/backend/Pipfile.lock
 /apps/backend/env3.*
-/apps/backend/env
+/apps/backend/.env
 /apps/backend/docs_build
 /apps/backend/site_build
 /apps/backend/venv
