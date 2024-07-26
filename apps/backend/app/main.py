@@ -21,7 +21,7 @@ app.add_middleware(
 
 
 @app.get("/")
-def read_root():
+def read_main():
     logger.info("Root endpoint called")
     return {"Hello": "World"}
 
