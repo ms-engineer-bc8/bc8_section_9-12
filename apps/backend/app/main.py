@@ -2,6 +2,7 @@ from typing import Union
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.logging_config import setup_logging
+from app.routers import users, activities, reviews
 
 logger = setup_logging(__name__)
 
@@ -26,6 +27,10 @@ def read_main():
     return {"Hello": "World"}
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+app.include_router(users.router, prefix="/users")
+app.include_router(activities.router, prefix="/activities")
+app.include_router(reviews.router, prefix="/reviews")
+
+# @app.get("/items/{item_id}")
+# def read_item(item_id: int, q: Union[str, None] = None):
+#     return {"item_id": item_id, "q": q}
