@@ -8,5 +8,5 @@ def get_activities():
     return {"message": "Activites got"}
 
 @router.get("/{activity_id}", tags=["activities"])
-def get_activity():
+def get_activity(activity_id: int):
     return {"message": "Activity got"}
