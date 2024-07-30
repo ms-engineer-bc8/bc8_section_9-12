@@ -6,7 +6,7 @@ from app.routers import users, activities, reviews
 
 logger = setup_logging(__name__)
 
-app = FastAPI()
+app = FastAPI(title="BC8 Final Project")
 
 origins = [
     "http://localhost:3000",
@@ -21,10 +21,10 @@ app.add_middleware(
 )
 
 
-@app.get("/")
-def read_main():
-    logger.info("Root endpoint called")
-    return {"Hello": "World"}
+# @app.get("/")
+# def read_main():
+#     logger.info("Root endpoint called")
+#     return {"Hello": "World"}
 
 
 app.include_router(users.router, prefix="/users")
