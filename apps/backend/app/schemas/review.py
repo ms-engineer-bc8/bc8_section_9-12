@@ -1,10 +1,10 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from datetime import datetime
 
 
 class ReviewResponse(BaseModel):
-    nickname: str
-    text: str
+    nickname: str = Field(examples=["ソロ活を極めたい女子"])
+    text: str = Field(examples=["ひとりサンリオピューロランドに行ってきた〜！キティちゃんは平和の象徴。"])
     image: bytes
     likes_count: int
     favorites_count: int
@@ -12,7 +12,7 @@ class ReviewResponse(BaseModel):
 
 
 # TODO: user_idの扱い要検討
-class Review(BaseModel):
+class ReviewItem(BaseModel):
     user_id: int
-    text: str
+    text: str = Field(examples=["ひとりサンリオピューロランドに行ってきた〜！キティちゃんは平和の象徴。"])
     image: bytes
