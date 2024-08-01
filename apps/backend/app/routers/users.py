@@ -1,24 +1,36 @@
 from fastapi import APIRouter
+from app.schemas.user import (
+    UserCreate,
+    UserUpdate,
+    UserType,
+    UserResponse,
+    UserIdResponse,
+    UserTypeResponse,
+)
 
 router = APIRouter()
 
 
-@router.get("/{user_id}", tags=["users"])
-def get_user():
-    return {"message": "User got"}
+@router.get("/me", tags=["users"], response_model=UserResponse)
+def get_user_me():
+    return UserResponse(
+        email="user@example.com",
+        nickname="ソロ活を極めたい女子",
+        age="31~35歳",
+        solo_type="アクティブチャレンジャー",
+    )
 
 
-@router.post("/", tags=["users"])
-def post_user():
-    return {"message": "User created"}
+@router.post("/", tags=["users"], response_model=UserIdResponse)
+def post_user(item: UserCreate):
+    return UserIdResponse(id="1")
+
+
+@router.put("/type-test/{user_id}", tags=["users"], response_model=UserTypeResponse)
+def put_user_type(item: UserType):
+    return UserTypeResponse(solo_type="アクティブチャレンジャー")
 
 
 @router.put("/{user_id}", tags=["users"])
-def put_user():
+def put_user(item: UserUpdate):
     return {"message": "User updated"}
-
-
-# TODO: レスポンスでソロ活タイプを返す
-@router.put("/type/{user_id}", tags=["users"])
-def put_user_type():
-    return {"message": "User type updated"}
