@@ -13,9 +13,11 @@ const Header = () => {
             <nav>
                 <ul className="flex justify-center max-w-full my-5">
                     {navLinks.map((link) => (
-                        <li key={link.href} className="p-5 duration-150">
+                        <li key={link.href} className="p-5">
                             <Link href={link.href}>
-                                <p className="no-underline hover:text-pink-600 hover:underline hover:underline-offset-8 transition-all">{link.label}</p>
+                                <p className="no-underline hover:underline hover:underline-offset-8 transition-all font-semibold">
+                                    {link.label}
+                                </p>
                             </Link>
                         </li>
                     ))}

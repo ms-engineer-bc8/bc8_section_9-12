@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "ソロ活アプリ",
-  description: "ソロ女性向けのアプリです。",
+  description: "ソロの女性が新しいソロ活に出会い、お互いにソロ活をシェアするためのアプリです。",
 };
 
 export default function RootLayout({
