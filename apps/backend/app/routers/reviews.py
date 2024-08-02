@@ -6,13 +6,17 @@ router = APIRouter()
 
 
 @router.get("/", tags=["reviews"], response_model=List[ReviewResponse])
-def get_reviews():
-    return {"message": "Reviews got"}
-
-
-@router.get("/{activity_id}", tags=["reviews"], response_model=ReviewResponse)
-def get_review(activity_id: int):
-    return {"message": "Review got"}
+def get_reviews(keyword: str = ""):
+    return [
+        ReviewResponse(
+            nickname="ソロ活を極めたい女子",
+            text="ひとりサンリオピューロランドに行ってきた〜！キティちゃんは平和の象徴。",
+            image="",
+            likes_count=30,
+            favorites_count=20,
+            update_date="2024-08-02T10:12:59.073Z",
+        )
+    ]
 
 
 @router.post("/", tags=["reviews"])
