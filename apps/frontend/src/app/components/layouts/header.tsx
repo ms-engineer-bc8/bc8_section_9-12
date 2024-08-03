@@ -7,7 +7,7 @@ const navLinks = [
     { label: "マイページ", href: "/user" },
 ];
 
-const Header = () => {
+export default function Header() {
     return (
         <header>
             <nav>
@@ -25,6 +25,4 @@ const Header = () => {
             </nav>
         </header>
     );
-};
-
-export default Header;
+}

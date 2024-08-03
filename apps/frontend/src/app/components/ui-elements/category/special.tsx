@@ -5,7 +5,7 @@ type CategoryProps  = {
     onClick?: () => void;
 }
 
-const CategoryLink: React.FC<CategoryProps>= ({ children, onClick }) => {
+const SpecialLink: React.FC<CategoryProps>= ({ children, onClick }) => {
     return (
         <button
             onClick={onClick}
@@ -16,4 +16,4 @@ const CategoryLink: React.FC<CategoryProps>= ({ children, onClick }) => {
     )
 }
 
-export default CategoryLink;
+export default SpecialLink;
