@@ -1,7 +1,11 @@
-import Image from "next/image";
+import CategoryLists from "./components/ui-parts/list";
+import Heading from "./components/ui-elements/heading";
 
 export default function Home() {
-  return (
-    <main>Hello, World!</main>
-  );
+    return (
+        <main>
+            <Heading>どんなソロ活をやってみたい？</Heading>
+            <CategoryLists />
+        </main>
+    );
 }

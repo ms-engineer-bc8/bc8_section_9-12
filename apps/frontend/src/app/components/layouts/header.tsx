@@ -1,22 +1,28 @@
 import React from "react";
 import Link from "next/link";
 
+const navLinks = [
+    { label: "ソロ活を探す", href: "/" },
+    { label: "ソロ活をシェアする", href: "/share" },
+    { label: "マイページ", href: "/user" },
+];
+
 export default function Header() {
     return (
-        <div>
-            <header>
-                <nav>
-                    <ul className="flex justify-center max-w-full">
-                        <li className="my-6">
-                            <Link href="/">
-                                <p className="p-4 text-lg font-semibold hover:bg-gray-100 hover:rounded-lg duration-150">
-                                    ホーム
+        <header>
+            <nav>
+                <ul className="flex justify-center max-w-full my-5">
+                    {navLinks.map((link) => (
+                        <li key={link.href} className="p-5">
+                            <Link href={link.href}>
+                                <p className="no-underline hover:underline hover:underline-offset-8 transition-all font-semibold">
+                                    {link.label}
                                 </p>
                             </Link>
                         </li>
-                    </ul>
-                </nav>
-            </header>
-        </div>
+                    ))}
+                </ul>
+            </nav>
+        </header>
     );
 }
