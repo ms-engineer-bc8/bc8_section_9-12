@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field
 
 
 class ActivityCategoryResponse(BaseModel):
+    activity_id: int = Field(examples=[1])
     subcategory: str = Field(examples=["リムジン"])
     image: bytes
     provider_name: str = Field(examples=["OneRide Limousine"])

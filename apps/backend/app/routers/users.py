@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, status
 from app.schemas.user import (
     UserCreate,
     UserUpdate,
@@ -11,7 +11,9 @@ from app.schemas.user import (
 router = APIRouter()
 
 
-@router.get("/me", tags=["users"], response_model=UserResponse)
+@router.get(
+    "/me", tags=["users"], response_model=UserResponse, status_code=status.HTTP_200_OK
+)
 def get_user_me():
     return UserResponse(
         email="user@example.com",
@@ -21,16 +23,16 @@ def get_user_me():
     )
 
 
-@router.post("/", tags=["users"], response_model=UserIdResponse)
+@router.post("/", tags=["users"], response_model=UserIdResponse,status_code=status.HTTP_201_CREATED)
 def post_user(item: UserCreate):
     return UserIdResponse(id="1")
 
 
-@router.put("/type-test/{user_id}", tags=["users"], response_model=UserTypeResponse)
+@router.put("/type-test/{user_id}", tags=["users"], response_model=UserTypeResponse, status_code=status.HTTP_200_OK)
 def put_user_type(item: UserType):
     return UserTypeResponse(solo_type="アクティブチャレンジャー")
 
 
-@router.put("/{user_id}", tags=["users"])
+@router.put("/{user_id}", tags=["users"], status_code=status.HTTP_200_OK)
 def put_user(item: UserUpdate):
     return {"message": "User updated"}

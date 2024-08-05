@@ -1,5 +1,5 @@
 from typing import List
-from fastapi import APIRouter
+from fastapi import APIRouter, status
 from app.schemas.activity import ActivityCategoryResponse, ActivityResponse
 
 router = APIRouter()
@@ -9,10 +9,12 @@ router = APIRouter()
     "/category/{category_id}",
     tags=["activities"],
     response_model=List[ActivityCategoryResponse],
+    status_code=status.HTTP_200_OK,
 )
 def get_activities(category_id: int):
     return [
         ActivityCategoryResponse(
+            activity_id=1,
             subcategory="リムジン",
             image="",
             provider_name="OneRide Limousine",
@@ -20,11 +22,56 @@ def get_activities(category_id: int):
             solo_level="上級",
             likes_count=10,
             favorites_count=20,
-        )
+        ),
+        ActivityCategoryResponse(
+            activity_id=2,
+            subcategory="気球",
+            image="",
+            provider_name="スマイルバルーン",
+            time_zone="朝",
+            solo_level="上級",
+            likes_count=20,
+            favorites_count=55,
+        ),
+        ActivityCategoryResponse(
+            activity_id=3,
+            subcategory="ヘリクルーズ",
+            image="",
+            provider_name="AIROS Skyview",
+            time_zone="夜",
+            solo_level="上級",
+            likes_count=15,
+            favorites_count=10,
+        ),
+        ActivityCategoryResponse(
+            activity_id=4,
+            subcategory="シティホテル",
+            image="",
+            provider_name="ホテルニューオータニ",
+            time_zone="夜",
+            solo_level="上級",
+            likes_count=30,
+            favorites_count=40,
+        ),
+        ActivityCategoryResponse(
+            activity_id=5,
+            subcategory="リムジン",
+            image="",
+            provider_name="スターリムジン",
+            time_zone="夜",
+            solo_level="上級",
+            likes_count=30,
+            favorites_count=25,
+        ),
     ]
 
 
-@router.get("/{activity_id}", tags=["activities"], response_model=ActivityResponse)
+@router.get(
+    "/{activity_id}",
+    tags=["activities"],
+    response_model=ActivityResponse,
+    status_code=status.HTTP_200_OK,
+)
 def get_activity(activity_id: int):
     return ActivityResponse(
         provider_name="OneRide Limousine",
