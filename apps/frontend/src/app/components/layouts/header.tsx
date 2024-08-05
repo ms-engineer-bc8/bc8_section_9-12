@@ -9,7 +9,7 @@ export const NavigationMenu = () => {
                 {NAVIGATION_LINKS.map((link) => (
                     <li key={link.href} className="p-5">
                         <Link href={link.href}>
-                            <p className="no-underline hover:underline hover:underline-offset-8 transition-all font-semibold">
+                            <p className="no-underline hover:underline hover:underline-offset-8 transition-all">
                                 {link.label}
                             </p>
                         </Link>
@@ -22,8 +22,10 @@ export const NavigationMenu = () => {
 
 export const Header = () => {
     return (
-        <header className="flex items-center justify-between px-6 py-4">
-            <h3 className="text-xl font-semibold">LOGO</h3>
+        <header className="flex items-center justify-between px-12 py-4">
+            <Link href="/">
+                <h3 className="text-xl">LOGO</h3>
+            </Link>
             <NavigationMenu />
         </header>
     );

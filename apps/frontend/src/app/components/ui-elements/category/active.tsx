@@ -1,19 +1,22 @@
 import React from "react";
+import Image from "next/image";
 
-type CategoryProps  = {
+type CategoryProps = {
     children: React.ReactNode;
     onClick?: () => void;
-}
+};
 
-const ActiveLink: React.FC<CategoryProps>= ({ children, onClick }) => {
+const ActiveLink: React.FC<CategoryProps> = ({ children, onClick }) => {
     return (
-        <button
-            onClick={onClick}
-            className="p-11 text-xl font-semibold bg-white-500 border-2 border-black rounded-xl w-full"
-        >
-            {children}
-        </button>
-    )
-}
+        <div>
+            <button
+                onClick={onClick}
+                className="bg-white p-11 text-xl font-semibold rounded-xl w-full"
+            >
+                {children}
+            </button>
+        </div>
+    );
+};
 
 export default ActiveLink;
