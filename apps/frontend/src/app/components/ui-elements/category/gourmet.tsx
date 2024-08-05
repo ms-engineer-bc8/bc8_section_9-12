@@ -1,32 +1,28 @@
 import React from "react";
-import Image from "next/image";
-import ActiveImage from "../../../images/active_.jpg"
+import CategoryCard from "../card";
+import GourmetImage from "../../../images/gourmet.jpg";
 
-type CategoryProps  = {
+type GourmetLinkProps = {
     children: React.ReactNode;
     onClick?: () => void;
-}
+};
 
-const GourmetLink: React.FC<CategoryProps>= ({ children, onClick }) => {
+const tags = [
+    { id: 1, name: "焼肉" },
+    { id: 2, name: "寿司" },
+    { id: 3, name: "中華料理" },
+    { id: 4, name: "フレンチ" },
+];
+
+const GourmetLink: React.FC<GourmetLinkProps> = ({ children, onClick }) => {
     return (
-        <div>
-            <div className="relative w-64 h-64">
-                <Image
-                    src={ActiveImage}
-                    alt="Description of the image"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-lg"
-                />
-            </div>
-            <button
-                onClick={onClick}
-                className="bg-white p-11 text-xl font-semibold rounded-xl w-full"
-            >
-                {children}
-            </button>
-        </div>
-    )
-}
+        <CategoryCard
+            imageSrc={GourmetImage}
+            title="グルメ堪能ソロ活"
+            description="自分の五感と向き合う..."
+            tags={tags}
+        />
+    );
+};
 
 export default GourmetLink;

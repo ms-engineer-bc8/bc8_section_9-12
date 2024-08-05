@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Zen_Kaku_Gothic_New } from "next/font/google";
 import Header from "./components/layouts/header";
 import "./commons/styles/globals.css";

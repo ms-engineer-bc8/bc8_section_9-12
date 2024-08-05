@@ -1,31 +1,27 @@
 import React from "react";
-import Image from "next/image";
-import ActiveImage from "../../../images/active_.jpg"
+import CategoryCard from "../card";
+import ActiveImage from "../../../images/active.jpg";
 
-type CategoryProps = {
+type ActiveLinkProps = {
     children: React.ReactNode;
     onClick?: () => void;
 };
 
-const ActiveLink: React.FC<CategoryProps> = ({ children, onClick }) => {
+const tags = [
+    { id: 1, name: "ボウリング" },
+    { id: 2, name: "サバゲー" },
+    { id: 3, name: "ナイトプール" },
+    { id: 4, name: "遊園地" },
+];
+
+const ActiveLink: React.FC<ActiveLinkProps> = ({ children, onClick }) => {
     return (
-        <div>
-            <div className="relative w-64 h-64">
-                <Image
-                    src={ActiveImage}
-                    alt="Description of the image"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-lg"
-                />
-            </div>
-            <button
-                onClick={onClick}
-                className="bg-white p-11 text-xl font-semibold rounded-xl w-full"
-            >
-                {children}
-            </button>
-        </div>
+        <CategoryCard
+            imageSrc={ActiveImage}
+            title="アクティブ系ソロ活"
+            description="自分だけの冒険を満喫できる！"
+            tags={tags}
+        />
     );
 };
 

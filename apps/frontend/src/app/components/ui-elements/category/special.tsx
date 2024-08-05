@@ -1,32 +1,30 @@
 import React from "react";
-import Image from "next/image";
-import ActiveImage from "../../../images/active_.jpg"
+import CategoryCard from "../card";
+import SpecialImage from "../../../images/special.jpg"
 
-type CategoryProps  = {
+type SpecialLinkProps  = {
     children: React.ReactNode;
     onClick?: () => void;
 }
 
-const SpecialLink: React.FC<CategoryProps>= ({ children, onClick }) => {
+const tags = [
+    { id: 1, name: "シティホテル" },
+    { id: 2, name: "気球" },
+    { id: 3, name: "リムジン" },
+    { id: 4, name: "ヘリクルーズ" },
+];
+
+const SpecialLink: React.FC<SpecialLinkProps> = ({ children, onClick }) => {
     return (
-        <div>
-            <div className="relative w-64 h-64">
-                <Image
-                    src={ActiveImage}
-                    alt="Description of the image"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-lg"
-                />
-            </div>
-            <button
-                onClick={onClick}
-                className="bg-white p-11 text-xl font-semibold rounded-xl w-full"
-            >
-                {children}
-            </button>
-        </div>
-    )
-}
+        <CategoryCard
+            imageSrc={SpecialImage}
+            title="スペシャル体験ソロ活"
+            description="あなたの夢が叶う♡"
+            tags={tags}
+        />
+    );
+};
 
 export default SpecialLink;
+
+

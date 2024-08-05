@@ -7,25 +7,25 @@ import GourmetLink from "../ui-elements/category/gourmet";
 
 const CategoryList = () => {
     return (
-        <div className="py-12">
-            <ul className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 px-4">
-                <li className="w-full sm:w-auto">
-                    <Link href="/category/1" className="block w-full">
+        <div className="container mx-auto px-2 sm:px-3 mt-10">
+            <ul className="flex flex-wrap justify-center gap-4">
+                <li className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]">
+                    <Link href="/category/1" className="block w-full h-full">
                         <ActiveLink>アクティブソロ活</ActiveLink>
                     </Link>
                 </li>
-                <li className="w-full sm:w-auto">
-                    <Link href="/category/2" className="block w-full">
+                <li className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]">
+                    <Link href="/category/2" className="block w-full h-full">
                         <SpecialLink>スペシャル体験ソロ活</SpecialLink>
                     </Link>
                 </li>
-                <li className="w-full sm:w-auto">
-                    <Link href="/category/3" className="block w-full">
+                <li className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]">
+                    <Link href="/category/3" className="block w-full h-full">
                         <RelaxLink>リラックス系ソロ活</RelaxLink>
                     </Link>
                 </li>
-                <li className="w-full sm:w-auto">
-                    <Link href="/category/4" className="block w-full">
+                <li className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]">
+                    <Link href="/category/4" className="block w-full h-full">
                         <GourmetLink>グルメ堪能ソロ活</GourmetLink>
                     </Link>
                 </li>

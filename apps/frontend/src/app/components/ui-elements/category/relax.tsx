@@ -1,32 +1,28 @@
 import React from "react";
-import Image from "next/image";
-import ActiveImage from "../../../images/active_.jpg"
+import CategoryCard from "../card";
+import RelaxImage from "../../../images/relax.jpg";
 
-type CategoryProps  = {
+type RelaxLinkProps = {
     children: React.ReactNode;
     onClick?: () => void;
-}
+};
 
-const RelaxLink: React.FC<CategoryProps>= ({ children, onClick }) => {
+const tags = [
+    { id: 1, name: "プラネタリウム" },
+    { id: 2, name: "美術館＆博物館" },
+    { id: 3, name: "銭湯" },
+    { id: 4, name: "夜景" },
+];
+
+const RelaxLink: React.FC<RelaxLinkProps> = ({ children, onClick }) => {
     return (
-        <div>
-            <div className="relative w-64 h-64">
-                <Image
-                    src={ActiveImage}
-                    alt="Description of the image"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-lg"
-                />
-            </div>
-            <button
-                onClick={onClick}
-                className="bg-white p-11 text-xl font-semibold rounded-xl w-full"
-            >
-                {children}
-            </button>
-        </div>
-    )
-}
+        <CategoryCard
+            imageSrc={RelaxImage}
+            title="リラックス系ソロ活"
+            description="心がほぐれる〜"
+            tags={tags}
+        />
+    );
+};
 
 export default RelaxLink;
