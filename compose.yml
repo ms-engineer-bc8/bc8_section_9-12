@@ -22,18 +22,22 @@ services:
       - ./apps/backend:/app
     environment:
       - UVICORN_CMD=uvicorn main:app --host 0.0.0.0 --port 8000
+    networks:
+      - db-network
 
   postgres:
     image: postgres:10.3
     container_name: postgres_container
     environment:
-      POSTGRES_USER: bc8_admin
-      POSTGRES_PASSWORD: bc8_pass
-      POSTGRES_DB: bc8_db
+      POSTGRES_USER: bc8admin
+      POSTGRES_PASSWORD: bc8pass
+      POSTGRES_DB: bc8db
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - '5432:5432'
+    networks:
+      - db-network
 
   redis:
     image: redis:latest
@@ -43,3 +47,7 @@ services:
 
 volumes:
   postgres_data:
+
+networks:
+  db-network:
+    external: true
