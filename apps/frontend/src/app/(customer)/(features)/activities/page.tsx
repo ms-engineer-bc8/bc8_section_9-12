@@ -17,7 +17,7 @@ const ActivitiesList: React.FC = () => {
 
     if (isLoading) return <div>ローディング中...</div>;
     if (error) return <div>エラーが発生しました: {error.message}</div>;
-    if (!data) return <div>データが見つかりません。</div>;
+    if (!data) return <div>データが見つかりません</div>;
 
     return (
         <div>
