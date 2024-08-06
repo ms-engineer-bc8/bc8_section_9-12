@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryCard from "../card";
-import ActiveImage from "../../../images/active.jpg";
+import ActiveImage from "../../../images/category/active.jpg";
 
 type ActiveLinkProps = {
     children: React.ReactNode;

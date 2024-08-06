@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryCard from "../card";
-import RelaxImage from "../../../images/relax.jpg";
+import RelaxImage from "../../../images/category/relax.jpg";
 
 type RelaxLinkProps = {
     children: React.ReactNode;

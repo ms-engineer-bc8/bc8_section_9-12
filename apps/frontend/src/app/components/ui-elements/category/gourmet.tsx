@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryCard from "../card";
-import GourmetImage from "../../../images/gourmet.jpg";
+import GourmetImage from "../../../images/category/gourmet.jpg";
 
 type GourmetLinkProps = {
     children: React.ReactNode;

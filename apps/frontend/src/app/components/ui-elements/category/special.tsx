@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryCard from "../card";
-import SpecialImage from "../../../images/special.jpg"
+import SpecialImage from "../../../images/category/special.jpg"
 
 type SpecialLinkProps  = {
     children: React.ReactNode;
