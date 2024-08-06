@@ -7,7 +7,7 @@ import GourmetLink from "../ui-elements/category/gourmet";
 
 const CategoryList = () => {
     return (
-        <div className="container mx-auto px-2 sm:px-3 mt-10">z
+        <div className="container mx-auto px-2 sm:px-3 mt-10">
             <ul className="flex flex-wrap justify-center gap-4">
                 <li className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]">
                     <Link href="/activities/category/1" className="block w-full h-full">
