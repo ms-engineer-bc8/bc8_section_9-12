@@ -49,25 +49,25 @@ const ActivitiesList: React.FC<CategoryCardProps> = ({
         <div>
             <Heading>スペシャル体験ソロ活</Heading>
             <div className="container mx-auto px-4 mt-20">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     {activities.map((activity) => (
                         <Link
                             key={activity.id}
                             href={`${process.env.NEXT_PUBLIC_ACTIVITY_URL}/${activity.id}`}
                             className="w-full"
                         >
-                            <div className="bg-white rounded-2xl border border-gray-900 overflow-hidden text-center h-full flex flex-col">
-                                <div className="relative h-60 w-full">
+                            <div className="bg-white rounded-2xl border border-gray-900 overflow-hidden text-center h-full flex flex-col w-full">
+                                <div className="relative h-56 w-full">
                                     <Image
                                         src={Balloon}
-                                        alt={title}
+                                        alt={activity.provider_name}
                                         layout="fill"
                                         objectFit="cover"
                                     />
                                 </div>
-                                <div className="p-4 flex-grow flex flex-col justify-between">
+                                <div className="p-3 flex-grow flex flex-col justify-between">
                                     <div>
-                                        <h2 className="text-2xl font-bold mb-2 line-clamp-2">
+                                        <h2 className="text-2xl font-bold mb-1 line-clamp-2">
                                             {activity.provider_name}
                                         </h2>
                                         <p className="text-base mb-2">
@@ -75,12 +75,12 @@ const ActivitiesList: React.FC<CategoryCardProps> = ({
                                         </p>
                                     </div>
                                     <div>
-                                        <div className="flex justify-center items-center space-x-2 mb-2">
+                                        <div className="flex flex-wrap justify-center items-center gap-2 mb-2">
                                             <div className="flex items-center">
                                                 <span className="px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-base font-semibold">
                                                     時間帯
                                                 </span>
-                                                <span className="text-base mr-1">
+                                                <span className="text-base ml-1">
                                                     {activity.time_zone}
                                                 </span>
                                             </div>
@@ -88,7 +88,7 @@ const ActivitiesList: React.FC<CategoryCardProps> = ({
                                                 <span className="px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-base font-semibold">
                                                     レベル
                                                 </span>
-                                                <span className="text-base mr-1">
+                                                <span className="text-base ml-1">
                                                     {activity.solo_level}
                                                 </span>
                                             </div>

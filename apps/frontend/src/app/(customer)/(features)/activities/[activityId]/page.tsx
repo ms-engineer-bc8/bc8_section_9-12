@@ -1,31 +1,75 @@
+"use client";
+
 import React from "react";
 import Heading from "@/app/components/ui-elements/heading";
 import SubHeading from "@/app/components/ui-elements/subheading";
+import useSWR from "swr";
+import Image from "next/image";
+import Link from "next/link";
 
-const Limousine = () => {
+type ActivityDetail = {
+    provider_name: string;
+    image_large: string;
+    title: string;
+    discription: string;
+    plan_name: string;
+    price: number;
+    image_small: string;
+    coupon_discount_rate: number;
+    url: string;
+};
+
+type CategoryCardProps = {
+    imageSrc: string;
+    title: string;
+    description: string;
+    tags: { id: number; name: string }[];
+};
+
+const Limousine: React.FC<CategoryCardProps> = ({
+    imageSrc,
+    title,
+    description,
+    tags,
+}) => {
+    const fetcher = (url: string) => fetch(url).then((res) => res.json());
+    const activityId = 1;
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_ACTIVITY_URL}/${activityId}`;
+    const {
+        data: activity,
+        error,
+        isLoading,
+    } = useSWR<ActivityDetail>(apiUrl, fetcher);
+
+    if (isLoading) return <div>ローディング中...</div>;
+    if (error) return <div>エラーが発生しました</div>;
+    if (!activity) return <div>アクティビティが見つかりません</div>;
+
     return (
         <div className="container mx-auto p-5">
-            <p className="text-center">プライベートな空間で特別なひとときを</p>
-            <Heading>SkyDrive</Heading>
-            <p className="text-center">
-                自由が丘駅から徒歩1分に位置する「SkyDrive」。豪華なレザーシートでくつろぎ、最新のエンタメを満喫しながら、まるで映画の主人公に。お一人さま専用のリムジンで、ちょっとしたセレブ気分を味わってください。特別な時間を「OneRide
-                Limousine」でどうぞ！
-            </p>
+            <p className="text-center">{activity.title}</p>
+            <Heading>{activity.provider_name}</Heading>
+            <p className="text-center">{activity.discription}</p>
             <SubHeading>PLAN</SubHeading>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                    <p>写真</p>
+                    <Image
+                        src={activity.image_large}
+                        alt={activity.title}
+                        width={500}
+                        height={300}
+                        layout="responsive"
+                    />
                 </div>
                 <div>
-                    <p>
-                        【新宿ALTA発】東京の夜景を独り占め！ソロリムジンプラン（ドレスコード付き）
-                    </p>
-                    <h4>サービス</h4>
-                    <li>ウェルカムドリンク</li>
-                    <li>写真撮影</li>
-                    <li>ドレスコード</li>
-                    <h4>25,000円</h4>
-                    <button>予約する</button>
+                    <p>{activity.plan_name}</p>
+                    <h4>{activity.price.toLocaleString()}円</h4>
+                    <Link href="https://lalalimousine.com/">
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            予約する
+                        </button>
+                    </Link>
+                    <p>{activity.coupon_discount_rate}</p>
                 </div>
             </div>
         </div>
