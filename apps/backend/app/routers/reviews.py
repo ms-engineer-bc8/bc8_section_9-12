@@ -14,6 +14,7 @@ router = APIRouter()
 def get_reviews(keyword: str = ""):
     return [
         ReviewResponse(
+            id=1,
             nickname="ソロ活を極めたい女子",
             text="ひとりサンリオピューロランドに行ってきた〜！キティちゃんは平和の象徴。",
             image="",
@@ -22,6 +23,7 @@ def get_reviews(keyword: str = ""):
             update_date="2024-08-02T10:12:59.073Z",
         ),
         ReviewResponse(
+            id=2,
             nickname="アカウント1",
             text="リムジン最高！",
             image="",
@@ -30,6 +32,7 @@ def get_reviews(keyword: str = ""):
             update_date="2024-08-03T10:12:59.073Z",
         ),
         ReviewResponse(
+            id=3,
             nickname="アカウント2",
             text="早起きして気球に乗ってきた。",
             image="",
@@ -38,6 +41,7 @@ def get_reviews(keyword: str = ""):
             update_date="2024-08-04T10:12:59.073Z",
         ),
         ReviewResponse(
+            id=4,
             nickname="アカウント3",
             text="ヘリからの景色が素敵すぎた！",
             image="",
