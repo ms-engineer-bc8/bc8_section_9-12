@@ -7,7 +7,6 @@ from app.database.database import Base
 class Review(Base):
     __tablename__ = "reviews"
 
-    # TODO:  idにautoincrement=Trueを追加する
     id = Column(Integer, primary_key=True, nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     text = Column(String, nullable=False)
