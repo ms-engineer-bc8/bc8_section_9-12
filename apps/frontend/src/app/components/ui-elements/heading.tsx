@@ -5,7 +5,7 @@ type HeadingProps = {
 };
 
 const Heading: React.FC<HeadingProps> = ({ children }) => {
-    return <h2 className="text-4xl font-bold text-center p-6">{children}</h2>;
+    return <h2 className="text-3xl font-bold text-center p-7">{children}</h2>;
 };
 
 export default Heading;

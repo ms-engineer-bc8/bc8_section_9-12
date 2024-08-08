@@ -7,25 +7,25 @@ import GourmetLink from "../ui-elements/category/gourmet";
 
 const CategoryList = () => {
     return (
-        <div className="container mx-auto px-2 sm:px-3 mt-10">
-            <ul className="flex flex-wrap justify-center gap-4">
-                <li className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]">
-                    <Link href="/activities/category/1" className="block w-full h-full">
+        <div className="flex justify-center items-center mt-1">
+            <ul>
+                <li className="p-2">
+                    <Link href="/category/1">
                         <ActiveLink>アクティブソロ活</ActiveLink>
                     </Link>
                 </li>
-                <li className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]">
-                    <Link href="/activities/category/2" className="block w-full h-full">
+                <li className="p-2">
+                    <Link href="/category/2">
                         <SpecialLink>スペシャル体験ソロ活</SpecialLink>
                     </Link>
                 </li>
-                <li className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]">
-                    <Link href="/activities/category/3" className="block w-full h-full">
+                <li className="p-2">
+                    <Link href="/category/3">
                         <RelaxLink>リラックス系ソロ活</RelaxLink>
                     </Link>
                 </li>
-                <li className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]">
-                    <Link href="/activities/category/4" className="block w-full h-full">
+                <li className="p-2">
+                    <Link href="/category/4">
                         <GourmetLink>グルメ堪能ソロ活</GourmetLink>
                     </Link>
                 </li>
