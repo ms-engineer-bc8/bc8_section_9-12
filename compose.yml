@@ -16,6 +16,8 @@ services:
       context: ./apps/backend
       dockerfile: Dockerfile
     container_name: backend_container
+    depends_on:
+      - postgres
     ports:
       - "8000:8000"  
     volumes:
