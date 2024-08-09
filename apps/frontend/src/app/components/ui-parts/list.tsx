@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import ActiveLink from "../ui-elements/category/active";
+import ActiveCard from "../ui-elements/category/active";
 import SpecialLink from "../ui-elements/category/special";
 import RelaxLink from "../ui-elements/category/relax";
 import GourmetLink from "../ui-elements/category/gourmet";
@@ -10,22 +10,34 @@ const CategoryList = () => {
         <div className="container mx-auto px-2 sm:px-3 mt-10">
             <ul className="flex flex-wrap justify-center gap-4">
                 <li className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]">
-                    <Link href="/activities/category/1" className="block w-full h-full">
-                        <ActiveLink>アクティブソロ活</ActiveLink>
+                    <Link
+                        href="/activities/category/1"
+                        className="block w-full h-full"
+                    >
+                        <ActiveCard>アクティブソロ活</ActiveCard>
                     </Link>
                 </li>
                 <li className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]">
-                    <Link href="/activities/category/2" className="block w-full h-full">
+                    <Link
+                        href="/activities/category/2"
+                        className="block w-full h-full"
+                    >
                         <SpecialLink>スペシャル体験ソロ活</SpecialLink>
                     </Link>
                 </li>
                 <li className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]">
-                    <Link href="/activities/category/3" className="block w-full h-full">
+                    <Link
+                        href="/activities/category/3"
+                        className="block w-full h-full"
+                    >
                         <RelaxLink>リラックス系ソロ活</RelaxLink>
                     </Link>
                 </li>
                 <li className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]">
-                    <Link href="/activities/category/4" className="block w-full h-full">
+                    <Link
+                        href="/activities/category/4"
+                        className="block w-full h-full"
+                    >
                         <GourmetLink>グルメ堪能ソロ活</GourmetLink>
                     </Link>
                 </li>

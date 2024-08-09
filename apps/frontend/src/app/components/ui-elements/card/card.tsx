@@ -1,17 +1,6 @@
 import React from "react";
 import Image from "next/image";
-
-type Tag = {
-    id: number;
-    name: string;
-};
-
-type CategoryCardProps = {
-    imageSrc: string;
-    title: string;
-    description: string;
-    tags: Tag[];
-};
+import { CategoryCardProps } from "@/app/commons/types/types";
 
 const CategoryCard: React.FC<CategoryCardProps> = ({
     imageSrc,

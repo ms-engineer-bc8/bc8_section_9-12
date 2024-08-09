@@ -1,5 +1,5 @@
 import React from "react";
-import CategoryCard from "../card";
+import CategoryCard from "../card/card";
 import RelaxImage from "../../../images/category/relax.jpg";
 
 type RelaxLinkProps = {

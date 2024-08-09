@@ -1,8 +1,8 @@
 import React from "react";
-import CategoryCard from "../card";
+import CategoryCard from "../card/card";
 import ActiveImage from "../../../images/category/active.jpg";
 
-type ActiveLinkProps = {
+type ActiveCardProps = {
     children: React.ReactNode;
     onClick?: () => void;
 };
@@ -14,7 +14,7 @@ const tags = [
     { id: 4, name: "遊園地" },
 ];
 
-const ActiveLink: React.FC<ActiveLinkProps> = ({ children, onClick }) => {
+const ActiveCard: React.FC<ActiveCardProps> = ({ children, onClick }) => {
     return (
         <CategoryCard
             imageSrc={ActiveImage}
@@ -25,4 +25,4 @@ const ActiveLink: React.FC<ActiveLinkProps> = ({ children, onClick }) => {
     );
 };
 
-export default ActiveLink;
+export default ActiveCard;

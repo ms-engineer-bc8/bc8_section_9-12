@@ -6,6 +6,8 @@ import SubHeading from "@/app/components/ui-elements/subheading";
 import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
+import LimousineImage from "../../../../images/activities/limousine.jpg";
+import DressImage from "../../../../images/activities/dress.jpg";
 
 type ActivityDetail = {
     provider_name: string;
@@ -46,30 +48,56 @@ const Limousine: React.FC<CategoryCardProps> = ({
     if (!activity) return <div>アクティビティが見つかりません</div>;
 
     return (
-        <div className="container mx-auto p-5">
-            <p className="text-center">{activity.title}</p>
+        <div className="max-w-3xl mx-auto p-5">
             <Heading>{activity.provider_name}</Heading>
-            <p className="text-center">{activity.discription}</p>
-            <SubHeading>PLAN</SubHeading>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
+            <div className="relative w-full h-96 mb-6 mt-6">
+                <Image
+                    src={LimousineImage}
+                    alt={activity.provider_name}
+                    layout="fill"
+                    objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
+                    className="rounded-xl"
+                />
+            </div>
+            <div className="m-10">
+                <SubHeading>{activity.title}</SubHeading>
+                <p className="text-left mb-6 text-lg space-x-2">
+                    {activity.discription}
+                </p>
+            </div>
+            <SubHeading>おすすめのプラン</SubHeading>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="relative w-full h-72">
                     <Image
-                        src={activity.image_large}
+                        src={DressImage}
                         alt={activity.title}
-                        width={500}
-                        height={300}
-                        layout="responsive"
+                        layout="fill"
+                        objectFit="cover"
+                        placeholder="blur"
+                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
+                        className="rounded-xl"
                     />
                 </div>
-                <div>
-                    <p>{activity.plan_name}</p>
-                    <h4>{activity.price.toLocaleString()}円</h4>
-                    <Link href="https://lalalimousine.com/">
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <div className="flex flex-col justify-center ">
+                    <p className="text-xl font-bold mb-2">
+                        {activity.plan_name}
+                    </p>
+                    <h4 className="text-xl font-semibold font-purple-500 m-2">
+                        こんなサービスが付いてくる♪
+                    </h4>
+                    <li className="text-lg">ウェルカムドリンク</li>
+                    <li className="text-lg">ドレスコード</li>
+                    <li className="text-lg">写真撮影</li>
+                    <p className="text-3xl font-bold m-2">
+                        {activity.price.toLocaleString()}円
+                    </p>
+                    <Link href="https://lalalimousine.com/" passHref>
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg m-2">
                             予約する
                         </button>
                     </Link>
-                    <p>{activity.coupon_discount_rate}</p>
                 </div>
             </div>
         </div>

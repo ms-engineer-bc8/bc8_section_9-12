@@ -1,11 +1,11 @@
 import React from "react";
-import CategoryCard from "../card";
-import SpecialImage from "../../../images/category/special.jpg"
+import CategoryCard from "../card/card";
+import SpecialImage from "../../../images/category/special.jpg";
 
-type SpecialLinkProps  = {
+type SpecialCardProps = {
     children: React.ReactNode;
     onClick?: () => void;
-}
+};
 
 const tags = [
     { id: 1, name: "シティホテル" },
@@ -14,9 +14,10 @@ const tags = [
     { id: 4, name: "ヘリクルーズ" },
 ];
 
-const SpecialLink: React.FC<SpecialLinkProps> = ({ children, onClick }) => {
+const SpecialCard: React.FC<SpecialCardProps> = ({ children, onClick }) => {
     return (
         <CategoryCard
+            hre
             imageSrc={SpecialImage}
             title="スペシャル体験ソロ活"
             description="あなたの夢が叶う♡"
@@ -25,6 +26,4 @@ const SpecialLink: React.FC<SpecialLinkProps> = ({ children, onClick }) => {
     );
 };
 
-export default SpecialLink;
-
-
+export default SpecialCard;
