@@ -4,9 +4,9 @@ import React from "react";
 import Heading from "@/app/components/ui-elements/heading";
 import useSWR from "swr";
 import Link from "next/link";
-import { ActivityProps } from "@/app/commons/types/types";
+import { ActivitiesProps } from "@/app/commons/types/types";
 import Image from "next/image";
-import Balloon from "../../../../../commons/images/activities/balloon.jpg"
+import Balloon from "../../../../../commons/images/activities/balloon.jpg";
 
 const ActivitiesList: React.FC = () => {
     const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -16,12 +16,11 @@ const ActivitiesList: React.FC = () => {
         data: activities,
         error,
         isLoading,
-    } = useSWR<ActivityProps[]>(apiUrl, fetcher);
+    } = useSWR<ActivitiesProps[]>(apiUrl, fetcher);
 
     if (isLoading) return <div>ローディング中...</div>;
     if (error) return <div>エラーが発生しました</div>;
-    if (!activities || activities.length === 0)
-        return <div>アクティビティが見つかりません</div>;
+    if (!activities) return <div>アクティビティが見つかりません</div>;
 
     return (
         <div>

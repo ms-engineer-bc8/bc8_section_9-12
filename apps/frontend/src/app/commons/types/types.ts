@@ -10,7 +10,7 @@ export type CategoryCardProps = {
     tags: CategoryTag[];
 };
 
-export type ActivityProps = {
+export type ActivitiesProps = {
     id: number;
     subcategory: string;
     image: string;
