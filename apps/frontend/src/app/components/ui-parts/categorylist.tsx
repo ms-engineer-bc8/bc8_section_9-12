@@ -1,9 +1,12 @@
 import React from "react";
-import Link from "next/link";
-import ActiveCard from "../ui-elements/category/active";
-import SpecialLink from "../ui-elements/category/special";
-import RelaxLink from "../ui-elements/category/relax";
-import GourmetLink from "../ui-elements/category/gourmet";
+
+// import Link from "next/link";
+// import CategoryCard from "../ui-elements/card/commonCard";
+
+// import ActiveCard from "../ui-elements/category/active";
+// import SpecialLink from "../ui-elements/category/special";
+// import RelaxLink from "../ui-elements/category/relax";
+// import GourmetLink from "../ui-elements/category/gourmet";
 
 const CategoryList = () => {
     return (

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import CategoryCard from "./card";
+import CategoryCard from "./commonCard";
 
 type CategorySpecificCardProps = {
     href: string;

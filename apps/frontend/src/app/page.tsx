@@ -1,4 +1,4 @@
-import CategoryList from "./components/ui-parts/list";
+import CategoryList from "./components/ui-parts/categorylist";
 import Heading from "./components/ui-elements/heading";
 
 export default function Home() {

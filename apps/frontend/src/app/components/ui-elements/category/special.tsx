@@ -1,5 +1,5 @@
 import React from "react";
-import CategoryCard from "../card/card";
+import CategoryCard from "../card/commonCard";
 import SpecialImage from "../../../images/category/special.jpg";
 
 type SpecialCardProps = {
