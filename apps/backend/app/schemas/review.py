@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class ReviewResponse(BaseModel):
-    id = int = Field(examples=[1])
+    id: int = Field(examples=[1])
     nickname: str = Field(examples=["ソロ活を極めたい女子"])
     text: str = Field(
         examples=[
