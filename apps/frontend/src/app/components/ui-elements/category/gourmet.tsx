@@ -12,7 +12,7 @@ const gourmetCategoryTags = [
 const GourmetCategoryCard: React.FC = () => {
     return (
         <CategoryCard
-            imageUrl={GourmetCategoryImage}
+            imageSrc={GourmetCategoryImage}
             title="グルメ堪能ソロ活"
             description="自分の五感と向き合う..."
             tags={gourmetCategoryTags}

@@ -12,7 +12,7 @@ const activeCategoryTags = [
 const ActiveCategoryCard: React.FC = () => {
     return (
         <CategoryCard
-            imageUrl={ActiveCategoryImage}
+            imageSrc={ActiveCategoryImage}
             title="アクティブ系ソロ活"
             description="自分だけの冒険を満喫できる！"
             categoryTags={activeCategoryTags}

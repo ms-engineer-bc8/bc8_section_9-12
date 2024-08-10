@@ -12,7 +12,7 @@ const relaxCategoryTags = [
 const RelaxCategoryCard: React.FC = () => {
     return (
         <CategoryCard
-            imageUrl={RelaxCategoryImage}
+            imageSrc={RelaxCategoryImage}
             title="リラックス系ソロ活"
             description="心がほぐれる〜"
             tags={relaxCategoryTags}

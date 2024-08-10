@@ -12,7 +12,7 @@ const specialCategoryTags = [
 const SpecialCategoryCard: React.FC = () => {
     return (
         <CategoryCard
-            imageUrl={SpecialCategoryImage}
+            imageSrc={SpecialCategoryImage}
             title="スペシャル体験ソロ活"
             description="あなたの夢が叶う♡"
             tags={specialCategoryTags}
