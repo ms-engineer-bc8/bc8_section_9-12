@@ -9,3 +9,14 @@ export type CategoryCardProps = {
     description: string;
     tags: CategoryTag[];
 };
+
+export type ActivityProps = {
+    id: number;
+    subcategory: string;
+    image: string;
+    provider_name: string;
+    time_zone: string;
+    solo_level: string;
+    likes_count: number;
+    favorites_count: number;
+};

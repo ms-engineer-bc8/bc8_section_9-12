@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryCard from "../card/commonCard";
-import GourmetCategoryImage from "../../../images/category/gourmet.jpg";
+import GourmetCategoryImage from "../../../commons/images/category/gourmet.jpg"
 
 const gourmetCategoryTags = [
     { id: 1, name: "焼肉" },

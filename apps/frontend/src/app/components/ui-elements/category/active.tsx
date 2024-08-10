@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryCard from "../card/commonCard";
-import ActiveCategoryImage from "../../../images/category/active.jpg";
+import ActiveCategoryImage from "../../../commons/images/category/active.jpg";
 
 const activeCategoryTags = [
     { id: 1, name: "ボウリング" },
@@ -15,7 +15,7 @@ const ActiveCategoryCard: React.FC = () => {
             imageSrc={ActiveCategoryImage}
             title="アクティブ系ソロ活"
             description="自分だけの冒険を満喫できる！"
-            categoryTags={activeCategoryTags}
+            tags={activeCategoryTags}
         />
     );
 };

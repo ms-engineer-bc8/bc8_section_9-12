@@ -6,7 +6,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
     imageSrc,
     title,
     description,
-    tags,
+    tags = [],
 }) => {
     return (
         <div className="bg-white rounded-2xl border border-gray-900 overflow-hidden text-center h-full flex flex-col">
@@ -28,7 +28,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
                     </p>
                 </div>
                 <div className="flex flex-wrap gap-2 justify-center">
-                    {tags.map((tag) => (
+                    {tags && tags.map((tag) => (
                         <span
                             key={tag.id}
                             className="px-2 py-1 border border-pink-700 bg-pink-100 text-pink-700 text-sm font-medium rounded-full"

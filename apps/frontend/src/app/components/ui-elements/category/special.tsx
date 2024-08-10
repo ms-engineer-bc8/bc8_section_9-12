@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryCard from "../card/commonCard";
-import SpecialCategoryImage from "../../../images/category/special.jpg";
+import SpecialCategoryImage from "../../../commons/images/category/special.jpg";
 
 const specialCategoryTags = [
     { id: 1, name: "シティホテル" },

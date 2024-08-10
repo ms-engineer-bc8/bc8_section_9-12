@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryCard from "../card/commonCard";
-import RelaxCategoryImage from "../../../images/category/relax.jpg";
+import RelaxCategoryImage from "../../../commons/images/category/relax.jpg"
 
 const relaxCategoryTags = [
     { id: 1, name: "プラネタリウム" },
