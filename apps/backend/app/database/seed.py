@@ -33,22 +33,22 @@ def seed_activity_categories():
 
 def seed_activity_subcategories():
     activity_subcategories = [
-        ActivitySubcategory(id=1, name="ボウリング"),
-        ActivitySubcategory(id=2, name="遊園地"),
-        ActivitySubcategory(id=3, name="サバイバルゲーム"),
-        ActivitySubcategory(id=4, name="ナイトプール"),
-        ActivitySubcategory(id=5, name="シティホテル"),
-        ActivitySubcategory(id=6, name="気球"),
-        ActivitySubcategory(id=7, name="リムジン"),
-        ActivitySubcategory(id=8, name="ヘリクルーズ"),
-        ActivitySubcategory(id=9, name="プラネタリウム"),
-        ActivitySubcategory(id=10, name="美術館 / 博物館"),
-        ActivitySubcategory(id=11, name="スパ"),
-        ActivitySubcategory(id=12, name="夜景"),
-        ActivitySubcategory(id=13, name="焼肉"),
-        ActivitySubcategory(id=14, name="寿司"),
-        ActivitySubcategory(id=15, name="中華料理"),
-        ActivitySubcategory(id=16, name="フレンチ"),
+        ActivitySubcategory(id=1, name="ボウリング", activity_category_id=1),
+        ActivitySubcategory(id=2, name="遊園地", activity_category_id=1),
+        ActivitySubcategory(id=3, name="サバイバルゲーム", activity_category_id=1),
+        ActivitySubcategory(id=4, name="ナイトプール", activity_category_id=1),
+        ActivitySubcategory(id=5, name="シティホテル", activity_category_id=2),
+        ActivitySubcategory(id=6, name="気球", activity_category_id=2),
+        ActivitySubcategory(id=7, name="リムジン", activity_category_id=2),
+        ActivitySubcategory(id=8, name="ヘリクルーズ", activity_category_id=2),
+        ActivitySubcategory(id=9, name="プラネタリウム", activity_category_id=3),
+        ActivitySubcategory(id=10, name="美術館 / 博物館", activity_category_id=3),
+        ActivitySubcategory(id=11, name="スパ", activity_category_id=3),
+        ActivitySubcategory(id=12, name="夜景", activity_category_id=3),
+        ActivitySubcategory(id=13, name="焼肉", activity_category_id=4),
+        ActivitySubcategory(id=14, name="寿司", activity_category_id=4),
+        ActivitySubcategory(id=15, name="中華料理", activity_category_id=4),
+        ActivitySubcategory(id=16, name="フレンチ", activity_category_id=4),
     ]
 
     db.add_all(activity_subcategories)
@@ -56,61 +56,25 @@ def seed_activity_subcategories():
 
 
 def seed_activities():
-    activities = [
-        Activity(
-            id=1,
-            name="【新宿ALTA発】東京の夜景を独り占め！ソロリムジンプラン（ドレスコード付き）",
-            title="ソロリムジンといえばここ！特別な日のご褒美に",
-            discription="自由が丘駅から徒歩1分に位置する「OneRide Limousine」。豪華なレザーシートでくつろぎ、最新のエンタメを満喫しながら、まるで映画の主人公に。お一人さま専用のリムジンで、ちょっとしたセレブ気分を味わってください。特別な時間を「OneRide Limousine」でどうぞ！",
-            price=25000,
-            coupon_discount_rate=10,
-            image_large="",
-            image_small="",
-            provider_id=1,
-            activity_category_id=1,
-            activity_subcategory_id=7,
-            time_zone="夜",
-            solo_level="上級",
-            likes_count=10,
-            favorites_count=20,
-        ),
-        Activity(
-            id=2,
-            name="プラン1",
-            title="気球‗タイトル",
-            discription="気球‗プラン説明",
-            price=25000,
-            coupon_discount_rate=0,
-            image_large="",
-            image_small="",
-            provider_id=2,
-            activity_category_id=1,
-            activity_subcategory_id=6,
-            time_zone="朝",
-            solo_level="上級",
-            likes_count=20,
-            favorites_count=55,
-        ),
-        Activity(
-            id=1,
-            name="プラン1",
-            title="気球‗タイトル",
-            discription="気球‗プラン説明",
-            price=25000,
-            coupon_discount_rate=0,
-            image_large="",
-            image_small="",
-            provider_id=2,
-            activity_category_id=1,
-            activity_subcategory_id=6,
-            time_zone="朝",
-            solo_level="上級",
-            likes_count=20,
-            favorites_count=55,
-        ),
-    ]
+    activities = Activity(
+        id=1,
+        name="【新宿ALTA発】東京の夜景を独り占め！ソロリムジンプラン（ドレスコード付き）",
+        title="ソロリムジンといえばここ！特別な日のご褒美に",
+        description="自由が丘駅から徒歩1分に位置する「OneRide Limousine」。豪華なレザーシートでくつろぎ、最新のエンタメを満喫しながら、まるで映画の主人公に。お一人さま専用のリムジンで、ちょっとしたセレブ気分を味わってください。特別な時間を「OneRide Limousine」でどうぞ！",
+        price=25000,
+        coupon_discount_rate=10,
+        image_large="test",
+        image_small="test",
+        provider_id=1,
+        activity_category_id=1,
+        activity_subcategory_id=7,
+        time_zone="夜",
+        solo_level="上級",
+        likes_count=10,
+        favorites_count=20,
+    )
 
-    db.add_all(activities)
+    db.add(activities)
     db.commit()
 
 
@@ -119,9 +83,11 @@ def seed_reviews():
         id=1,
         user_id=1,
         text="ひとりサンリオピューロランドに行ってきた〜！キティちゃんは平和の象徴。",
-        image="",
+        image="test",
         likes_count=30,
         favorites_count=20,
+        created_at="2024-08-02T10:12:59.073Z",
+        updated_at="2024-08-02T10:12:59.073Z",
     )
 
     db.add(reviews)
@@ -153,9 +119,9 @@ def seed_users():
 
 
 seed_solo_types()
+seed_users()
 seed_reviews()
-seed_activities()
 seed_activity_categories()
 seed_activity_subcategories()
 seed_providers()
-seed_users()
+seed_activities()

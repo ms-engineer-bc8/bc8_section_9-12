@@ -49,10 +49,10 @@ class ActivityCategory(Base):
     name = Column(String, nullable=False)
 
     activity_subcategories = relationship(
-        "ActivitySubcategory", back_populates="activity_subcategories"
+        "ActivitySubcategory", back_populates="activity_categories"
     )
 
-    activities = relationship("Activity", back_populates="activities")
+    activities = relationship("Activity", back_populates="activity_categories")
 
 
 class ActivitySubcategory(Base):
@@ -67,3 +67,5 @@ class ActivitySubcategory(Base):
     activity_categories = relationship(
         "ActivityCategory", back_populates="activity_subcategories"
     )
+
+    activities = relationship("Activity", back_populates="activity_subcategories")
