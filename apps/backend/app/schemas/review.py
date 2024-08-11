@@ -10,7 +10,7 @@ class ReviewResponse(BaseModel):
             "ひとりサンリオピューロランドに行ってきた〜！キティちゃんは平和の象徴。"
         ]
     )
-    image: bytes
+    image: str
     likes_count: int
     favorites_count: int
     update_date: datetime
@@ -23,4 +23,4 @@ class ReviewItem(BaseModel):
             "ひとりサンリオピューロランドに行ってきた〜！キティちゃんは平和の象徴。"
         ]
     )
-    image: bytes
+    image: str
