@@ -1,39 +1,16 @@
 "use client";
 
 import React from "react";
+import { ActivityProps } from "@/app/commons/types/types";
 import Heading from "@/app/components/ui-elements/heading";
 import SubHeading from "@/app/components/ui-elements/subheading";
 import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
-import LimousineImage from "../../../../images/activities/limousine.jpg";
-import DressImage from "../../../../images/activities/dress.jpg";
+import LimousineImage from "../../../../commons/images/activities/limousine.jpg"
+import DressImage from "../../../../commons/images/activities/dress.jpg";
 
-type ActivityDetail = {
-    provider_name: string;
-    image_large: string;
-    title: string;
-    discription: string;
-    plan_name: string;
-    price: number;
-    image_small: string;
-    coupon_discount_rate: number;
-    url: string;
-};
-
-type CategoryCardProps = {
-    imageSrc: string;
-    title: string;
-    description: string;
-    tags: { id: number; name: string }[];
-};
-
-const Limousine: React.FC<CategoryCardProps> = ({
-    imageSrc,
-    title,
-    description,
-    tags,
-}) => {
+const Limousine: React.FC = () => {
     const fetcher = (url: string) => fetch(url).then((res) => res.json());
     const activityId = 1;
     const apiUrl = `${process.env.NEXT_PUBLIC_API_ACTIVITY_URL}/${activityId}`;
@@ -41,7 +18,7 @@ const Limousine: React.FC<CategoryCardProps> = ({
         data: activity,
         error,
         isLoading,
-    } = useSWR<ActivityDetail>(apiUrl, fetcher);
+    } = useSWR<ActivityProps>(apiUrl, fetcher);
 
     if (isLoading) return <div>ローディング中...</div>;
     if (error) return <div>エラーが発生しました</div>;
