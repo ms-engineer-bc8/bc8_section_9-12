@@ -118,10 +118,10 @@ def seed_users():
     db.commit()
 
 
-seed_solo_types()
-seed_users()
-seed_reviews()
-seed_activity_categories()
-seed_activity_subcategories()
-seed_providers()
-seed_activities()
+# seed_solo_types()
+# seed_users()
+# seed_reviews()
+# seed_activity_categories()
+# seed_activity_subcategories()
+# seed_providers()
+# seed_activities()
