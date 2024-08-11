@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, LargeBinary, DateTime, func
+from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, func
 from sqlalchemy.orm import relationship
 
 from app.database.database import Base
@@ -13,8 +13,12 @@ class Activity(Base):
     description = Column(String, nullable=False)
     price = Column(Integer, nullable=False)
     coupon_discount_rate = Column(Integer, nullable=False)
-    image_large = Column(LargeBinary, nullable=False)
-    image_small = Column(LargeBinary, nullable=False)
+    image_large = Column(String, nullable=False)
+    image_small = Column(String, nullable=False)
+    time_zone = Column(String, nullable=False)
+    solo_level = Column(String, nullable=False)
+    likes_count = Column(Integer, default=0)
+    favorites_count = Column(Integer, default=0)
     provider_id = Column(
         Integer, ForeignKey("providers.id"), index=True, nullable=False
     )
@@ -47,6 +51,8 @@ class ActivityCategory(Base):
     activity_subcategories = relationship(
         "ActivitySubcategory", back_populates="activity_subcategories"
     )
+
+    activities = relationship("Activity", back_populates="activities")
 
 
 class ActivitySubcategory(Base):
