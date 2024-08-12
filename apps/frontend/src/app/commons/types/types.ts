@@ -53,3 +53,10 @@ export type ReviewFormProps = {
     apiUrl: string;
 };
 
+export type SignUpFormProps = {
+    email: string;
+    password: string;
+    nickname: string;
+    age: string;
+};
+

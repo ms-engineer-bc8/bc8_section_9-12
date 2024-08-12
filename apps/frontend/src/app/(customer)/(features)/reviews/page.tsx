@@ -16,7 +16,7 @@ export default function Reviews() {
     if (!reviews) return <div>レビューが見つかりません</div>;
 
     return (
-        <div className="container max-w-3xl mx-auto p-5">
+        <div className="container flex justify-center mx-auto p-5">
             <div className="w-96">
                 <form className="max-w-md mx-auto">
                     <label
@@ -35,9 +35,9 @@ export default function Reviews() {
                             >
                                 <path
                                     stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
                                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                                 />
                             </svg>
