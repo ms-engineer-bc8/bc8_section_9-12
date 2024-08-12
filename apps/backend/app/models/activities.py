@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 from app.database.database import Base
 
 
+# TODO: image_thumbnailを後から追加したため位置が最終列になっている。カラム位置の変更方法がわかったら修正する。
 class Activity(Base):
     __tablename__ = "activities"
 
@@ -32,6 +33,7 @@ class Activity(Base):
     updated_at = Column(
         DateTime(timezone=True), default=func.now(), onupdate=func.now()
     )
+    image_thumbnail = Column(String, nullable=False)
 
     providers = relationship("Provider", back_populates="activities", uselist=False)
     activity_categories = relationship(

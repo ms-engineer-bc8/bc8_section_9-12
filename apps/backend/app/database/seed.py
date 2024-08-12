@@ -57,14 +57,13 @@ def seed_activity_subcategories():
 
 def seed_activities():
     activities = Activity(
-        id=1,
         name="【新宿ALTA発】東京の夜景を独り占め！ソロリムジンプラン（ドレスコード付き）",
         title="ソロリムジンといえばここ！特別な日のご褒美に",
         description="自由が丘駅から徒歩1分に位置する「OneRide Limousine」。豪華なレザーシートでくつろぎ、最新のエンタメを満喫しながら、まるで映画の主人公に。お一人さま専用のリムジンで、ちょっとしたセレブ気分を味わってください。特別な時間を「OneRide Limousine」でどうぞ！",
         price=25000,
         coupon_discount_rate=10,
-        image_large="test",
-        image_small="test",
+        image_large="no image",
+        image_small="no image",
         provider_id=1,
         activity_category_id=1,
         activity_subcategory_id=7,
@@ -72,6 +71,7 @@ def seed_activities():
         solo_level="上級",
         likes_count=10,
         favorites_count=20,
+        image_thumbnail="no image",
     )
 
     db.add(activities)
