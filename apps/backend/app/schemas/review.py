@@ -13,7 +13,7 @@ class ReviewResponse(BaseModel):
     image: str
     likes_count: int
     favorites_count: int
-    updated_at: datetime
+    update_date: datetime
 
     model_config = ConfigDict(from_attributes=True, extra="ignore")
 

@@ -24,7 +24,7 @@ def get_reviews(db: Session = Depends(get_db), keyword: str = ""):
             Review.image,
             Review.likes_count,
             Review.favorites_count,
-            Review.updated_at,
+            Review.updated_at.label("update_date")
         )
         .join(User, Review.user_id == User.id)
         .all()
