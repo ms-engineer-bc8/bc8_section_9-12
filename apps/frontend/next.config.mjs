@@ -7,6 +7,15 @@ const nextConfig = {
         NEXT_PUBLIC_REGION: process.env.NEXT_PUBLIC_REGION,
         NEXT_PUBLIC_S3_BUCKET_NAME: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
     },
+    webpack: (config, { isServer }) => {
+        if (!isServer) {
+            config.watchOptions = {
+                poll: 1000,
+                aggregateTimeout: 300,
+            }
+        }
+        return config
+    },
 };
 
 export default nextConfig;
