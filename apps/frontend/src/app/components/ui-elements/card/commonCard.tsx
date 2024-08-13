@@ -1,26 +1,15 @@
 import React from "react";
 import Image from "next/image";
-
-type Tag = {
-    id: number;
-    name: string;
-};
-
-type CategoryCardProps = {
-    imageSrc: string;
-    title: string;
-    description: string;
-    tags: Tag[];
-};
+import { CategoryCardProps } from "@/app/commons/types/types";
 
 const CategoryCard: React.FC<CategoryCardProps> = ({
     imageSrc,
     title,
     description,
-    tags,
+    tags = [],
 }) => {
     return (
-        <div className="bg-white rounded-2xl border border-gray-900 border-t overflow-hidden text-center h-full flex flex-col">
+        <div className="bg-white rounded-2xl border border-gray-900 overflow-hidden text-center h-full flex flex-col">
             <div className="relative h-56 w-full">
                 <Image
                     src={imageSrc}
@@ -39,10 +28,10 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
                     </p>
                 </div>
                 <div className="flex flex-wrap gap-2 justify-center">
-                    {tags.map((tag) => (
+                    {tags && tags.map((tag) => (
                         <span
                             key={tag.id}
-                            className="px-2 py-1 border border-pink-700 border-t bg-pink-100 text-pink-700 text-sm font-medium rounded-full"
+                            className="px-2 py-1 border border-pink-700 bg-pink-100 text-pink-700 text-sm font-medium rounded-full"
                         >
                             {tag.name}
                         </span>

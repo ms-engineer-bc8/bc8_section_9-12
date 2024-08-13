@@ -4,33 +4,11 @@ import React from "react";
 import Heading from "@/app/components/ui-elements/heading";
 import useSWR from "swr";
 import Link from "next/link";
+import { ActivitiesProps } from "@/app/commons/types/types";
 import Image from "next/image";
-import Balloon from "../../../../../images/activities/balloon.jpg";
+import Balloon from "../../../../../commons/images/activities/balloon.jpg";
 
-type Activity = {
-    id: number;
-    subcategory: string;
-    image: string;
-    provider_name: string;
-    time_zone: string;
-    solo_level: string;
-    likes_count: number;
-    favorites_count: number;
-};
-
-type CategoryCardProps = {
-    imageSrc: string;
-    title: string;
-    description: string;
-    tags: { id: number; name: string }[];
-};
-
-const ActivitiesList: React.FC<CategoryCardProps> = ({
-    imageSrc,
-    title,
-    description,
-    tags,
-}) => {
+const ActivitiesList: React.FC = () => {
     const fetcher = (url: string) => fetch(url).then((res) => res.json());
     const categoryId = 2;
     const apiUrl = `${process.env.NEXT_PUBLIC_API_ACTIVITIES_URL}/${categoryId}`;
@@ -38,17 +16,16 @@ const ActivitiesList: React.FC<CategoryCardProps> = ({
         data: activities,
         error,
         isLoading,
-    } = useSWR<Activity[]>(apiUrl, fetcher);
+    } = useSWR<ActivitiesProps[]>(apiUrl, fetcher);
 
     if (isLoading) return <div>ローディング中...</div>;
     if (error) return <div>エラーが発生しました</div>;
-    if (!activities || activities.length === 0)
-        return <div>アクティビティが見つかりません</div>;
+    if (!activities) return <div>アクティビティが見つかりません</div>;
 
     return (
         <div>
             <Heading>スペシャル体験ソロ活</Heading>
-            <div className="container mx-auto px-4 mt-20">
+            <div className="container mx-auto px-4 mt-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     {activities.map((activity) => (
                         <Link
