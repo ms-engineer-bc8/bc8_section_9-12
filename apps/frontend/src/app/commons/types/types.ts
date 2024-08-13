@@ -60,3 +60,14 @@ export type SignUpFormProps = {
     age: string;
 };
 
+export type SoloTypeFormProps = {
+    solo_level: string;
+    activity_preference: string;
+    time_preference: string;
+    is_planned: boolean;
+    weekend_plan_preference: boolean;
+    after_work_preference: string;
+    comfort_adventure: string
+};
+
+

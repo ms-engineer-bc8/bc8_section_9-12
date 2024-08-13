@@ -25,7 +25,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ apiUrl }) => {
             });
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.message || 'Failed to post review');
+                throw new Error(errorData.message || "Failed to post review");
             }
             const data = await response.json();
             console.log("Review posted successfully:", data);
@@ -37,20 +37,22 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ apiUrl }) => {
     };
 
     return (
-        <form onSubmit={handleAddReview} className="mb-8">
-            <textarea
-                className="w-full p-4 border rounded-lg mb-4"
-                placeholder="新しいレビューを書く..."
-                value={reviewText}
-                onChange={(e) => setReviewText(e.target.value)}
-            />
-            <button
-                type="submit"
-                className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
-            >
-                レビューを投稿
-            </button>
-        </form>
+        <div>
+            <form onSubmit={handleAddReview} className="mb-8">
+                <textarea
+                    className="w-full p-4 border rounded-lg mb-4"
+                    placeholder="新しいレビューを書く..."
+                    value={reviewText}
+                    onChange={(e) => setReviewText(e.target.value)}
+                />
+                <button
+                    type="submit"
+                    className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
+                >
+                    レビューを投稿
+                </button>
+            </form>
+        </div>
     );
 };
 

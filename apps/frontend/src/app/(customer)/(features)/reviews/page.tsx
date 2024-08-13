@@ -3,7 +3,8 @@
 import React from "react";
 import useSWR from "swr";
 import { ReviewProps } from "@/app/commons/types/types";
-import ReviewForm from "./addReview";  // パスは適切に調整してください
+import ReviewForm from "./addReview";
+import FileUploadForm from "./imgUpload";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const apiUrl = `${process.env.NEXT_PUBLIC_API_REVIEWS_URL}`;
@@ -59,6 +60,7 @@ export default function Reviews() {
                 </form>
 
                 <ReviewForm apiUrl={apiUrl} />
+                <FileUploadForm />
 
                 <div className="space-y-4">
                     {reviews.map((review) => (
@@ -84,7 +86,7 @@ export default function Reviews() {
                             </div>
                         </div>
                     ))}
-                </div>
+                ifu</div>
                 <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-8 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     画像をアップロードする
                 </button>
