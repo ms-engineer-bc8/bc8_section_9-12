@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import { NAVIGATION_LINKS } from "@/app/commons/constants/constants";
+import { CUSTOMER_NAVIGATION_LINKS, BUSINESS_NAVIGATION_LINKS } from "@/app/commons/constants/constants";
 
-export const NavigationMenu = () => {
+const CustomerNavigationMenu = () => {
     return (
         <nav>
             <ul className="flex justify-end">
-                {NAVIGATION_LINKS.map((link) => (
+                {CUSTOMER_NAVIGATION_LINKS.map((link) => (
                     <li key={link.href} className="p-5">
                         <Link href={link.href}>
                             <p className="no-underline hover:underline hover:underline-offset-8 transition-all">
@@ -20,15 +20,44 @@ export const NavigationMenu = () => {
     );
 };
 
-export const Header = () => {
+export const CustomerHeader = () => {
     return (
         <header className="flex items-center justify-between px-12 py-4">
             <Link href="/">
                 <h3 className="text-xl">LOGO</h3>
             </Link>
-            <NavigationMenu />
+            <CustomerNavigationMenu />
         </header>
     );
 };
 
-export default Header;
+const BusinessNavigationMenu = () => {
+    return (
+        <nav>
+            <ul className="flex justify-end">
+                {BUSINESS_NAVIGATION_LINKS.map((link) => (
+                    <li key={link.href} className="p-5">
+                        <Link href={link.href}>
+                            <p className="no-underline hover:underline hover:underline-offset-8 transition-all">
+                                {link.label}
+                            </p>
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    );
+};
+
+export const BusinessHeader = () => {
+    return (
+        <header className="flex items-center justify-between px-12 py-4">
+            <Link href="/">
+                <h3 className="text-xl">LOGO</h3>
+            </Link>
+            <BusinessNavigationMenu />
+        </header>
+    );
+};
+
+

@@ -3,11 +3,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { SignUpFormProps } from "@/app/commons/types/types";
-import { useRouter } from "next/navigation";
 
 export default function SignUpForm() {
     const { register, handleSubmit } = useForm<SignUpFormProps>();
-    const router = useRouter();
 
     const onSubmit = async (data: SignUpFormProps) => {
         try {

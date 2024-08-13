@@ -1,6 +1,13 @@
-// Header
-export const NAVIGATION_LINKS = [
+// to customer
+export const CUSTOMER_NAVIGATION_LINKS = [
     { label: "ソロ活を探す", href: "/" },
     { label: "ソロ活をシェアする", href: "/reviews" },
     { label: "マイページ", href: "/user" },
+];
+
+// to business
+export const BUSINESS_NAVIGATION_LINKS = [
+    { label: "ホーム", href: "/business" },
+    { label: "レポート", href: "/business/report" },
+    { label: "ログイン", href: "/business/login" },
 ];
