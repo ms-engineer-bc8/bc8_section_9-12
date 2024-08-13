@@ -1,7 +1,8 @@
 "use server"
 
-import { S3Client } from "@aws-sdk/client-s3"
+import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3"
 import { createPresignedPost } from "@aws-sdk/s3-presigned-post";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 const region = process.env.NEXT_PUBLIC_REGION;
 const accessKeyId = process.env.NEXT_PUBLIC_ACCESS_KEY_ID;
@@ -25,7 +26,7 @@ export async function uploadFile(formData: FormData) {
 
         const { url, fields } = await createPresignedPost(client, {
             Bucket: bucket!,
-            Key: `${Date.now()}-${file.name}`
+            Key: `${file.name}`
         });
 
         const formDataS3 = new FormData();
@@ -40,12 +41,18 @@ export async function uploadFile(formData: FormData) {
         });
 
         if (!response.ok) {
-            throw new Error("Failed to upload file");
+            throw new Error("失敗");
         }
 
-        return { success: true, message: "File uploaded successfully" };
+        const command = new GetObjectCommand({
+            Bucket: bucket!,
+            Key: `${file.name}`
+        });
+        const presignedUrl = await getSignedUrl(client, command);
+
+        return { success: true, message: "成功", url: presignedUrl };
     } catch (error) {
         console.error(error);
-        return { success: false, message: "Failed to upload file" };
+        return { success: false, message: "失敗" };
     }
-}
+};
