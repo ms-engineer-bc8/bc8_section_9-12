@@ -22,7 +22,7 @@ export default function RootLayout({
     return (
         <html lang="ja">
             <body className={zenKakuGothicNew.className}>
-                <div className="min-h-screen flex flex-col bg-custom-gradient-with-new-noise">
+                <div className="min-h-screen flex flex-col bg-custom-gradient">
                     <main className="flex-grow">{children}</main>
                 </div>
             </body>
