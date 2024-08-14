@@ -9,7 +9,7 @@ const CustomerNavigationMenu = () => {
                 {CUSTOMER_NAVIGATION_LINKS.map((link) => (
                     <li key={link.href} className="p-5">
                         <Link href={link.href}>
-                            <p className="no-underline hover:underline hover:underline-offset-8 transition-all">
+                            <p className="no-underline font-semibold hover:underline hover:underline-offset-8 transition-all">
                                 {link.label}
                             </p>
                         </Link>
@@ -38,7 +38,7 @@ const BusinessNavigationMenu = () => {
                 {BUSINESS_NAVIGATION_LINKS.map((link) => (
                     <li key={link.href} className="p-5">
                         <Link href={link.href}>
-                            <p className="no-underline hover:underline hover:underline-offset-8 transition-all">
+                            <p className="no-underline font-semibold hover:underline hover:underline-offset-8 transition-all">
                                 {link.label}
                             </p>
                         </Link>
