@@ -8,6 +8,7 @@ services:
       - "3000:3000"
     environment:
       - PORT=3000
+      - WATCHPACK_POLLING=true
     volumes:
       - ./apps/frontend:/app
 
@@ -19,7 +20,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - "8000:8000"  
+      - "8000:8000"
     volumes:
       - ./apps/backend:/app
     environment:
