@@ -1,8 +1,7 @@
 // to customer
 export const CUSTOMER_NAVIGATION_LINKS = [
-    { label: "ソロ活を探す", href: "/" },
-    { label: "ソロ活をシェアする", href: "/reviews" },
-    { label: "マイページ", href: "/user" },
+    { label: "ソロ活を探す🔍", href: "/" },
+    { label: "ソロ活をシェアする✍️", href: "/reviews" },
 ];
 
 // to business
