@@ -31,7 +31,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
                     {tags && tags.map((tag) => (
                         <span
                             key={tag.id}
-                            className="px-2 py-1 bg-pink-100 text-[#FA6183] text-sm font-medium rounded-full"
+                            className="px-2 py-1 bg-pink-100 text-pink-500 text-sm font-medium rounded-full"
                         >
                             {tag.name}
                         </span>

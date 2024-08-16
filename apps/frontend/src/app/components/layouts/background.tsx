@@ -3,8 +3,8 @@ import React from "react";
 const Background = () => {
     return (
         <div
-            className="fixed inset-0 w-full h-full"
-            style={{ zIndex: -1, backgroundColor: "#FFE5E3" }}
+            className="fixed inset-0 w-full h-full bg-pink-100"
+            style={{ zIndex: -1 }}
         >
             <svg
                 className="w-full h-full"
@@ -31,14 +31,14 @@ const Background = () => {
                         <feTurbulence
                             type="fractalNoise"
                             baseFrequency="0.7"
-                            numOctaves="8"
+                            numOctaves="6"
                             stitchTiles="stitch"
                         />
-                        <feColorMatrix type="saturate" values="0"/>
+                        <feColorMatrix type="saturate" values="0" />
                         <feComponentTransfer>
-                            <feFuncR type="linear" slope="2.5" intercept="-0.4"/>
-                            <feFuncG type="linear" slope="2.5" intercept="-0.4"/>
-                            <feFuncB type="linear" slope="2.5" intercept="-0.4"/>
+                            <feFuncR type="linear" slope="2" intercept="-0.3" />
+                            <feFuncG type="linear" slope="2" intercept="-0.3" />
+                            <feFuncB type="linear" slope="2" intercept="-0.3" />
                         </feComponentTransfer>
                     </filter>
                 </defs>
@@ -56,7 +56,7 @@ const Background = () => {
                     width="100%"
                     height="100%"
                     filter="url(#noiseFilter)"
-                    opacity="0.6"
+                    opacity="0.4"
                 />
             </svg>
         </div>

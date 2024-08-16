@@ -14,7 +14,7 @@ const CustomerNavigationMenu = () => (
             {CUSTOMER_NAVIGATION_LINKS.map(({ href, label }) => (
                 <li key={href} className="flex items-center px-5">
                     <Link href={href}>
-                        <p className="no-underline font-semibold hover:text-[#FA6183] transition-all">
+                        <p className="no-underline font-semibold hover:text-pink-500 transition-all">
                             {label}
                         </p>
                     </Link>
@@ -50,7 +50,7 @@ const BusinessNavigationMenu = () => (
             {BUSINESS_NAVIGATION_LINKS.map(({ href, label }) => (
                 <li key={href} className="flex items-center px-5">
                     <Link href={href}>
-                        <p className="no-underline font-semibold hover:text-[#FA6183] transition-all">
+                        <p className="no-underline font-semibold hover:text-pink-500 transition-all">
                             {label}
                         </p>
                     </Link>
