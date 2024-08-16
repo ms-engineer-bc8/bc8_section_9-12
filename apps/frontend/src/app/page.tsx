@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <>
             <CustomerHeader />
-            <Heading>どんなソロ活をやってみたい？</Heading>
+            <Heading>どんなソロ活をやってみたい？👀</Heading>
             <CategoryList />
         </>
     );
