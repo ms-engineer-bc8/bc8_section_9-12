@@ -11,7 +11,6 @@ class UserUpdate(BaseModel):
     email: str = Field(examples=["solo-example@gmail.com"])
     nickname: str = Field(examples=["ソロ活を極めたい女子"])
     age: str = Field(examples=["31~35歳"])
-    solo_type: str = Field(examples=["アクティブチャレンジャー"])
 
 
 class UserType(BaseModel):
