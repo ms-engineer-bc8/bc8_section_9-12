@@ -22,6 +22,7 @@ type Auth = {
   // token: React.RefObject<string | null>;
   // signIn: (email: string, password: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<string>;
+  signOut: () => Promise<string>
 };
 
 export const useAuth = (): Auth => {
@@ -49,15 +50,15 @@ export const useAuth = (): Auth => {
     // token.value = result.claims.role;
   };
 
-  const signOut = async (): Promise<void> => {
-    const auth = getAuth(app);
+  const signOut = async (): Promise<string> => {
     await firebaseSignOut(auth);
     // token.value = null;
+    return "Sign out";
   };
 
   return {
     signIn,
-    // signOut,
+    signOut,
     // token
   };
 };
