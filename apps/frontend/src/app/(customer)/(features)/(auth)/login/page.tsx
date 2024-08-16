@@ -23,12 +23,12 @@ export default function CustomerLogIn() {
   const onSubmit = async (data: FieldValues) => {
     const { email, password } = data;
     const result = await signIn(email, password);
-    if (result === ""){
+    if (result === "error"){
       console.log("Sign-in failed.");
-      toast.error("Sign-in failed. Please try again.");
+      toast.error("メールアドレスまたはパスワードが間違っています。");
     } else {
       console.log("ID Token:", result);
-      toast.success("Login success");  
+      toast.success("ログイン成功！");  
     }
   };
 

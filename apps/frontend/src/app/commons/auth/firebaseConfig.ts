@@ -28,14 +28,18 @@ export const useAuth = (): Auth => {
   // const token = useToken();
   const signIn = async (email: string, password: string): Promise<string> => {
     console.log(email, password);
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const idToken = await userCredential.user.getIdToken();
-    console.log(idToken);
-    return idToken;
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const idToken = await userCredential.user.getIdToken();
+      console.log(idToken);
+      return idToken;
+    } catch (error) {
+      return "error";
+    }
 
     // await fetch("http://localhost:8000/setCustomClaims", {
     //   method: "POST",
