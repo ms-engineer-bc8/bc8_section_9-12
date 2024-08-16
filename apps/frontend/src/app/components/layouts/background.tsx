@@ -23,7 +23,7 @@ const Background = () => {
                         <path
                             d="M0 20 L20 0 L40 20 L60 0 L80 20 L100 0 L120 20"
                             fill="none"
-                            stroke="white"
+                            stroke="rgba(255, 255, 255, 0.8)"
                             strokeWidth="3"
                         />
                     </pattern>
@@ -34,11 +34,11 @@ const Background = () => {
                             numOctaves="8"
                             stitchTiles="stitch"
                         />
-                        <feColorMatrix type="saturate" values="0" />
+                        <feColorMatrix type="saturate" values="0"/>
                         <feComponentTransfer>
-                            <feFuncR type="linear" slope="3" intercept="-0.5" />
-                            <feFuncG type="linear" slope="3" intercept="-0.5" />
-                            <feFuncB type="linear" slope="3" intercept="-0.5" />
+                            <feFuncR type="linear" slope="2.5" intercept="-0.4"/>
+                            <feFuncG type="linear" slope="2.5" intercept="-0.4"/>
+                            <feFuncB type="linear" slope="2.5" intercept="-0.4"/>
                         </feComponentTransfer>
                     </filter>
                 </defs>
@@ -48,7 +48,7 @@ const Background = () => {
                     width="100%"
                     height="100%"
                     fill="url(#whiteZigzag)"
-                    opacity="0.3"
+                    opacity="0.7"
                 />
                 <rect
                     x="0"
@@ -56,7 +56,7 @@ const Background = () => {
                     width="100%"
                     height="100%"
                     filter="url(#noiseFilter)"
-                    opacity="0.8"
+                    opacity="0.6"
                 />
             </svg>
         </div>
