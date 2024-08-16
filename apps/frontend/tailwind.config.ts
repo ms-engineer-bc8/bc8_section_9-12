@@ -15,17 +15,12 @@ const config: Config = {
     theme: {
         extend: {
             backgroundImage: {
-                "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-                "gradient-conic":
-                    "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-                "custom-gradient":
-                    "linear-gradient(90deg, #FFDEE9 0%, #B5FFFC 100%)",
             },
             colors: {
-                black: { DEFAULT: "#333333" },
+                black: { DEFAULT: "#262626" },
             },
             textColor: {
-                DEFAULT: "#333333",
+                DEFAULT: "#262626",
             },
         },
     },

@@ -14,17 +14,22 @@ const categories = [
 
 const CategoryList: React.FC = () => {
     return (
-        <div className="container mx-auto px-2 sm:px-3 mt-10">
-            <ul className="flex flex-wrap justify-center gap-4">
+        <div className="container m-10 mx-auto px-2 sm:px-3">
+            <ul className="flex flex-wrap justify-center gap-4 rounded-2">
                 {categories.map(({ id, href, Component }) => (
                     <li
                         key={id}
                         className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]"
                     >
-                    <Link href={href} className="block w-full h-full">
-                        <Component />
-                    </Link>
-                </li>
+                        <Link
+                            href={href}
+                            className="block w-full h-full bg-white rounded-2xl overflow-hidden"
+                        >
+                            <div className="transition-all duration-300 ease-in-out transform hover:scale-105">
+                                <Component />
+                            </div>
+                        </Link>
+                    </li>
                 ))}
             </ul>
         </div>
