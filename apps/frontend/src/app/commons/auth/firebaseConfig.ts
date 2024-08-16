@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut as firebaseSignOut,
 } from "firebase/auth";
@@ -21,12 +22,28 @@ const auth = getAuth(app);
 type Auth = {
   // token: React.RefObject<string | null>;
   // signIn: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string) => Promise<string>;
   signIn: (email: string, password: string) => Promise<string>;
-  signOut: () => Promise<string>
+  signOut: () => Promise<string>;
 };
 
 export const useAuth = (): Auth => {
   // const token = useToken();
+  const signUp = async (email: string, password: string): Promise<string> => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const idToken = await userCredential.user.getIdToken();
+      console.log(idToken);
+      return idToken;
+    } catch (error) {
+      return "error";
+    }
+  };
+
   const signIn = async (email: string, password: string): Promise<string> => {
     console.log(email, password);
     try {
@@ -57,6 +74,7 @@ export const useAuth = (): Auth => {
   };
 
   return {
+    signUp,
     signIn,
     signOut,
     // token

@@ -55,13 +55,6 @@ export type ReviewFormProps = {
   apiUrl: string;
 };
 
-export type SignUpFormProps = {
-  email: string;
-  password: string;
-  nickname: string;
-  age: string;
-};
-
 export type SoloTypeFormProps = {
   solo_level: string;
   activity_preference: string;
@@ -77,10 +70,12 @@ export const authSchema = z.object({
     .string()
     .email({ message: "メールアドレスの形式で入力してください" }),
   password: z.string().min(8, { message: "8文字以上で入力してください" }),
+  nickname: z.string().min(1, { message: "ニックネームを入力してください" }),
+  age: z.string(),
 });
 
 export type AuthSchema = z.infer<typeof authSchema>;
 
 export type UserMenuProps = {
   iconSrc: string;
-}
+};
