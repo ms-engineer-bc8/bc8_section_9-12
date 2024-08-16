@@ -15,18 +15,19 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 // TODO: useContextを使ってグローバル変数を管理する
 type Auth = {
   // token: React.RefObject<string | null>;
-  signIn: (email: string, password: string) => Promise<void>;
+  // signIn: (email: string, password: string) => Promise<void>;
+  signIn: (email: string, password: string) => Promise<string>;
 };
 
 export const useAuth = (): Auth => {
   // const token = useToken();
-  const signIn = async (email: string, password: string): Promise<void> => {
+  const signIn = async (email: string, password: string): Promise<string> => {
     console.log(email, password);
-    const auth = getAuth(app);
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
@@ -34,6 +35,7 @@ export const useAuth = (): Auth => {
     );
     const idToken = await userCredential.user.getIdToken();
     console.log(idToken);
+    return idToken;
 
     // await fetch("http://localhost:8000/setCustomClaims", {
     //   method: "POST",
@@ -52,6 +54,6 @@ export const useAuth = (): Auth => {
   return {
     signIn,
     // signOut,
-    // token,
+    // token
   };
 };

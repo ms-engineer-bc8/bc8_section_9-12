@@ -14,7 +14,7 @@ export default function CustomerLogIn() {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm<AuthSchema>({
     mode: "onBlur",
     resolver: zodResolver(authSchema),
@@ -22,11 +22,13 @@ export default function CustomerLogIn() {
 
   const onSubmit = async (data: FieldValues) => {
     const { email, password } = data;
-    try {
-      await signIn(email, password);
-      console.log("Sign-in successful");
-    } catch (error) {
-      console.error("Sign-in failed", error);
+    const result = await signIn(email, password);
+    if (result === ""){
+      console.log("Sign-in failed.");
+      toast.error("Sign-in failed. Please try again.");
+    } else {
+      console.log("ID Token:", result);
+      toast.success("Login success");  
     }
   };
 
@@ -45,6 +47,7 @@ export default function CustomerLogIn() {
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             placeholder="abc@test.com"
           />
+          {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -57,6 +60,7 @@ export default function CustomerLogIn() {
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             placeholder="●●●●●●●●"
           />
+          {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
         </div>
         <div>
           <button
