@@ -30,15 +30,27 @@ const Background = () => {
                     <filter id="noiseFilter">
                         <feTurbulence
                             type="fractalNoise"
-                            baseFrequency="0.7"
-                            numOctaves="6"
+                            baseFrequency="0.6"
+                            numOctaves="4"
                             stitchTiles="stitch"
                         />
                         <feColorMatrix type="saturate" values="0" />
                         <feComponentTransfer>
-                            <feFuncR type="linear" slope="2" intercept="-0.3" />
-                            <feFuncG type="linear" slope="2" intercept="-0.3" />
-                            <feFuncB type="linear" slope="2" intercept="-0.3" />
+                            <feFuncR
+                                type="linear"
+                                slope="1.5"
+                                intercept="-0.2"
+                            />
+                            <feFuncG
+                                type="linear"
+                                slope="1.5"
+                                intercept="-0.2"
+                            />
+                            <feFuncB
+                                type="linear"
+                                slope="1.5"
+                                intercept="-0.2"
+                            />
                         </feComponentTransfer>
                     </filter>
                 </defs>
@@ -56,7 +68,7 @@ const Background = () => {
                     width="100%"
                     height="100%"
                     filter="url(#noiseFilter)"
-                    opacity="0.4"
+                    opacity="0.25"
                 />
             </svg>
         </div>
