@@ -1,3 +1,9 @@
+# import os
+# import sys
+
+# project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
+# sys.path.insert(0, project_root)
+
 from database import SessionLocal
 from app.models.users import SoloType, User
 from app.models.reviews import Review
@@ -80,14 +86,11 @@ def seed_activities():
 
 def seed_reviews():
     reviews = Review(
-        id=1,
         user_id=1,
         text="ひとりサンリオピューロランドに行ってきた〜！キティちゃんは平和の象徴。",
         image="test",
         likes_count=30,
         favorites_count=20,
-        created_at="2024-08-02T10:12:59.073Z",
-        updated_at="2024-08-02T10:12:59.073Z",
     )
 
     db.add(reviews)
@@ -96,7 +99,6 @@ def seed_reviews():
 
 def seed_providers():
     providers = Provider(
-        id=1,
         name="OneRide Limousine",
         email="oneride-limousine@example.com",
         tel="0312345678",
@@ -111,7 +113,7 @@ def seed_providers():
 
 def seed_users():
     users = User(
-        id=1, email="user@example.com", nickname="ソロ活を極めたい女子", age="31~35歳"
+        email="user@example.com", nickname="ソロ活を極めたい女子", age="31~35歳"
     )
 
     db.add(users)
@@ -120,7 +122,7 @@ def seed_users():
 
 # seed_solo_types()
 # seed_users()
-# seed_reviews()
+seed_reviews()
 # seed_activity_categories()
 # seed_activity_subcategories()
 # seed_providers()

@@ -1,10 +1,11 @@
 from typing import List
-from fastapi import APIRouter, status, Depends
+from fastapi import APIRouter, status, Depends, HTTPException
 from app.database.database import get_db
 from sqlalchemy.orm import Session
 from app.models.users import User
 from app.models.reviews import Review
 from app.schemas.review import ReviewResponse, ReviewItem
+from app.analysis.word_cloud import get_wordcloud
 
 router = APIRouter()
 
@@ -16,20 +17,53 @@ router = APIRouter()
     status_code=status.HTTP_200_OK,
 )
 def get_reviews(db: Session = Depends(get_db), keyword: str = ""):
-    items = (
-        db.query(
-            Review.id,
-            User.nickname,
-            Review.text,
-            Review.image,
-            Review.likes_count,
-            Review.favorites_count,
-            Review.updated_at.label("update_date")
-        )
-        .join(User, Review.user_id == User.id)
-        .all()
-    )
+    reviews_query = db.query(
+        Review.id,
+        User.nickname,
+        Review.text,
+        Review.image,
+        Review.likes_count,
+        Review.favorites_count,
+        Review.updated_at.label("update_date"),
+    ).join(User, Review.user_id == User.id)
+
+    if keyword:
+        reviews_query = reviews_query.filter(Review.text.like(f"%{keyword}%"))
+
+    items = reviews_query.all()
+    if not items:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Reviews not found")
+
     return [ReviewResponse.model_validate(item) for item in items]
+
+
+@router.get(
+    "/report",
+    tags=["reviews"],
+    response_model=List[ReviewResponse],
+    status_code=status.HTTP_200_OK,
+)
+def get_report(db: Session = Depends(get_db), keyword: str = ""):
+    reviews_query = db.query(
+        Review.id,
+        User.nickname,
+        Review.text,
+        Review.image,
+        Review.likes_count,
+        Review.favorites_count,
+        Review.updated_at.label("update_date"),
+    ).join(User, Review.user_id == User.id)
+
+    if keyword:
+        reviews_query = reviews_query.filter(Review.text.like(f"%{keyword}%"))
+
+    items = reviews_query.all()
+    if not items:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Reviews not found")
+
+    result = [ReviewResponse.model_validate(item) for item in items]
+
+    return {"message": "Wordcloud created", "wordcloud": get_wordcloud(result)}
 
 
 @router.post("/", tags=["reviews"], status_code=status.HTTP_201_CREATED)
