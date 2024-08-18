@@ -10,9 +10,9 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ apiUrl }) => {
         if (!reviewText.trim()) return;
 
         const newReview: ReviewItem = {
-            user_id: 1, //TODO: データが入ってから修正
+            user_id: 1,
             text: reviewText,
-            image: "", //TODO: 別途実装
+            image: "",
         };
 
         try {

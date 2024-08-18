@@ -14,7 +14,7 @@ const categories = [
 
 const CategoryList: React.FC = () => {
     return (
-        <div className="container m-10 mx-auto px-2 sm:px-3">
+        <div className="container m-8 mx-auto px-2 sm:px-3">
             <ul className="flex flex-wrap justify-center gap-4 rounded-2">
                 {categories.map(({ id, href, Component }) => (
                     <li
