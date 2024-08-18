@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from datetime import datetime
 
 
@@ -10,10 +10,12 @@ class ReviewResponse(BaseModel):
             "ひとりサンリオピューロランドに行ってきた〜！キティちゃんは平和の象徴。"
         ]
     )
-    image: bytes
+    image: str
     likes_count: int
     favorites_count: int
     update_date: datetime
+
+    model_config = ConfigDict(from_attributes=True, extra="ignore")
 
 
 class ReviewItem(BaseModel):
@@ -23,4 +25,4 @@ class ReviewItem(BaseModel):
             "ひとりサンリオピューロランドに行ってきた〜！キティちゃんは平和の象徴。"
         ]
     )
-    image: bytes
+    image: str

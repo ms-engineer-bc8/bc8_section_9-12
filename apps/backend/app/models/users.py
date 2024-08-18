@@ -7,7 +7,7 @@ from app.database.database import Base
 class User(Base):
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     email = Column(String, unique=True, index=True)
     nickname = Column(String, unique=True, nullable=False)
     age = Column(String, nullable=False)
@@ -30,7 +30,7 @@ class User(Base):
 class SoloType(Base):
     __tablename__ = "solo_types"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String)
 
     users = relationship("User", back_populates="solo_types")

@@ -1,9 +1,10 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, LargeBinary, DateTime, func
+from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, func
 from sqlalchemy.orm import relationship
 
 from app.database.database import Base
 
 
+# TODO: image_thumbnailを後から追加したため位置が最終列になっている。カラム位置の変更方法がわかったら修正する。
 class Activity(Base):
     __tablename__ = "activities"
 
@@ -13,8 +14,12 @@ class Activity(Base):
     description = Column(String, nullable=False)
     price = Column(Integer, nullable=False)
     coupon_discount_rate = Column(Integer, nullable=False)
-    image_large = Column(LargeBinary, nullable=False)
-    image_small = Column(LargeBinary, nullable=False)
+    image_large = Column(String, nullable=False)
+    image_small = Column(String, nullable=False)
+    time_zone = Column(String, nullable=False)
+    solo_level = Column(String, nullable=False)
+    likes_count = Column(Integer, default=0)
+    favorites_count = Column(Integer, default=0)
     provider_id = Column(
         Integer, ForeignKey("providers.id"), index=True, nullable=False
     )
@@ -28,6 +33,7 @@ class Activity(Base):
     updated_at = Column(
         DateTime(timezone=True), default=func.now(), onupdate=func.now()
     )
+    image_thumbnail = Column(String, nullable=False)
 
     providers = relationship("Provider", back_populates="activities", uselist=False)
     activity_categories = relationship(
@@ -45,8 +51,10 @@ class ActivityCategory(Base):
     name = Column(String, nullable=False)
 
     activity_subcategories = relationship(
-        "ActivitySubcategory", back_populates="activity_subcategories"
+        "ActivitySubcategory", back_populates="activity_categories"
     )
+
+    activities = relationship("Activity", back_populates="activity_categories")
 
 
 class ActivitySubcategory(Base):
@@ -61,3 +69,5 @@ class ActivitySubcategory(Base):
     activity_categories = relationship(
         "ActivityCategory", back_populates="activity_subcategories"
     )
+
+    activities = relationship("Activity", back_populates="activity_subcategories")
