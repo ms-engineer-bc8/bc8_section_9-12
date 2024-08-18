@@ -4,7 +4,7 @@ import { ActivitiesProps } from "@/app/commons/types/types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type ActivityListProps = {
-    activities: ActivitiesProps[];
+    activities: ActivitiesProps | ActivitiesProps[] | undefined;
 };
 
 const ActivityList: React.FC<ActivityListProps> = ({ activities }) => {
@@ -12,7 +12,9 @@ const ActivityList: React.FC<ActivityListProps> = ({ activities }) => {
     const [showRightArrow, setShowRightArrow] = useState(true);
     const scrollContainerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-    const groupedActivities = activities.reduce((acc, activity) => {
+    const normalizedActivities = Array.isArray(activities) ? activities : activities ? [activities] : [];
+
+    const groupedActivities = normalizedActivities.reduce((acc, activity) => {
         if (!acc[activity.subcategory]) {
             acc[activity.subcategory] = [];
         }
@@ -46,10 +48,14 @@ const ActivityList: React.FC<ActivityListProps> = ({ activities }) => {
         scrollContainerRefs.current.forEach((_, index) =>
             checkScrollPosition(index)
         );
-    }, [activities]);
+    }, [normalizedActivities]);
+
+    if (normalizedActivities.length === 0) {
+        return <div>No activities available.</div>;
+    }
 
     return (
-      <div className="container m-8 mx-auto px-2 sm:px-3">
+        <div className="container m-8 mx-auto px-2 sm:px-3">
             {Object.entries(groupedActivities).map(
                 ([subcategory, subcategoryActivities], index) => (
                     <div key={subcategory} className="space-y-4">
