@@ -66,6 +66,7 @@ yarn-error.log*
 /apps/backend/venv
 /apps/backend/docs.zip
 /apps/backend/archive.zip
+/apps/backend/ipaexg.ttf
 
 # vim temporary files
 /apps/backend/*~

@@ -18,6 +18,12 @@ class ReviewResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True, extra="ignore")
 
 
+class ReviewReportResponse(BaseModel):
+    message: str = Field(examples=["Report created"])
+    wordcloud: str = Field(examples=["result-wordclolud.png"])
+    age_count: str = Field(examples=["result-age_count.png"])
+
+
 class ReviewItem(BaseModel):
     user_id: int
     text: str = Field(

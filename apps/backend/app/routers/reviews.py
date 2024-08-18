@@ -4,7 +4,7 @@ from app.database.database import get_db
 from sqlalchemy.orm import Session
 from app.models.users import User
 from app.models.reviews import Review
-from app.schemas.review import ReviewResponse, ReviewItem
+from app.schemas.review import ReviewResponse, ReviewItem, ReviewReportResponse
 from app.analysis.word_cloud import get_wordcloud
 from app.analysis.age_count import get_age_count
 
@@ -41,7 +41,7 @@ def get_reviews(db: Session = Depends(get_db), keyword: str = ""):
 @router.get(
     "/report",
     tags=["reviews"],
-    response_model=List[ReviewResponse],
+    response_model=ReviewReportResponse,
     status_code=status.HTTP_200_OK,
 )
 def get_report(db: Session = Depends(get_db), keyword: str = ""):
@@ -62,14 +62,14 @@ def get_report(db: Session = Depends(get_db), keyword: str = ""):
     if not items:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Reviews not found")
 
-    result = [ReviewResponse.model_validate(item) for item in items]
+    review_results = [ReviewResponse.model_validate(item) for item in items]
 
-    # wordcloud_path = get_wordcloud(result)
-    wordcloud_path = "test"
+    concatenated_texts = " ".join(result.text for result in review_results)
+    wordcloud_path = get_wordcloud(concatenated_texts)
+    # wordcloud_path = "test"
     age_count_path = get_age_count()   
 
-    print({"message": "Wordcloud created", "wordcloud": wordcloud_path, "age_count": age_count_path})
-    return {"message": "Wordcloud created", "wordcloud": wordcloud_path, "age_count": age_count_path}
+    return ReviewReportResponse(message="Report created", wordcloud=wordcloud_path, age_count=age_count_path)
 
 
 @router.post("/", tags=["reviews"], status_code=status.HTTP_201_CREATED)
