@@ -1,28 +1,95 @@
 "use client";
 
-import React from "react";
-import useSWR from "swr";
-import { ReviewProps } from "@/app/commons/types/types";
-import ReviewForm from "./addReview";
-import FileUploadForm from "./imgUpload";
+import React, { useState } from "react";
+import useSWR, { mutate } from "swr";
+import { ReviewProps, ReviewItem } from "@/app/commons/types/types";
+import { uploadFile } from "@/app/commons/images/s3/imageActions";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const apiUrl = `${process.env.NEXT_PUBLIC_API_REVIEWS_URL}`;
 
 export default function Reviews() {
     const { data: reviews, error, isLoading } = useSWR<ReviewProps[]>(apiUrl, fetcher);
+    const [reviewText, setReviewText] = useState("");
+    const [file, setFile] = useState<File | null>(null);
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+    const [postError, setPostError] = useState<string | null>(null);
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const selectedFile = e.target.files?.[0];
+        if (selectedFile) {
+            setFile(selectedFile);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setPreviewUrl(reader.result as string);
+            };
+            reader.readAsDataURL(selectedFile);
+        }
+    };
+
+    const handleAddReview = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setPostError(null);
+        if (!reviewText.trim()) {
+            setPostError("レビューテキストを入力してください。");
+            return;
+        }
+
+        let imageUrl = "";
+        if (file) {
+            try {
+                const formData = new FormData();
+                formData.append("file", file);
+                const result = await uploadFile(formData);
+                imageUrl = result.url;
+            } catch (error) {
+                console.error("画像アップロードエラー:", error);
+                setPostError("画像のアップロードに失敗しました。");
+                return;
+            }
+        }
+
+        const newReview: ReviewItem = {
+            user_id: 1,
+            text: reviewText,
+            image: imageUrl,
+        };
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newReview),
+            });
+            
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || `Failed to post review: ${response.status} ${response.statusText}`);
+            }
+            
+            const data = await response.json();
+            console.log("Review posted successfully:", data);
+            mutate(apiUrl);
+            setReviewText("");
+            setFile(null);
+            setPreviewUrl(null);
+        } catch (error) {
+            console.error("レビュー投稿エラー:", error);
+            setPostError(`レビューの投稿に失敗しました: ${error instanceof Error ? error.message : String(error)}`);
+        }
+    };
 
     if (isLoading) return <div>ローディング中...</div>;
-    if (error) return <div>エラーが発生しました</div>;
+    if (error) return <div>エラーが発生しました: {error.message}</div>;
     if (!reviews) return <div>レビューが見つかりません</div>;
 
     return (
         <div className="container flex justify-center mx-auto p-5">
             <div className="w-96">
-                <form className="max-w-md mx-auto">
-                    <label
-                        className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-                    >
+                <form className="max-w-md mx-auto mb-8">
+                    <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
                         Search
                     </label>
                     <div className="relative">
@@ -59,14 +126,38 @@ export default function Reviews() {
                     </div>
                 </form>
 
-                <ReviewForm apiUrl={apiUrl} />
-                <FileUploadForm />
+                <form onSubmit={handleAddReview} className="mb-8">
+                    <textarea
+                        className="w-full p-4 border rounded-lg mb-4"
+                        placeholder="新しいレビューを書く..."
+                        value={reviewText}
+                        onChange={(e) => setReviewText(e.target.value)}
+                    />
+                    <input
+                        type="file"
+                        onChange={handleFileChange}
+                        className="mb-4"
+                    />
+                    {previewUrl && (
+                        <img src={previewUrl} alt="Preview" className="mb-4 max-w-full h-auto" />
+                    )}
+                    <button
+                        type="submit"
+                        className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
+                    >
+                        レビューを投稿
+                    </button>
+                    {postError && <p className="text-red-500 mt-2">{postError}</p>}
+                </form>
 
                 <div className="space-y-4">
                     {reviews.map((review) => (
                         <div key={review.id} className="bg-white shadow-md rounded-lg p-4">
                             <p className="text-lg font-semibold">{review.nickname}</p>
                             <p className="text-gray-600 mt-2">{review.text}</p>
+                            {review.image && (
+                                <img src={review.image} alt="Review image" className="mt-4 max-w-full h-auto" />
+                            )}
                             <div className="flex justify-between items-center mt-4">
                                 <p className="text-sm text-gray-500">更新日: {new Date(review.update_date).toLocaleDateString()}</p>
                                 <div className="flex space-x-4">
@@ -86,10 +177,7 @@ export default function Reviews() {
                             </div>
                         </div>
                     ))}
-                ifu</div>
-                <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-8 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    画像をアップロードする
-                </button>
+                </div>
             </div>
         </div>
     );

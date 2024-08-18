@@ -4,6 +4,7 @@ import React from "react";
 import useSWR from "swr";
 import ActivityList from "./activityList";
 import { ActivitiesProps } from "@/app/commons/types/types";
+import Heading from "@/app/components/ui-elements/heading";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -18,11 +19,11 @@ const ActivityPage: React.FC = () => {
 
     if (isLoading) return <div>ローディング中...</div>;
     if (error) return <div>エラーが発生しました</div>;
-    if (!activities || activities.length === 0) return <div>アクティビティが見つかりません</div>;
+    if (!activities) return <div>アクティビティが見つかりません</div>;
 
     return (
         <div>
-            <h1>アクティビティ一覧</h1>
+            <Heading>スペシャル体験ソロ活✨</Heading>
             <ActivityList activities={activities} />
         </div>
     );
