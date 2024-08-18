@@ -6,6 +6,7 @@ from app.models.users import User
 from app.models.reviews import Review
 from app.schemas.review import ReviewResponse, ReviewItem
 from app.analysis.word_cloud import get_wordcloud
+from app.analysis.age_count import get_age_count
 
 router = APIRouter()
 
@@ -63,7 +64,12 @@ def get_report(db: Session = Depends(get_db), keyword: str = ""):
 
     result = [ReviewResponse.model_validate(item) for item in items]
 
-    return {"message": "Wordcloud created", "wordcloud": get_wordcloud(result)}
+    # wordcloud_path = get_wordcloud(result)
+    wordcloud_path = "test"
+    age_count_path = get_age_count()   
+
+    print({"message": "Wordcloud created", "wordcloud": wordcloud_path, "age_count": age_count_path})
+    return {"message": "Wordcloud created", "wordcloud": wordcloud_path, "age_count": age_count_path}
 
 
 @router.post("/", tags=["reviews"], status_code=status.HTTP_201_CREATED)
