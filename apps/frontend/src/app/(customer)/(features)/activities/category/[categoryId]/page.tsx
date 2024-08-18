@@ -5,6 +5,7 @@ import useSWR from "swr";
 import ActivityList from "./activityList";
 import { ActivitiesProps } from "@/app/commons/types/types";
 import Heading from "@/app/components/ui-elements/heading";
+import SoocoLoading from '@/app/components/ui-elements/loading/loading';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -17,7 +18,11 @@ const ActivityPage: React.FC = () => {
         isLoading,
     } = useSWR<ActivitiesProps[]>(apiUrl, fetcher);
 
-    if (isLoading) return <div>ローディング中...</div>;
+    if (isLoading) return (
+        <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-80 z-50">
+            <SoocoLoading width={300} height={150} loadingText="アクティビティ読み込み中" />
+        </div>
+    );
     if (error) return <div>エラーが発生しました</div>;
     if (!activities) return <div>アクティビティが見つかりません</div>;
 

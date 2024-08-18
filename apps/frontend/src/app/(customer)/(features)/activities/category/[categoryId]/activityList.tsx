@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import ActivityCard from "@/app/components/ui-elements/activity/activity";
 import { ActivitiesProps } from "@/app/commons/types/types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { mockActivities } from "./mockData"; 
 
 type ActivityListProps = {
     activities: ActivitiesProps | ActivitiesProps[] | undefined;
@@ -12,7 +13,11 @@ const ActivityList: React.FC<ActivityListProps> = ({ activities }) => {
     const [showRightArrow, setShowRightArrow] = useState(true);
     const scrollContainerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-    const normalizedActivities = Array.isArray(activities) ? activities : activities ? [activities] : [];
+    // TODO：DBにデータ入ったら削除
+    const normalizedActivities = mockActivities;
+
+    // TODO：DBにデータ入ったら使う
+    // const normalizedActivities = Array.isArray(activities) ? activities : activities ? [activities] : [];
 
     const groupedActivities = normalizedActivities.reduce((acc, activity) => {
         if (!acc[activity.subcategory]) {
@@ -64,13 +69,12 @@ const ActivityList: React.FC<ActivityListProps> = ({ activities }) => {
                         </h2>
                         <div className="relative">
                             <div
-                                className="overflow-x-auto pb-4 scrollbar-hide"
+                                className="overflow-x-hidden pb-4"
                                 ref={(el) =>
                                     (scrollContainerRefs.current[index] = el)
                                 }
-                                onScroll={() => checkScrollPosition(index)}
                             >
-                                <div className="flex space-x-4 px-10">
+                                <div className="flex space-x-4 px-10 transition-transform duration-300 ease-in-out">
                                     {subcategoryActivities.map((activity) => (
                                         <ActivityCard
                                             key={activity.id}
@@ -81,7 +85,7 @@ const ActivityList: React.FC<ActivityListProps> = ({ activities }) => {
                             </div>
                             {showLeftArrow && (
                                 <button
-                                    className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
+                                    className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10"
                                     onClick={() => scroll(index, "left")}
                                     aria-label="Scroll left"
                                 >
@@ -90,7 +94,7 @@ const ActivityList: React.FC<ActivityListProps> = ({ activities }) => {
                             )}
                             {showRightArrow && (
                                 <button
-                                    className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
+                                    className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10"
                                     onClick={() => scroll(index, "right")}
                                     aria-label="Scroll right"
                                 >
