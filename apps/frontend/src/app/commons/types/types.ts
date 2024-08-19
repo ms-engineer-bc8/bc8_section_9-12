@@ -79,3 +79,9 @@ export type AuthSchema = z.infer<typeof authSchema>;
 export type UserMenuProps = {
   iconSrc: string;
 };
+
+export type ReviewReportProps = {
+  message: string;
+  wordcloud: string;
+  age_count: string;
+};
