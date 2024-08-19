@@ -1,10 +1,12 @@
 from typing import List
-from fastapi import APIRouter, status, Depends
+from fastapi import APIRouter, status, Depends, HTTPException
 from app.database.database import get_db
 from sqlalchemy.orm import Session
 from app.models.users import User
 from app.models.reviews import Review
-from app.schemas.review import ReviewResponse, ReviewItem
+from app.schemas.review import ReviewResponse, ReviewItem, ReviewReportResponse
+from app.analysis.word_cloud import get_wordcloud
+from app.analysis.age_count import get_age_count
 
 router = APIRouter()
 
@@ -16,20 +18,58 @@ router = APIRouter()
     status_code=status.HTTP_200_OK,
 )
 def get_reviews(db: Session = Depends(get_db), keyword: str = ""):
-    items = (
-        db.query(
-            Review.id,
-            User.nickname,
-            Review.text,
-            Review.image,
-            Review.likes_count,
-            Review.favorites_count,
-            Review.updated_at.label("update_date")
-        )
-        .join(User, Review.user_id == User.id)
-        .all()
-    )
+    reviews_query = db.query(
+        Review.id,
+        User.nickname,
+        Review.text,
+        Review.image,
+        Review.likes_count,
+        Review.favorites_count,
+        Review.updated_at.label("update_date"),
+    ).join(User, Review.user_id == User.id)
+
+    if keyword:
+        reviews_query = reviews_query.filter(Review.text.like(f"%{keyword}%"))
+
+    items = reviews_query.all()
+    if not items:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Reviews not found")
+
     return [ReviewResponse.model_validate(item) for item in items]
+
+
+@router.get(
+    "/report",
+    tags=["reviews"],
+    response_model=ReviewReportResponse,
+    status_code=status.HTTP_200_OK,
+)
+def get_report(db: Session = Depends(get_db), keyword: str = ""):
+    reviews_query = db.query(
+        Review.id,
+        User.nickname,
+        Review.text,
+        Review.image,
+        Review.likes_count,
+        Review.favorites_count,
+        Review.updated_at.label("update_date"),
+    ).join(User, Review.user_id == User.id)
+
+    if keyword:
+        reviews_query = reviews_query.filter(Review.text.like(f"%{keyword}%"))
+
+    items = reviews_query.all()
+    if not items:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Reviews not found")
+
+    review_results = [ReviewResponse.model_validate(item) for item in items]
+
+    concatenated_texts = " ".join(result.text for result in review_results)
+    wordcloud_path = get_wordcloud(concatenated_texts)
+    # wordcloud_path = "test"
+    age_count_path = get_age_count()   
+
+    return ReviewReportResponse(message="Report created", wordcloud=wordcloud_path, age_count=age_count_path)
 
 
 @router.post("/", tags=["reviews"], status_code=status.HTTP_201_CREATED)
