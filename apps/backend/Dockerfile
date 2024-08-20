@@ -4,7 +4,8 @@ FROM python:3.9
 # 
 WORKDIR /backend
 
-COPY ./ipaexg.ttf /usr/share/fonts/truetype/ipaexg.ttf
+
+COPY ./app/static /backend/app/static
 
 # 
 COPY ./requirements.txt /backend/requirements.txt

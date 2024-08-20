@@ -26,8 +26,8 @@ def get_age_count():
 
     fig, ax = plt.subplots()
     ax.barh(df["x"], df["y"], color="violet")
-    ax.set(title="年齢別投稿者数")
+    ax.set(title="年齢別のグラフ")
 
     plt.savefig("result_age_count.png")
 
-    return "result_age_count.png"
+    return "app/analysis/result_age_count.png"

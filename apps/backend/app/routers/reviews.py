@@ -66,7 +66,6 @@ def get_report(db: Session = Depends(get_db), keyword: str = ""):
 
     concatenated_texts = " ".join(result.text for result in review_results)
     wordcloud_path = get_wordcloud(concatenated_texts)
-    # wordcloud_path = "test"
     age_count_path = get_age_count()   
 
     return ReviewReportResponse(message="Report created", wordcloud=wordcloud_path, age_count=age_count_path)
