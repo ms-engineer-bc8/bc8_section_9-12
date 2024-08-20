@@ -29,7 +29,7 @@ const CustomerNavigationMenu = () => (
 export const CustomerHeader = () => (
     <header className="relative">
         <div className="mx-auto">
-            <div className="flex items-center justify-between px-10 py-2 h-28">
+            <div className="flex items-center justify-between px-10 py-2 h-24">
                 <div className="flex-shrink-0">
                     <Link href="/">
                         <div className="text-xl font-bold">

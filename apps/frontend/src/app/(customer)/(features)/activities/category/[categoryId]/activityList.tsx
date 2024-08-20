@@ -1,22 +1,15 @@
-import React, { useRef, useState, useEffect } from "react";
-import ActivityCard from "@/app/components/ui-elements/activity/activity";
+import React from "react";
 import { ActivitiesProps } from "@/app/commons/types/types";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { mockActivities } from "./mockData"; 
+import { ActivityListProps } from "@/app/commons/types/types";
+import ActivityGroup from "./activityGroup";
+import { mockActivities } from "./mockData";
 
-type ActivityListProps = {
-    activities: ActivitiesProps | ActivitiesProps[] | undefined;
-};
-
-const ActivityList: React.FC<ActivityListProps> = ({ activities }) => {
-    const [showLeftArrow, setShowLeftArrow] = useState(false);
-    const [showRightArrow, setShowRightArrow] = useState(true);
-    const scrollContainerRefs = useRef<(HTMLDivElement | null)[]>([]);
+const ActivityList: React.FC<ActivityListProps> = ({}) => {
 
     // TODO：DBにデータ入ったら削除
     const normalizedActivities = mockActivities;
 
-    // TODO：DBにデータ入ったら使う
+    // TODO：DBにデータ入ったら必要に応じて使う
     // const normalizedActivities = Array.isArray(activities) ? activities : activities ? [activities] : [];
 
     const groupedActivities = normalizedActivities.reduce((acc, activity) => {
@@ -27,84 +20,19 @@ const ActivityList: React.FC<ActivityListProps> = ({ activities }) => {
         return acc;
     }, {} as Record<string, ActivitiesProps[]>);
 
-    const scroll = (containerIndex: number, direction: "left" | "right") => {
-        const container = scrollContainerRefs.current[containerIndex];
-        if (container) {
-            const scrollAmount = container.clientWidth;
-            container.scrollBy({
-                left: direction === "left" ? -scrollAmount : scrollAmount,
-                behavior: "smooth",
-            });
-        }
-    };
-
-    const checkScrollPosition = (containerIndex: number) => {
-        const container = scrollContainerRefs.current[containerIndex];
-        if (container) {
-            setShowLeftArrow(container.scrollLeft > 0);
-            setShowRightArrow(
-                container.scrollLeft <
-                    container.scrollWidth - container.clientWidth
-            );
-        }
-    };
-
-    useEffect(() => {
-        scrollContainerRefs.current.forEach((_, index) =>
-            checkScrollPosition(index)
-        );
-    }, [normalizedActivities]);
-
     if (normalizedActivities.length === 0) {
-        return <div>No activities available.</div>;
+        return <div>アクティビティが見つかりませんでした</div>;
     }
 
     return (
-        <div className="container m-8 mx-auto px-2 sm:px-3">
-            {Object.entries(groupedActivities).map(
-                ([subcategory, subcategoryActivities], index) => (
-                    <div key={subcategory} className="space-y-4">
-                        <h2 className="text-2xl font-bold text-gray-800 px-10">
-                            {subcategory}
-                        </h2>
-                        <div className="relative">
-                            <div
-                                className="overflow-x-hidden pb-4"
-                                ref={(el) =>
-                                    (scrollContainerRefs.current[index] = el)
-                                }
-                            >
-                                <div className="flex space-x-4 px-10 transition-transform duration-300 ease-in-out">
-                                    {subcategoryActivities.map((activity) => (
-                                        <ActivityCard
-                                            key={activity.id}
-                                            activity={activity}
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-                            {showLeftArrow && (
-                                <button
-                                    className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10"
-                                    onClick={() => scroll(index, "left")}
-                                    aria-label="Scroll left"
-                                >
-                                    <ChevronLeft size={24} />
-                                </button>
-                            )}
-                            {showRightArrow && (
-                                <button
-                                    className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10"
-                                    onClick={() => scroll(index, "right")}
-                                    aria-label="Scroll right"
-                                >
-                                    <ChevronRight size={24} />
-                                </button>
-                            )}
-                        </div>
-                    </div>
-                )
-            )}
+        <div className="container mx-auto p-3 sm:px-3 max-w-5xl">
+            {Object.entries(groupedActivities).map(([subcategory, subcategoryActivities]) => (
+                <ActivityGroup
+                    key={subcategory}
+                    subcategory={subcategory}
+                    activities={subcategoryActivities}
+                />
+            ))}
         </div>
     );
 };

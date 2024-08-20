@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Heart, Star } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 const LikeButton = ({ initialLikes = 0 }) => {
   const [likes, setLikes] = useState(initialLikes);

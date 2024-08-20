@@ -18,7 +18,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({ activity }) => {
                 className="block w-full h-full"
             >
                 <div className="bg-white rounded-2xl overflow-hidden text-center h-full flex flex-col transition-all duration-300 ease-in-out hover:shadow-lg">
-                    <div className="relative h-56 w-full">
+                    <div className="relative h-40 w-full">
                         <Image
                             src={Balloon}
                             alt={activity.provider_name}
@@ -38,10 +38,8 @@ const ActivityCard: React.FC<ActivityCardProps> = ({ activity }) => {
                                     時間帯⏰
                                 </span>
                                 {activity.time_zone}
-                            </div>
-                            <div className="flex flex-wrap gap-2 justify-center mb-3">
                                 <span className="px-2 py-1 bg-pink-100 text-pink-500 text-sm font-medium rounded-full">
-                                    ソロ活レベル⬆️
+                                    レベル⬆️
                                 </span>
                                 {activity.solo_level}
                             </div>

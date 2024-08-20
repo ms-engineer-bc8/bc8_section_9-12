@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { StaticImageData } from "next/image";
 
 export type CategoryTag = {
     id: number;
@@ -6,7 +7,7 @@ export type CategoryTag = {
 };
 
 export type CategoryCardProps = {
-    imageSrc: string;
+    imageSrc: string | StaticImageData;
     title: string;
     description: string;
     tags: CategoryTag[];
@@ -21,6 +22,15 @@ export type ActivitiesProps = {
     solo_level: string;
     likes_count: number;
     favorites_count: number;
+};
+
+export type ActivityListProps = {
+  activities: ActivitiesProps | ActivitiesProps[] | undefined;
+};
+
+export type ActivityGroupProps = {
+  subcategory: string;
+  activities: ActivitiesProps[];
 };
 
 export type ActivityProps = {
@@ -65,6 +75,16 @@ export type SoloTypeFormProps = {
     comfort_adventure: string;
 };
 
+export type UserRegisterProps = {
+    email: string;
+    nickname: string;
+    age: string;
+};
+
+export type UserServerResponse = {
+    userId: string;
+};
+
 export const authSchema = z.object({
     email: z
         .string()
@@ -76,6 +96,8 @@ export const authSchema = z.object({
 
 export type AuthSchema = z.infer<typeof authSchema>;
 
-export type UserMenuProps = {
-    iconSrc: string;
+export type ScrollButtonProps = {
+  direction: "left" | "right";
+  onClick: () => void;
+  show: boolean;
 };
