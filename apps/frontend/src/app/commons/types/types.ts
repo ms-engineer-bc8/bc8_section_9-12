@@ -81,7 +81,14 @@ export type UserMenuProps = {
 };
 
 export type ReviewReportProps = {
-  message: string;
+  // message: string;
   wordcloud: string;
-  age_count: string;
+  // age_count: string;
 };
+
+
+export const searchSchema = z.object({
+  search: z.string().min(1, "キーワードを入力してください"),
+});
+
+export type SearchSchema = z.infer<typeof searchSchema>;

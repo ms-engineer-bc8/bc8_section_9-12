@@ -27,5 +27,4 @@ def get_wordcloud(text):
     image_stream.seek(0)
     base64_image = base64.b64encode(image_stream.read()).decode("utf-8")
 
-    print(base64_image)
     return base64_image
