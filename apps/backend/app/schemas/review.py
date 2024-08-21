@@ -19,9 +19,8 @@ class ReviewResponse(BaseModel):
 
 
 class ReviewReportResponse(BaseModel):
-    message: str = Field(examples=["Report created"])
-    wordcloud: str = Field(examples=["result-wordclolud.png"])
-    age_count: str = Field(examples=["result-age_count.png"])
+    wordcloud: str
+    age_count: str
 
 
 class ReviewItem(BaseModel):
