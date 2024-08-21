@@ -19,7 +19,6 @@ class ReviewResponse(BaseModel):
 
 
 class ReviewReportResponse(BaseModel):
-    message: str = Field(examples=["Report created"])
     wordcloud: str
     age_count: str
 

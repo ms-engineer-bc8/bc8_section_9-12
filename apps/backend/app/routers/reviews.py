@@ -6,7 +6,7 @@ from app.models.users import User
 from app.models.reviews import Review
 from app.schemas.review import ReviewResponse, ReviewItem, ReviewReportResponse
 from app.analysis.word_cloud import get_wordcloud
-# from app.analysis.age_count import get_age_count
+from app.analysis.age_count import get_age_count
 
 router = APIRouter()
 
@@ -41,7 +41,7 @@ def get_reviews(db: Session = Depends(get_db), keyword: str = ""):
 @router.get(
     "/report",
     tags=["reviews"],
-    # response_model=ReviewReportResponse,
+    response_model=ReviewReportResponse,
     status_code=status.HTTP_200_OK,
 )
 def get_report(db: Session = Depends(get_db), keyword: str = ""):
@@ -66,9 +66,9 @@ def get_report(db: Session = Depends(get_db), keyword: str = ""):
 
     concatenated_texts = " ".join(result.text for result in review_results)
     wordcloud_img = get_wordcloud(concatenated_texts)
-    # age_count_path = get_age_count()   
+    age_count_img = get_age_count()   
 
-    return {"wordcloud": wordcloud_img}
+    return ReviewReportResponse(wordcloud=wordcloud_img, age_count=age_count_img)
 
 
 @router.post("/", tags=["reviews"], status_code=status.HTTP_201_CREATED)

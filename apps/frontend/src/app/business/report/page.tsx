@@ -92,7 +92,7 @@ export default function Report() {
               <h2 className="text-xl font-semibold mb-4">年齢別グラフ</h2>
               <div className="w-full">
                 <Image
-                  src={"/result_age_count.png"}
+                  src={`data:image/png;base64,${reports.age_count}`}
                   alt="Age Count Graph"
                   width={500}
                   height={300}

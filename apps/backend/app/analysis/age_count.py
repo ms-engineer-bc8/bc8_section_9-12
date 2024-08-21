@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import japanize_matplotlib  # noqa: F401
 import pandas as pd
+from io import BytesIO
+import base64
 
 
 def get_age_count():
@@ -26,8 +28,12 @@ def get_age_count():
 
     fig, ax = plt.subplots()
     ax.barh(df["x"], df["y"], color="violet")
-    ax.set(title="年齢別のグラフ")
+    ax.set(title="年齢別グラフ")
 
-    plt.savefig("result_age_count.png")
+    # plt.savefig("result_age_count.png")
+    image_stream = BytesIO()
+    plt.savefig(image_stream, format='png')
+    image_stream.seek(0)
+    base64_image = base64.b64encode(image_stream.read()).decode('utf-8')
 
-    return "app/analysis/result_age_count.png"
+    return base64_image
