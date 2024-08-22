@@ -6,7 +6,6 @@ import os
 
 
 def get_wordcloud(text):
-    print(text)
     t = Tokenizer()
 
     s = []
@@ -17,7 +16,14 @@ def get_wordcloud(text):
 
     font_path = os.path.join("app/static", "ipaexg.ttf")
 
-    wc = WordCloud(width=640, height=480, font_path=font_path)
+    wc = WordCloud(
+        width=600,
+        height=400,
+        background_color="white",
+        colormap="PuRd",
+        stopwords={"ため", "こと", "もの", "よう", "これ", "あれ"},
+        font_path=font_path,
+    )
 
     wc.generate(" ".join(s))
     wc.to_file("result-j.png")

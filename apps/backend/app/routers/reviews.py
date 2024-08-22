@@ -106,8 +106,6 @@ def get_report(db: Session = Depends(get_db), keyword: str = ""):
             age66,
         ],
     }
-    print(age_data)
-
 
     age_count_img = get_age_count(age_data)
 

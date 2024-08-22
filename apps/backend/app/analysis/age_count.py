@@ -8,9 +8,9 @@ import base64
 def get_age_count(data):
     df = pd.DataFrame(data)
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(6, 6))
     ax.barh(df["x"], df["y"], color="violet")
-    ax.set(title="年齢別クチコミ投稿数グラフ")
+    # ax.set(title="年齢別クチコミ投稿数")
 
     image_stream = BytesIO()
     plt.savefig(image_stream, format="png")
