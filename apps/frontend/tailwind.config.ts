@@ -17,10 +17,10 @@ const config: Config = {
             backgroundImage: {
             },
             colors: {
-                black: { DEFAULT: "#262626" },
+                black: { DEFAULT: "#494949" },
             },
             textColor: {
-                DEFAULT: "#262626",
+                DEFAULT: "#494949",
             },
         },
     },
