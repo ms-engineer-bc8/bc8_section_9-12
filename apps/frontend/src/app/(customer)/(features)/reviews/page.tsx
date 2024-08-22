@@ -135,7 +135,7 @@ export default function Reviews() {
                     {reviews.map((review) => (
                         <div
                             key={review.id}
-                            className="border border-pink-500 rounded-lg p-4"
+                            className="bg-gray-50 rounded-lg p-4"
                         >
                             <p className="text-lg font-semibold">
                                 {review.nickname}
