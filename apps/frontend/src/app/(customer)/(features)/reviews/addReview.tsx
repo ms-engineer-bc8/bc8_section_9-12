@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ReviewItem, ReviewFormProps } from "@/app/commons/types/types";
 import { mutate } from "swr";
+import { PinkButton } from "@/app/components/ui-elements/button/button";
 
 const ReviewForm: React.FC<ReviewFormProps> = ({ apiUrl }) => {
     const [reviewText, setReviewText] = useState("");
@@ -10,9 +11,9 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ apiUrl }) => {
         if (!reviewText.trim()) return;
 
         const newReview: ReviewItem = {
-            user_id: 1, //TODO: データが入ってから修正
+            user_id: 1,
             text: reviewText,
-            image: "", //TODO: 別途実装
+            image: "",
         };
 
         try {
@@ -45,12 +46,11 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ apiUrl }) => {
                     value={reviewText}
                     onChange={(e) => setReviewText(e.target.value)}
                 />
-                <button
+                <PinkButton
                     type="submit"
-                    className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
                 >
                     レビューを投稿
-                </button>
+                </PinkButton>
             </form>
         </div>
     );
