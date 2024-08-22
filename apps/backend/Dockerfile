@@ -4,6 +4,9 @@ FROM python:3.9
 # 
 WORKDIR /backend
 
+
+COPY ./app/static /backend/app/static
+
 # 
 COPY ./requirements.txt /backend/requirements.txt
 

@@ -18,6 +18,11 @@ class ReviewResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True, extra="ignore")
 
 
+class ReviewReportResponse(BaseModel):
+    wordcloud: str
+    age_count: str
+
+
 class ReviewItem(BaseModel):
     user_id: int
     text: str = Field(
