@@ -20,9 +20,9 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     time: '16:30',
-    title: 'パーティー準備開始',
+    title: 'BGMの設定',
     description: 'リムジンの乗り心地に慣れたら、BGMを設定！音響が素晴らしく、音に包まれている感覚✨最初の曲は竹内まりやの「Plastic love」にしたよ✌️エモい...✨',
-    emoji: '🎁',
+    emoji: '🎵',
   },
   {
     time: '17:00',
