@@ -25,7 +25,7 @@ const ActivityList: React.FC<ActivityListProps> = ({}) => {
     }
 
     return (
-        <div className="container mx-auto p-3 sm:px-3 max-w-5xl">
+        <div className="container mx-auto p-2 m-9 sm:px-3">
             {Object.entries(groupedActivities).map(([subcategory, subcategoryActivities]) => (
                 <ActivityGroup
                     key={subcategory}

@@ -1,22 +1,36 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { SoloTypeFormProps } from "@/app/commons/types/types";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { PinkButton } from "@/app/components/ui-elements/button/button";
 
 const SoloTypeForm: React.FC = () => {
     const { register, handleSubmit } = useForm<SoloTypeFormProps>();
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [userId, setUserId] = useState<string | null>(null);
+
+    useEffect(() => {
+        const userIdFromParams = searchParams.get('userId');
+        if (userIdFromParams) {
+            setUserId(userIdFromParams);
+        } else {
+            console.error('ユーザIDが見つかりません');
+        }
+    }, [searchParams, router]);
 
     const onSubmit: SubmitHandler<SoloTypeFormProps> = async (data) => {
-        console.log("Submitting data:", data);
+        if (!userId) {
+            console.error('ユーザIDが空です');
+            return;
+        }
 
         try {
             const response = await fetch(
-                `${process.env.NEXT_PUBLIC_API_USERS_TYPETEST_URL}/1`,
+                `${process.env.NEXT_PUBLIC_API_USERS_TYPETEST_URL}/${userId}`,
                 {
                     method: "PUT",
                     headers: {
@@ -36,9 +50,9 @@ const SoloTypeForm: React.FC = () => {
             const result = await response.json();
             console.log("成功", result);
 
-            // URLエンコードしてクエリパラメータとして渡す
             const queryParams = new URLSearchParams({
                 solo_type: result.solo_type,
+                userId: userId,
             }).toString();
 
             router.push(`/solo-type/test/result?${queryParams}`);

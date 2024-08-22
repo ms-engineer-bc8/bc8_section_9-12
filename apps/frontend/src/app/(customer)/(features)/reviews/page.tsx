@@ -101,7 +101,7 @@ export default function Reviews() {
 
     return (
         <div className="container mx-auto p-5">
-            <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8">
+            <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-8">
                 <form onSubmit={handleAddReview} className="mb-8">
                     <textarea
                         className="w-full p-4 border rounded-lg mb-4"
@@ -135,7 +135,7 @@ export default function Reviews() {
                     {reviews.map((review) => (
                         <div
                             key={review.id}
-                            className="bg-gray-50 shadow-md rounded-lg p-4"
+                            className="border border-pink-500 rounded-lg p-4"
                         >
                             <p className="text-lg font-semibold">
                                 {review.nickname}

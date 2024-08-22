@@ -25,19 +25,19 @@ export type ActivitiesProps = {
 };
 
 export type ActivityListProps = {
-  activities: ActivitiesProps | ActivitiesProps[] | undefined;
+    activities: ActivitiesProps | ActivitiesProps[] | undefined;
 };
 
 export type ActivityGroupProps = {
-  subcategory: string;
-  activities: ActivitiesProps[];
+    subcategory: string;
+    activities: ActivitiesProps[];
 };
 
 export type ActivityProps = {
     provider_name: string;
     image_large: string;
     title: string;
-    discription: string;
+    description: string;
     plan_name: string;
     price: number;
     image_small: string;
@@ -97,7 +97,7 @@ export const authSchema = z.object({
 export type AuthSchema = z.infer<typeof authSchema>;
 
 export type ScrollButtonProps = {
-  direction: "left" | "right";
-  onClick: () => void;
-  show: boolean;
+    direction: "left" | "right";
+    onClick: () => void;
+    show: boolean;
 };

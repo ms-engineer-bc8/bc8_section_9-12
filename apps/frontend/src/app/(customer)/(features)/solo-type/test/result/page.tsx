@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
-import { PinkButton } from "@/app/components/ui-elements/button/button"
+import { PinkButton } from "@/app/components/ui-elements/button/button";
 
 type SoloTypeResultProp = {
     solo_type: string;
-}
+};
 
 const SoloTypeResult = () => {
     const [soloTypeData, setSoloTypeData] = useState<SoloTypeResultProp | null>(null);
@@ -20,10 +20,11 @@ const SoloTypeResult = () => {
             try {
                 setIsLoading(true);
                 const solo_type = searchParams.get('solo_type');
-                if (solo_type) {
-                    setSoloTypeData({ solo_type });
+                const userId = searchParams.get('userId');
+                if (solo_type && userId) {
+                    setSoloTypeData({ solo_type, userId });
                 } else {
-                    throw new Error('ソロ活タイプが見つかりません');
+                    throw new Error('ソロ活タイプまたはユーザーIDが見つかりません');
                 }
             } catch (error) {
                 console.error('Error:', error);
@@ -38,7 +39,7 @@ const SoloTypeResult = () => {
     }, [router, searchParams]);
 
     const handleReturnToTop = () => {
-        router.push('/');
+        router.push("/");
     };
 
     if (isLoading) {

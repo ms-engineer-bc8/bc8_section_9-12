@@ -7,7 +7,7 @@ const ScrollButton: React.FC<ScrollButtonProps> = ({ direction, onClick, show })
 
     return (
         <button
-            className={`absolute top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 ${
+            className={`absolute top-1/2 transform -translate-y-1/2 bg-white rounded-full bg-opacity-80 p-2 shadow-md z-10 ${
                 direction === "left" ? "left-0" : "right-0"
             }`}
             onClick={onClick}

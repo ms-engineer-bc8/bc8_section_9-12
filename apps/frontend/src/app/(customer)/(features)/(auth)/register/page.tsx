@@ -42,7 +42,7 @@ export default function SignUpForm() {
                 const userId = await response.json();
                 console.log("成功", userId);
                 toast.success("ユーザー登録完了！");
-                router.push("/solo-type/test");
+                router.push(`/solo-type/test?userId=${userId}`);
             } catch (error) {
                 console.error("エラー:", error);
             }
@@ -128,7 +128,7 @@ export default function SignUpForm() {
                             id="age"
                             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                         >
-                            <option value="">選択してください</option>
+                            <option value="unknown">選択してください</option>
                             <option value="18-20">18〜20歳</option>
                             <option value="21-25">21〜25歳</option>
                             <option value="26-30">26〜30歳</option>
@@ -143,10 +143,7 @@ export default function SignUpForm() {
                         </select>
                     </div>
                     <div>
-                        <PinkButton
-                            type="submit"
-                            disabled={isSubmitting}
-                        >
+                        <PinkButton type="submit" disabled={isSubmitting}>
                             登録する
                         </PinkButton>
                     </div>

@@ -5,9 +5,11 @@ import { Heart } from 'lucide-react';
 
 const LikeButton = ({ initialLikes = 0 }) => {
   const [likes, setLikes] = useState(initialLikes);
+  const [isLiked, setIsLiked] = useState(false);
 
   const handleLike = () => {
-    setLikes(prevLikes => prevLikes + 1);
+    setLikes(prevLikes => isLiked ? prevLikes - 1 : prevLikes + 1);
+    setIsLiked(prevIsLiked => !prevIsLiked);
   };
 
 
@@ -15,10 +17,11 @@ const LikeButton = ({ initialLikes = 0 }) => {
     <div className="flex space-x-4">
       <div className="flex items-center space-x-1">
         <Heart
-          className="w-5 h-5 text-red-400 hover:text-red-600 active:text-red-700 cursor-pointer transition-colors"
+          className="w-5 h-5 text-red-500 hover:text-red-700 active:text-red-800 cursor-pointer transition-colors"
           onClick={handleLike}
+          fill="currentColor"
         />
-        <span className="text-sm text-red-600">{likes}</span>
+        <span className="text-sm text-red-700">{likes}</span>
       </div>
     </div>
   );
