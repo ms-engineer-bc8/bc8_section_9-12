@@ -22,6 +22,14 @@ const config: Config = {
             textColor: {
                 DEFAULT: "#494949",
             },
+            fontSize: {
+                'xs': ['0.75rem', { lineHeight: '1rem' }],
+                'sm': ['1rem', { lineHeight: '1.5rem' }],
+                'base': ['1.25rem', { lineHeight: '1.75rem' }],
+                'h3': ['1.25rem', { lineHeight: '1.75rem' }],
+                'h2': ['1.5rem', { lineHeight: '2rem' }],
+                'h1': ['1.875rem', { lineHeight: '2.25rem' }],
+            },
         },
     },
     plugins: [],

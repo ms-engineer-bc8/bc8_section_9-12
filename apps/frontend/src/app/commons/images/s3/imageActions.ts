@@ -9,6 +9,8 @@ const accessKeyId = process.env.NEXT_PUBLIC_ACCESS_KEY_ID;
 const secretAccessKey = process.env.NEXT_PUBLIC_SECRET_ACCESS_KEY;
 const bucket = process.env.NEXT_PUBLIC_S3_BUCKET_NAME;
 
+const LONG_EXPIRY = 10 * 365 * 24 * 60 * 60;
+
 export async function uploadFile(formData: FormData) {
     try {
         const file = formData.get("file") as File;
@@ -26,7 +28,8 @@ export async function uploadFile(formData: FormData) {
 
         const { url, fields } = await createPresignedPost(client, {
             Bucket: bucket!,
-            Key: `${file.name}`
+            Key: `${file.name}`,
+            Expires: LONG_EXPIRY
         });
 
         const formDataS3 = new FormData();
@@ -48,7 +51,7 @@ export async function uploadFile(formData: FormData) {
             Bucket: bucket!,
             Key: `${file.name}`
         });
-        const presignedUrl = await getSignedUrl(client, command);
+        const presignedUrl = await getSignedUrl(client, command, { expiresIn: LONG_EXPIRY });
 
         return { success: true, message: "成功", url: presignedUrl };
     } catch (error) {

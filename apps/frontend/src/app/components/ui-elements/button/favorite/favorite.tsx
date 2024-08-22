@@ -20,7 +20,7 @@ const FavoriteButton = ({ initialFavorites = 0 }) => {
           onClick={handleFavorite}
           fill="currentColor"
         />
-        <span className="text-sm text-yellow-600">{favorites}</span>
+        <span className="text-yellow-600">{favorites}</span>
       </div>
     </div>
   );

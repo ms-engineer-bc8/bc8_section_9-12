@@ -21,7 +21,7 @@ const LikeButton = ({ initialLikes = 0 }) => {
           onClick={handleLike}
           fill="currentColor"
         />
-        <span className="text-sm text-red-700">{likes}</span>
+        <span className="text-red-700">{likes}</span>
       </div>
     </div>
   );

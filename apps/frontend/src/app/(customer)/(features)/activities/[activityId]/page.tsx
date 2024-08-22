@@ -2,13 +2,12 @@
 
 import React from "react";
 import { ActivityProps } from "@/app/commons/types/types";
-import Heading from "@/app/components/ui-elements/heading";
-import SubHeading from "@/app/components/ui-elements/subheading";
 import useSWR from "swr";
 import Image from "next/image";
-import Link from "next/link";
 import LimousineImage from "../../../../commons/images/activities/limousine.jpg";
 import OneRideLimousineTimeline from "./timeline";
+import LikeButton from "@/app/components/ui-elements/button/like/like";
+import FavoriteButton from "@/app/components/ui-elements/button/favorite/favorite";
 
 const Limousine: React.FC = () => {
     const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -36,20 +35,30 @@ const Limousine: React.FC = () => {
                         placeholder="blur"
                         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
                     />
+                    <div className="absolute bottom-0 left-0 right-0 text-white p-4 flex justify-between items-center">
+                        <h1 className="text-2xl font-bold">
+                            {activity.provider_name}
+                        </h1>
+                    </div>
                 </div>
                 <div className="p-8">
-                    <Heading>{activity.provider_name}</Heading>
-                    <SubHeading>{activity.title}</SubHeading>
+                    <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-xl font-semibold">
+                            {activity.title}
+                        </h2>
+                        <div className="flex items-center space-x-4">
+                            <LikeButton />
+                            <FavoriteButton />
+                        </div>
+                    </div>
                     <p className="mt-4 text-lg text-gray-700">
                         {activity.description}
                     </p>
-
                     <div className="mt-12">
-                        <SubHeading>Solocoのおすすめポイント</SubHeading>
+                        <h2>Solocoのおすすめポイント</h2>
                         <div className="mt-6 space-y-8">
                             <div>
                                 <h3 className="text-xl font-semibold text-pink-500 mb-2">
-                                    1.
                                     東京の夜景とリムジンにしかない音響と向き合える
                                 </h3>
                                 <p className="text-gray-700">
@@ -80,16 +89,14 @@ const Limousine: React.FC = () => {
                     </div>
 
                     <div className="mt-12">
-                        <SubHeading>
-                            OneRide Limousine タイムラインプレビュー
-                        </SubHeading>
+                        <h2>SolocoスタッフがOneRide Limousineに乗ってみた！</h2>
                         <div className="mt-6 border border-pink-200 rounded-lg overflow-hidden">
                             <OneRideLimousineTimeline />
                         </div>
                     </div>
 
                     <div className="mt-12">
-                        <SubHeading>会社情報</SubHeading>
+                        <h2>会社情報</h2>
                         <div className="mt-4 space-y-2 text-gray-700">
                             <p>
                                 <strong>会社名:</strong> OneRide Limousine
