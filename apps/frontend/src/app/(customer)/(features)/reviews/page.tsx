@@ -80,7 +80,7 @@ export default function Reviews() {
             }
 
             const data = await response.json();
-            console.log("Review posted successfully:", data);
+            console.log("成功:", data);
             mutate(apiUrl);
             setReviewText("");
             setFile(null);
