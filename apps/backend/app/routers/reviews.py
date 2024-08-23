@@ -12,6 +12,7 @@ from app.schemas.review import (
 )
 from app.analysis.word_cloud import get_wordcloud
 from app.analysis.age_count import get_age_count
+from app.analysis.llm import get_llm_analysis
 
 router = APIRouter()
 
@@ -111,9 +112,12 @@ def get_report(db: Session = Depends(get_db), keyword: str = ""):
 
     review_results = [ReviewReportItem.model_validate(item) for item in items]
     concatenated_texts = " ".join(result.text for result in review_results)
+    llm_text = get_llm_analysis(concatenated_texts, keyword)
     wordcloud_img = get_wordcloud(concatenated_texts)
 
-    return ReviewReportResponse(wordcloud=wordcloud_img, age_count=age_count_img)
+    return ReviewReportResponse(
+        wordcloud=wordcloud_img, age_count=age_count_img, llm=llm_text
+    )
 
 
 @router.post("/", tags=["reviews"], status_code=status.HTTP_201_CREATED)

@@ -21,6 +21,7 @@ class ReviewResponse(BaseModel):
 class ReviewReportResponse(BaseModel):
     wordcloud: str
     age_count: str
+    llm: str
 
 
 class ReviewItem(BaseModel):
