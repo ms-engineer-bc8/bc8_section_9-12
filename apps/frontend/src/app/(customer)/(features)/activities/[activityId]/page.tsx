@@ -8,6 +8,8 @@ import LimousineImage from "../../../../commons/images/activities/limousine.jpg"
 import OneRideLimousineTimeline from "./timeline";
 import Dress from "../../../../commons/images/activities/dress.jpg";
 import Tokyo_Scenery from "../../../../commons/images/activities/tokyo.jpg";
+import StaffMegumi from "../../../../commons/images/activities/megumi.png";
+import SpeechBubble from "./speech";
 
 const Limousine: React.FC = () => {
     const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -44,7 +46,7 @@ const Limousine: React.FC = () => {
                         <h3>{activity.title}</h3>
                     </div>
                     <p className="mt-1 text-lg">{activity.description}</p>
-                    <div className="text-center p-2 mt-12">
+                    <div className="text-center p-2 mt-14">
                         <h2>✨ おすすめポイント by Solocoスタッフ ✨</h2>
                         <div className="flex flex-col md:flex-row w-full mt-3">
                             <div className="w-full md:w-1/2 py-6">
@@ -64,7 +66,7 @@ const Limousine: React.FC = () => {
                                 <h3 className="font-semibold text-pink-500 m-4 leading-relaxed">
                                     東京の夜景とリムジンの音響に全集中
                                 </h3>
-                                <p className="text-lg text-left text-gray-700 mx-2 pl-2 leading-relaxed">
+                                <p className="text-lg text-left mx-2 pl-2 leading-relaxed">
                                     窓外には煌めく街並み、音響は臨場感抜群。最高級の乗り心地と包まれるような音楽とともに、普段は忙しすぎて眺める暇もない東京の夜景を一人でじっくり眺めることができます。
                                     ソロリムジンでは美しい景色と音楽に脳のメモリを使うため、記憶に残ること間違いありません！
                                 </p>
@@ -88,38 +90,68 @@ const Limousine: React.FC = () => {
                                 <h3 className="font-semibold text-pink-500 m-4 leading-relaxed">
                                     私が私のためにするドレスアップ
                                 </h3>
-                                <p className="text-lg text-left text-gray-700 mx-2 pl-2 leading-relaxed">
-                                    「今日のドレスコードは...自分！」OneRideLimousineはあなたの美しい孤城。普段着ない特別なドレスや憧れのスーツなど、内装に映る自分を楽しみましょう。
+                                <p className="text-lg text-left mx-2 pl-2 leading-relaxed">
+                                    OneRideLimousineはあなたの美しい孤城。普段着ない特別なドレスや憧れのスーツなど、内装に映る自分を楽しみましょう。
                                     BGMで気分を上げて、「私が私を楽しむ」至福のひとときを。折角だから、自撮りも思いっきり楽しんで、Solocoでシェアしちゃいましょう！
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div className="mt-8">
-                        <h2 className="text-center">🏃‍♀️ Socoloスタッフがやってみました 🏃‍♀️</h2>
-                        <div className="mt-6 rounded-lg overflow-hidden">
+                    <div className="mt-14">
+                        <h2 className="text-center">
+                            🏃‍♀️ Socoloスタッフがソロ活やってみました 🏃‍♀️
+                        </h2>
+                        <div className="mt-3 flex justify-center">
+                            <div className="w-full max-w-3xl">
+                                <div className="flex flex-col md:flex-row w-full items-center">
+                                    <div className="w-full md:w-1/4 py-4 flex justify-center">
+                                        <div className="rounded-full overflow-hidden w-40 h-40">
+                                            <Image
+                                                src={StaffMegumi}
+                                                alt="Staff Megumi"
+                                                width={150}
+                                                height={150}
+                                                objectFit="cover"
+                                                placeholder="blur"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="w-full md:w-3/4 mx-2 p-3">
+                                        <SpeechBubble>
+                                            <h2 className="text-center font-bold text-xl mb-2">
+                                                スタッフMegumiの感想
+                                            </h2>
+                                            <p className="text-lg text-left leading-relaxed">
+                                                初めてのリムジンで誕生日ソロ活という中々濃い体験をしました🥹でも一生の思い出になりました🫶
+                                            </p>
+                                        </SpeechBubble>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="rounded-lg overflow-hidden">
                             <OneRideLimousineTimeline />
                         </div>
                     </div>
-                    <div className="mt-12 p-9">
-                        <h2>会社情報</h2>
-                        <div className="mt-4 space-y-2 text-gray-700">
+                    <div className="px-4 pb-4 mt-4">
+                        <h2 className="text-center">🏢 会社情報 🏢</h2>
+                        <div className="mt-4 space-y-2 bg-pink-50 rounded-2xl p-8">
                             <p>
                                 <strong>会社名:</strong> OneRide Limousine
                             </p>
                             <p>
-                                <strong>メール:</strong>{" "}
+                                <strong>メール:</strong>
                                 oneride-limousine@example.com
                             </p>
                             <p>
                                 <strong>電話:</strong> 312345678
                             </p>
                             <p>
-                                <strong>住所:</strong>{" "}
+                                <strong>住所:</strong>
                                 東京都江戸川区南葛西2-1-25
                             </p>
                             <p>
-                                <strong>ウェブサイト:</strong>{" "}
+                                <strong>ウェブサイト:</strong>
                                 <a
                                     href="https://star-limo.jp/"
                                     className="text-pink-500 hover:underline"

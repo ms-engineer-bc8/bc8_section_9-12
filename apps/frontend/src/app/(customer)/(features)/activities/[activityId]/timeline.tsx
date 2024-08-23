@@ -39,13 +39,13 @@ const timelineEvents: TimelineEvent[] = [
   {
     time: '18:00',
     title: 'お台場に到着',
-    description: '東京に10年住んでいるけど、お台場の夜景をこんなにじっくり眺めたのは初めて。一生忘れない誕生日の思い出になりました！',
+    description: '東京に10年住んでいるけど、お台場の夜景をこんなにじっくり眺めたのは初めて。',
     emoji: '📍',
   },
   {
     time: '18:30',
     title: 'パーティー終了',
-    description: '約一人リムジンパーティー、大成功！',
+    description: 'ソロリムジンパーティー、大成功！一生忘れない誕生日の思い出になりました！',
     emoji: '🎂',
   },
 ];
@@ -57,8 +57,8 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ time, title, description, e
       {!isLast && <div className="w-px h-full bg-pink-300"></div>}
     </div>
     <div className="pb-10">
-      <p className="text-sm text-pink-600 font-semibold mb-1">{time}</p>
-      <h3 className="text-xl font-bold text-pink-800 mb-2">{title}</h3>
+      <p className="text-sm text-pink-300 font-semibold mb-1">{time}</p>
+      <h3 className="text-xl font-bold text-pink-500 mb-2">{title}</h3>
       <p className="text-gray-700">{description}</p>
     </div>
   </div>
@@ -66,10 +66,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ time, title, description, e
 
 const OneRideLimousineTimeline: React.FC = () => {
   return (
-    <div className="bg-pink-50 min-h-screen py-12 px-4">
-      <h1 className="text-3xl font-bold text-center mb-12 text-pink-800">
-        MEGUMIのソロリムジン誕生日🎂
-      </h1>
+    <div className="min-h-screen py-2 px-2">
       <div className="max-w-2xl mx-auto">
         {timelineEvents.map((event, index) => (
           <TimelineItem
