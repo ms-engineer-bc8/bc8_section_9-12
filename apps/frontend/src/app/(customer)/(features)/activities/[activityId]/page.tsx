@@ -6,8 +6,8 @@ import useSWR from "swr";
 import Image from "next/image";
 import LimousineImage from "../../../../commons/images/activities/limousine.jpg";
 import OneRideLimousineTimeline from "./timeline";
-import LikeButton from "@/app/components/ui-elements/button/like/like";
-import FavoriteButton from "@/app/components/ui-elements/button/favorite/favorite";
+import Dress from "../../../../commons/images/activities/dress.jpg";
+import Tokyo_Scenery from "../../../../commons/images/activities/tokyo.jpg";
 
 const Limousine: React.FC = () => {
     const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -24,7 +24,7 @@ const Limousine: React.FC = () => {
     if (!activity) return <div>アクティビティが見つかりません</div>;
 
     return (
-        <div className="min-h-screen py-8">
+        <div className="min-h-screen py-6 m-3 leading-relaxed">
             <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden">
                 <div className="relative w-full h-96">
                     <Image
@@ -35,67 +35,73 @@ const Limousine: React.FC = () => {
                         placeholder="blur"
                         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
                     />
-                    <div className="absolute bottom-0 left-0 right-0 text-white p-4 flex justify-between items-center">
-                        <h1 className="text-2xl font-bold">
-                            {activity.provider_name}
-                        </h1>
-                    </div>
                 </div>
-                <div className="p-8">
-                    <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-xl font-semibold">
-                            {activity.title}
-                        </h2>
-                        <div className="flex items-center space-x-4">
-                            <LikeButton />
-                            <FavoriteButton />
-                        </div>
+                <div className="p-9">
+                    <div className="pb-8 text-center">
+                        <h1>{activity.provider_name}</h1>
                     </div>
-                    <p className="mt-4 text-lg text-gray-700">
-                        {activity.description}
-                    </p>
-                    <div className="mt-12">
-                        <h2>Solocoのおすすめポイント</h2>
-                        <div className="mt-6 space-y-8">
-                            <div>
-                                <h3 className="text-xl font-semibold text-pink-500 mb-2">
-                                    東京の夜景とリムジンにしかない音響と向き合える
-                                </h3>
-                                <p className="text-gray-700">
-                                    さあ、準備はいいですか？OneRide
-                                    Limousineに乗り込んだ瞬間、あなたは東京の夜景VIPルームへワープします！でも、ちょっと待って。これ、本当に車？それとも動く個室カラオケ？
-                                    まず、窓から見える夜景。ネオンきらめく東京の街並みが、まるでイルミネーションショーのように広がります。「わー、東京タワーだ！」なんて叫んでも恥ずかしくありません。だって、誰も聞いていませんからね（笑）。
-                                    そして音響システム。ボリュームを上げれば、まるで自分が音楽に飲み込まれるような感覚。ベースが効きすぎて体が震える？大丈夫、誰にもバレません。思う存分、口パクで熱唱しちゃいましょう！
-                                    車内照明は自由自在。気分はディスコ？はたまた幻想的な雰囲気？あなた次第で、この箱型の魔法の空間は変幻自在。
-                                    そう、ここではあなたが主役で、監督で、観客。誰にも邪魔されない、至福の「自分エンターテイメント」の時間が始まるのです！
-                                </p>
+                    <div className="font-semibold text-center text-pink-500 p-1">
+                        <h3>{activity.title}</h3>
+                    </div>
+                    <p className="mt-1 text-lg">{activity.description}</p>
+                    <div className="text-center p-2 mt-12">
+                        <h2>✨ おすすめポイント by Solocoスタッフ ✨</h2>
+                        <div className="flex flex-col md:flex-row w-full mt-3">
+                            <div className="w-full md:w-1/2 py-6">
+                                <div className="rounded-2xl overflow-hidden">
+                                    <Image
+                                        src={Tokyo_Scenery}
+                                        alt="tokyo_scenery"
+                                        layout="responsive"
+                                        width={550}
+                                        height={350}
+                                        objectFit="cover"
+                                        placeholder="blur"
+                                    />
+                                </div>
                             </div>
-                            <div>
-                                <h3 className="text-xl font-semibold text-pink-500 mb-2">
-                                    2.
-                                    誰かに見せるわけではない、自分が自分のためにするドレスアップを楽しめる
+                            <div className="w-full md:w-1/2 p-4">
+                                <h3 className="font-semibold text-pink-500 m-4 leading-relaxed">
+                                    東京の夜景とリムジンの音響に全集中
                                 </h3>
-                                <p className="text-gray-700">
-                                    「今日のドレスコードは...自分！」 OneRide
-                                    Limousineは、あなたの秘密の変身部屋。普段着ないあのドレス、着てみたかったあのスーツ、思い切って着ちゃいましょう。誰も見ていないなんて寂しい？いいえ、むしろチャンス！
-                                    鏡張りの内装で、360度どこを向いてもスーパースター気分。「鏡よ鏡、世界で一番美しいのは？」って聞いたら、「あなたです！」って答えが返ってきそう（実際には返ってきませんが）。
-                                    自撮りタイムも忘れずに。「今日の私、イケてる！」というショットを撮りまくりましょう。SNSにアップしなくてもいいんです。これは、あなたと未来のあなたとの秘密の思い出なのです。
-                                    気分を上げるなら、車内BGMとライトにもこだわりを。ボリュームMAXで「アイム・クイーン・オブ・ザ・ワールド！」と叫んでみては？Echo機能はついていませんが、きっと心の中でリピートされるはず。
-                                    OneRide
-                                    Limousineで過ごす時間は、まさに「私が私を楽しむ」至福のひととき。普段の自分にちょっとだけ反旗を翻す、そんなちょっぴりワガママな自分を思い切り楽しんでください！
+                                <p className="text-lg text-left text-gray-700 mx-2 pl-2 leading-relaxed">
+                                    窓外には煌めく街並み、音響は臨場感抜群。最高級の乗り心地と包まれるような音楽とともに、普段は忙しすぎて眺める暇もない東京の夜景を一人でじっくり眺めることができます。
+                                    ソロリムジンでは美しい景色と音楽に脳のメモリを使うため、記憶に残ること間違いありません！
                                 </p>
                             </div>
                         </div>
+                        <div className="flex flex-col md:flex-row w-full mt-3">
+                            <div className="w-full md:w-1/2 py-6">
+                                <div className="rounded-2xl overflow-hidden">
+                                    <Image
+                                        src={Dress}
+                                        alt="dress"
+                                        layout="responsive"
+                                        width={550}
+                                        height={350}
+                                        objectFit="cover"
+                                        placeholder="blur"
+                                    />
+                                </div>
+                            </div>
+                            <div className="w-full md:w-1/2 p-4">
+                                <h3 className="font-semibold text-pink-500 m-4 leading-relaxed">
+                                    私が私のためにするドレスアップ
+                                </h3>
+                                <p className="text-lg text-left text-gray-700 mx-2 pl-2 leading-relaxed">
+                                    「今日のドレスコードは...自分！」OneRideLimousineはあなたの美しい孤城。普段着ない特別なドレスや憧れのスーツなど、内装に映る自分を楽しみましょう。
+                                    BGMで気分を上げて、「私が私を楽しむ」至福のひとときを。折角だから、自撮りも思いっきり楽しんで、Solocoでシェアしちゃいましょう！
+                                </p>
+                            </div>
+                        </div>
                     </div>
-
-                    <div className="mt-12">
-                        <h2>SolocoスタッフがOneRide Limousineに乗ってみた！</h2>
-                        <div className="mt-6 border border-pink-200 rounded-lg overflow-hidden">
+                    <div className="mt-8">
+                        <h2 className="text-center">🏃‍♀️ Socoloスタッフがやってみました 🏃‍♀️</h2>
+                        <div className="mt-6 rounded-lg overflow-hidden">
                             <OneRideLimousineTimeline />
                         </div>
                     </div>
-
-                    <div className="mt-12">
+                    <div className="mt-12 p-9">
                         <h2>会社情報</h2>
                         <div className="mt-4 space-y-2 text-gray-700">
                             <p>

@@ -68,7 +68,7 @@ const OneRideLimousineTimeline: React.FC = () => {
   return (
     <div className="bg-pink-50 min-h-screen py-12 px-4">
       <h1 className="text-3xl font-bold text-center mb-12 text-pink-800">
-        "OneRide Limousine"でのスペシャルな体験✨
+        MEGUMIのソロリムジン誕生日🎂
       </h1>
       <div className="max-w-2xl mx-auto">
         {timelineEvents.map((event, index) => (
