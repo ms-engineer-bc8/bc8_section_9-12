@@ -63,7 +63,7 @@ const Limousine: React.FC = () => {
                                 </div>
                             </div>
                             <div className="w-full md:w-1/2 p-4">
-                                <h3 className="font-semibold text-pink-500 m-4 leading-relaxed">
+                                <h3 className="font-semibold text-pink-500 mt-2 mb-4 leading-relaxed">
                                     東京の夜景とリムジンの音響に全集中
                                 </h3>
                                 <p className="text-lg text-left mx-2 pl-2 leading-relaxed">
@@ -87,7 +87,7 @@ const Limousine: React.FC = () => {
                                 </div>
                             </div>
                             <div className="w-full md:w-1/2 p-4">
-                                <h3 className="font-semibold text-pink-500 m-4 leading-relaxed">
+                                <h3 className="font-semibold text-pink-500 mt-2 mb-4 leading-relaxed">
                                     私が私のためにするドレスアップ
                                 </h3>
                                 <p className="text-lg text-left mx-2 pl-2 leading-relaxed">
@@ -104,7 +104,7 @@ const Limousine: React.FC = () => {
                         <div className="mt-3 flex justify-center">
                             <div className="w-full max-w-3xl">
                                 <div className="flex flex-col md:flex-row w-full items-center">
-                                    <div className="w-full md:w-1/4 py-4 flex justify-center">
+                                    <div className="w-full md:w-1/5 py-4 flex justify-center">
                                         <div className="rounded-full overflow-hidden w-40 h-40">
                                             <Image
                                                 src={StaffMegumi}
@@ -116,7 +116,7 @@ const Limousine: React.FC = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div className="w-full md:w-3/4 mx-2 p-3">
+                                    <div className="w-full md:w-3/4 mx-4 p-3">
                                         <SpeechBubble>
                                             <h2 className="text-center font-bold text-xl mb-2">
                                                 スタッフMegumiの感想
