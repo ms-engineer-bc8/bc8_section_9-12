@@ -10,14 +10,9 @@ from app.schemas.user import (
     UserIdResponse,
     UserTypeResponse,
 )
-
+from app.analysis.solo_type import get_solo_type_id
 
 router = APIRouter()
-
-
-def get_solo_type_id(item):
-    print(item)
-    return 2
 
 
 # TODO: 認証成功していたら渡す emailの取得方法を検討
