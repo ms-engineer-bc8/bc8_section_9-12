@@ -104,15 +104,17 @@ export default function Report() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row w-9/12 justify-between mt-4">
+        <div className="flex flex-col md:flex-row w-10/12 justify-between mt-4">
           <div className="mb-4 w-full px-2">
             <div className="bg-white rounded-lg shadow-md p-6 h-full">
               <h2 className="text-xl font-semibold mb-4">AIによる分析</h2>
               <textarea
                 id="ai"
                 name="ai"
-                className="block w-full h-32 text-md rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-              ></textarea>
+                className="block w-full h-52 text-md rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
+              >
+                {reports.llm}
+              </textarea>
             </div>
           </div>
         </div>
