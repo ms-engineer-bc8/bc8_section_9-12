@@ -29,26 +29,26 @@ const ActivityCard: React.FC<ActivityCardProps> = ({ activity }) => {
                 </Link>
                 <div className="p-4 flex-grow flex flex-col justify-between">
                     <div>
-                        <h2 className="text-2xl font-semibold text-gray-800 mb-2 line-clamp-2">
+                        <h2 className="font-semibold text-gray-800 mb-2 line-clamp-2">
                             {activity.provider_name}
                         </h2>
                     </div>
                     <div>
                         <div className="flex flex-wrap gap-2 justify-center mb-3">
-                            <span className="px-2 py-1 bg-pink-100 text-pink-500 text-sm font-semibold rounded-full">
+                            <span className="text-tiny px-2 py-1 bg-pink-100 text-pink-500 font-semibold rounded-full">
                                 時間帯⏰
                             </span>
-                            <span className="text-base font-medium">
+                            <span className="font-medium">
                                 {activity.time_zone}
                             </span>
-                            <span className="px-2 py-1 bg-pink-100 text-pink-500 text-sm font-semibold rounded-full">
+                            <span className="text-tiny px-2 py-1 bg-pink-100 text-pink-500 font-semibold rounded-full">
                                 レベル⬆️
                             </span>
-                            <span className="text-base font-medium">
+                            <span className="font-medium">
                                 {activity.solo_level}
                             </span>
                         </div>
-                        <div className="flex justify-center items-center gap-2 text-base font-medium">
+                        <div className="flex justify-center items-center gap-2 font-medium">
                             <LikeButton initialLikes={activity.likes_count} />
                             <FavoriteButton
                                 initialFavorites={activity.favorites_count}

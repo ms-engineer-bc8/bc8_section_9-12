@@ -87,11 +87,6 @@ export default function Reviews() {
             setPreviewUrl(null);
         } catch (error) {
             console.error("レビュー投稿エラー:", error);
-            setPostError(
-                `レビューの投稿に失敗しました: ${
-                    error instanceof Error ? error.message : String(error)
-                }`
-            );
         }
     };
 
