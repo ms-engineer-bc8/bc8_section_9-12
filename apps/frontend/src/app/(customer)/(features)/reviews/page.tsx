@@ -41,7 +41,6 @@ export default function Reviews() {
             setPostError("レビューテキストを入力してください。");
             return;
         }
-
         let imageUrl = "";
         if (file) {
             try {
@@ -70,15 +69,13 @@ export default function Reviews() {
                 },
                 body: JSON.stringify(newReview),
             });
-
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(
                     errorData.message ||
-                        `Failed to post review: ${response.status} ${response.statusText}`
+                        `レビューの投稿に失敗しました: ${response.status} ${response.statusText}`
                 );
             }
-
             const data = await response.json();
             console.log("成功:", data);
             mutate(apiUrl);
