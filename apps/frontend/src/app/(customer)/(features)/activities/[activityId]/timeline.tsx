@@ -66,7 +66,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
 
 const OneRideLimousineTimeline: React.FC = () => {
     return (
-        <div className="min-h-screen py-2 px-2">
+        <div>
             <div className="max-w-2xl mx-auto">
                 {timelineEvents.map((event, index) => (
                     <TimelineItem
