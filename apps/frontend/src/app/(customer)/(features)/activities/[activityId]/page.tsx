@@ -122,7 +122,7 @@ const Limousine: React.FC = () => {
                                                 スタッフMegumiの感想
                                             </h2>
                                             <p className="text-lg text-left leading-relaxed">
-                                                初めてのリムジンで誕生日ソロ活という中々濃い体験をしました🥹でも一生の思い出になりました🫶
+                                                「初めてのリムジン」で「誕生日ソロ活」という中々濃い体験をしました🥹でも一生の思い出になりました🫶
                                             </p>
                                         </SpeechBubble>
                                     </div>
@@ -135,7 +135,7 @@ const Limousine: React.FC = () => {
                     </div>
                     <div className="px-4 pb-4 mt-4">
                         <h2 className="text-center">🏢 会社情報 🏢</h2>
-                        <div className="mt-4 space-y-2 bg-pink-50 rounded-2xl p-8">
+                        <div className="mt-4 space-y-2 bg-pink-50 rounded-2xl p-6">
                             <p>
                                 <strong>会社名:</strong> OneRide Limousine
                             </p>

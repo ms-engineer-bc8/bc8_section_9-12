@@ -21,6 +21,7 @@ class ReviewResponse(BaseModel):
 class ReviewReportResponse(BaseModel):
     wordcloud: str
     age_count: str
+    llm: str
 
 
 class ReviewItem(BaseModel):
@@ -31,3 +32,15 @@ class ReviewItem(BaseModel):
         ]
     )
     image: str
+
+
+class ReviewReportItem(BaseModel):
+    text: str = Field(
+        examples=[
+            "ひとりサンリオピューロランドに行ってきた〜！キティちゃんは平和の象徴。"
+        ]
+    )
+    age: str = Field(examples=["31~35歳"])
+    update_date: datetime
+
+    model_config = ConfigDict(from_attributes=True, extra="ignore")
