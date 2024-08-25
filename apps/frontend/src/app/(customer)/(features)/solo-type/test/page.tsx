@@ -14,13 +14,15 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const SoloTypeForm: React.FC = () => {
-    const { register, handleSubmit, setValue } = useForm<SoloTypeFormProps>();
+    const { register, handleSubmit, setValue, watch } =
+        useForm<SoloTypeFormProps>();
     const router = useRouter();
     const searchParams = useSearchParams();
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [userId, setUserId] = useState<string | null>(null);
     const [swiperInstance, setSwiperInstance] = useState<any>(null);
-    const [selections, setSelections] = useState<Partial<SoloTypeFormProps>>({});
+
+    const watchedFields = watch();
 
     useEffect(() => {
         const userIdFromParams = searchParams.get("userId");
@@ -30,6 +32,11 @@ const SoloTypeForm: React.FC = () => {
             console.error("ユーザIDが見つかりません");
         }
     }, [searchParams]);
+
+    const isFormComplete = questions.every(
+        (question) =>
+            watchedFields[question.id as keyof SoloTypeFormProps] !== undefined
+    );
 
     const onSubmit: SubmitHandler<SoloTypeFormProps> = async (data) => {
         if (!userId) {
@@ -73,7 +80,6 @@ const SoloTypeForm: React.FC = () => {
         value: string | boolean
     ) => {
         setValue(questionId, value);
-        setSelections(prev => ({ ...prev, [questionId]: value }));
         if (swiperInstance && swiperInstance.slideNext) {
             swiperInstance.slideNext();
         }
@@ -81,7 +87,9 @@ const SoloTypeForm: React.FC = () => {
 
     return (
         <div className="container mx-auto my-5 max-w-xl bg-white p-10 rounded-2xl">
-            <h2 className="text-center mb-4 mt-2">あなたのソロ活タイプを診断🔍</h2>
+            <h2 className="text-center mb-4 mt-2">
+                あなたのソロ活タイプを診断🔍
+            </h2>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <Swiper
                     modules={[Navigation, Pagination]}
@@ -115,23 +123,25 @@ const SoloTypeForm: React.FC = () => {
                                                 )
                                             }
                                             className={`w-full py-3 px-4 border ${
-                                                selections[question.id as keyof SoloTypeFormProps] === option.value
-                                                    ? 'bg-pink-100 text-pink-500 border-pink-300'
-                                                    : 'border-pink-300 text-pink-500 bg-white hover:bg-pink-100'
+                                                watchedFields[
+                                                    question.id as keyof SoloTypeFormProps
+                                                ] === option.value
+                                                    ? "bg-pink-100 text-pink-500"
+                                                    : "border-pink-300 text-pink-500 bg-white hover:bg-pink-100"
                                             } rounded-full shadow-sm text-lg font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-colors duration-200`}
                                         >
                                             {option.label}
                                         </button>
                                     ))}
                                 </div>
-                                {index === questions.length - 1 && (
-                                    <div className="flex justify-center m-8">
-                                        <PinkButton type="submit">
-                                            診断する
-                                        </PinkButton>
-                                    </div>
-                                )}
                             </div>
+                            {isFormComplete && (
+                                <div className="flex justify-center m-8">
+                                    <PinkButton type="submit">
+                                        診断する
+                                    </PinkButton>
+                                </div>
+                            )}
                         </SwiperSlide>
                     ))}
                 </Swiper>
