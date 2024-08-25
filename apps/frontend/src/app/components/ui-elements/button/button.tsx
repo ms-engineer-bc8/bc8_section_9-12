@@ -30,31 +30,31 @@ export const PinkButton: React.FC<ButtonProps> = ({
 };
 
 export const WhiteButton: React.FC<ButtonProps> = ({
-  children,
-  onClick,
-  type = "button",
-  disabled = false,
-  className = "",
-  href,
+    children,
+    onClick,
+    type = "button",
+    disabled = false,
+    className = "",
+    href,
 }) => {
-  const buttonClass = `inline-block w-full py-2 px-4 border border-pink-500 rounded-md shadow-sm text-base font-medium text-pink-500 bg-white hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 ${className}`;
+    const buttonClass = `inline-block w-full py-2 px-4 border border-pink-500 rounded-md shadow-sm text-base font-medium text-pink-500 bg-white hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 ${className}`;
 
-  if (href) {
+    if (href) {
+        return (
+            <Link href={href} className={buttonClass}>
+                {children}
+            </Link>
+        );
+    }
+
     return (
-      <Link href={href} className={buttonClass}>
-        {children}
-      </Link>
+        <button
+            onClick={onClick}
+            type={type}
+            disabled={disabled}
+            className={buttonClass}
+        >
+            {children}
+        </button>
     );
-  }
-
-  return (
-    <button
-      onClick={onClick}
-      type={type}
-      disabled={disabled}
-      className={buttonClass}
-    >
-      {children}
-    </button>
-  );
 };

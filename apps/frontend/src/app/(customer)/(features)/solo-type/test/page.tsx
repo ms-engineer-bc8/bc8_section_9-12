@@ -30,7 +30,7 @@ const SoloTypeForm: React.FC = () => {
 
         try {
             const response = await fetch(
-                `${process.env.NEXT_PUBLIC_API_USERS_TYPETEST_URL}/${userId}`,
+                `${process.env.NEXT_PUBLIC_API_USERS_TYPETEST_URL}/1`,
                 {
                     method: "PUT",
                     headers: {
@@ -218,3 +218,151 @@ const SoloTypeForm: React.FC = () => {
 };
 
 export default SoloTypeForm;
+
+// "use client";
+
+// import React, { useState, useEffect } from "react";
+// import { useForm, SubmitHandler } from "react-hook-form";
+// import { SoloTypeFormProps } from "@/app/commons/types/types";
+// import { useRouter, useSearchParams } from "next/navigation";
+// import { PinkButton } from "@/app/components/ui-elements/button/button";
+// import { questions } from "../solo-type/test/questions";
+
+// const SoloTypeForm: React.FC = () => {
+//     const { register, handleSubmit, setValue } = useForm<SoloTypeFormProps>();
+//     const router = useRouter();
+//     const searchParams = useSearchParams();
+//     const [errorMessage, setErrorMessage] = useState<string | null>(null);
+//     const [userId, setUserId] = useState<string | null>(null);
+//     const [currentQuestion, setCurrentQuestion] = useState(0);
+
+//     useEffect(() => {
+//         const userIdFromParams = searchParams.get("userId");
+//         if (userIdFromParams) {
+//             setUserId(userIdFromParams);
+//         } else {
+//             console.error("ユーザIDが見つかりません");
+//         }
+//     }, [searchParams, router]);
+
+//     const onSubmit: SubmitHandler<SoloTypeFormProps> = async (data) => {
+//         if (!userId) {
+//             console.error("ユーザIDが空です");
+//             return;
+//         }
+
+//         try {
+//             const response = await fetch(
+//                 `${process.env.NEXT_PUBLIC_API_USERS_TYPETEST_URL}/1`,
+//                 {
+//                     method: "PUT",
+//                     headers: {
+//                         "Content-Type": "application/json",
+//                     },
+//                     body: JSON.stringify(data),
+//                 }
+//             );
+//             if (!response.ok) {
+//                 const errorBody = await response.json();
+//                 console.error("Server error response:", errorBody);
+//                 throw new Error(`HTTP error! status: ${response.status}`);
+//             }
+//             const result = await response.json();
+//             console.log("成功", result);
+
+//             const queryParams = new URLSearchParams({
+//                 solo_type: result.solo_type,
+//                 userId: userId,
+//             }).toString();
+
+//             router.push(`/solo-type/test/result?${queryParams}`);
+//         } catch (error) {
+//             console.error("エラー:", error);
+//         }
+//     };
+
+//     const handleNext = () => {
+//         if (currentQuestion < questions.length - 1) {
+//             setCurrentQuestion(currentQuestion + 1);
+//         }
+//     };
+
+//     const handlePrev = () => {
+//         if (currentQuestion > 0) {
+//             setCurrentQuestion(currentQuestion - 1);
+//         }
+//     };
+
+//     const handleOptionSelect = (value: string) => {
+//         setValue(questions[currentQuestion].id, value);
+//         if (currentQuestion < questions.length - 1) {
+//             handleNext();
+//         }
+//     };
+
+//     return (
+//         <div className="container bg-white mx-auto my-5 max-w-md px-4 py-8 rounded-2xl">
+//             <h2 className="text-center mb-6">
+//                 あなたのソロ活タイプを診断🔍
+//             </h2>
+//             <div>
+//                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+//                     <div className="mb-8">
+//                         <h3 className="font-semibold mb-4 text-pink-500 text-center">
+//                             {questions[currentQuestion].question}
+//                         </h3>
+
+//                         <div className="space-y-4">
+//                             {questions[currentQuestion].options.map(
+//                                 (option) => (
+//                                     <button
+//                                         key={option.value}
+//                                         type="button"
+//                                         onClick={() =>
+//                                             handleOptionSelect(option.value)
+//                                         }
+//                                         className="w-full py-3 px-4 border-2 border-purple-300 rounded-full shadow-sm text-sm font-medium text-purple-700 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors duration-200"
+//                                     >
+//                                         {option.label}
+//                                     </button>
+//                                 )
+//                             )}
+//                         </div>
+//                     </div>
+//                     <div className="flex justify-between">
+//                         <button
+//                             type="button"
+//                             onClick={handlePrev}
+//                             disabled={currentQuestion === 0}
+//                             className="px-4 py-2 border-2 border-pink-300 rounded-full shadow-sm text-sm font-medium text-pink-700 hover:bg-pink-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 disabled:opacity-50 transition-colors duration-200"
+//                         >
+//                             ← 前へ
+//                         </button>
+//                         {currentQuestion === questions.length - 1 ? (
+//                             <PinkButton type="submit">診断する 🎊</PinkButton>
+//                         ) : (
+//                             <button
+//                                 type="button"
+//                                 onClick={handleNext}
+//                                 className="px-4 py-2 border-2 border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors duration-200"
+//                             >
+//                                 次へ →
+//                             </button>
+//                         )}
+//                     </div>
+//                 </form>
+//             </div>
+//             {errorMessage && (
+//                 <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-md animate-bounce">
+//                     😅 {errorMessage}
+//                 </div>
+//             )}
+//             <div className="mt-6 text-center text-sm text-gray-500">
+//                 あと {questions.length - currentQuestion - 1} 問で診断完了！ 🏁
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default SoloTypeForm;
+

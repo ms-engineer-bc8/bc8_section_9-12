@@ -26,15 +26,29 @@ body {
 
 @layer base {
   body {
-    @apply text-[#333333] dark:text-white;
+    @apply text-[#494949] dark:text-white;
+  }
+  h1 {
+    @apply text-h1 font-bold;
+  }
+  h2 {
+    @apply text-h2 font-semibold;
+  }
+  h3 {
+    @apply text-h3 font-semibold;
+  }
+  p {
+    @apply text-base;
+  }
+  span {
+    @apply text-sm;
+  }
+  .text-tiny {
+    @apply text-xs;
   }
 }
 
 @layer utilities {
-  .bg-custom-gradient {
-    background-color: #FFDEE9;
-    background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
-  }
   .text-balance {
     text-wrap: balance;
   }

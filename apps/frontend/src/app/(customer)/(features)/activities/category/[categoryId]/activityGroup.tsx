@@ -40,7 +40,7 @@ const ActivityGroup: React.FC<ActivityGroupProps> = ({ subcategory, activities }
 
     return (
         <div className="space-y-4 mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 px-4">{subcategory}</h2>
+            <h2 className="font-bold text-gray-800 px-4">{subcategory}</h2>
             <div className="relative">
                 <div
                     className="overflow-x-hidden pb-4"
