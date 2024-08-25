@@ -16,7 +16,7 @@ const apiUrl = `${process.env.NEXT_PUBLIC_API_REVIEWS_URL}`;
 export default function Reviews() {
     const { token } = useToken();
     const router = useRouter();
-    
+
     if (token === ""){
         router.push("/login");
     }
@@ -100,9 +100,13 @@ export default function Reviews() {
     if (error) return <div>エラーが発生しました: {error.message}</div>;
     if (!reviews) return <div>レビューが見つかりません</div>;
 
+    const sortedReviews = [...reviews].sort((a, b) =>
+        new Date(b.update_date).getTime() - new Date(a.update_date).getTime()
+    );
+
     return (
         <div className="container mx-auto p-5">
-            <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-8">
+            <div className="max-w-xl mx-auto bg-white rounded-2xl p-8">
                 <form onSubmit={handleAddReview} className="mb-8">
                     <textarea
                         className="w-full p-4 border rounded-lg mb-4"
@@ -133,7 +137,7 @@ export default function Reviews() {
                 </form>
 
                 <div className="space-y-4">
-                    {reviews.map((review) => (
+                    {sortedReviews.map((review) => (
                         <div
                             key={review.id}
                             className="bg-gray-50 rounded-lg p-4"

@@ -41,11 +41,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ iconSrc }) => {
       </button>
       {isOpen && (
         <div className="absolute right-0 mt-2 w-36 bg-white rounded-md shadow-lg py-1 z-10">
-          <Link href="/user/1">
-            <p className="block px-4 py-2 font-semibold text-base text-gray-700 hover:text-[#FA6183]">
-              マイページ
-            </p>
-          </Link>
           <Link href="/login" onClick={handleLogout}>
             <p className="block px-4 py-2 font-semibold text-base text-gray-700 hover:text-[#FA6183]">
               ログアウト

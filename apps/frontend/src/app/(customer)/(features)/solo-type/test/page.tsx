@@ -126,7 +126,7 @@ const SoloTypeForm: React.FC = () => {
                                                 watchedFields[
                                                     question.id as keyof SoloTypeFormProps
                                                 ] === option.value
-                                                    ? "bg-pink-100 text-pink-500"
+                                                    ? "bg-pink-100 border-pink-500 text-pink-500"
                                                     : "border-pink-300 text-pink-500 bg-white hover:bg-pink-100"
                                             } rounded-full shadow-sm text-lg font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-colors duration-200`}
                                         >
@@ -135,9 +135,13 @@ const SoloTypeForm: React.FC = () => {
                                     ))}
                                 </div>
                             </div>
-                            {isFormComplete && (
+                            {index === questions.length - 1 && (
                                 <div className="flex justify-center m-8">
-                                    <PinkButton type="submit">
+                                    <PinkButton
+                                        type="submit"
+                                        disabled={!isFormComplete}
+                                        className={!isFormComplete ? "opacity-50" : ""}
+                                    >
                                         診断する
                                     </PinkButton>
                                 </div>

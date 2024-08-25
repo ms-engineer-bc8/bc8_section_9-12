@@ -21,9 +21,8 @@ const SoloTypeResult = () => {
     const searchParams = useSearchParams();
 
     useEffect(() => {
-        const fetchSoloType = async () => {
+        const fetchSoloType = () => {
             try {
-                setIsLoading(true);
                 const solo_type = searchParams.get("solo_type");
                 const userId = searchParams.get("userId");
                 if (solo_type && userId) {
@@ -39,6 +38,8 @@ const SoloTypeResult = () => {
                     "ソロ活タイプの取得に失敗しました。もう一度診断を行ってください。"
                 );
                 router.push("/solo-type/test");
+            } finally {
+                setIsLoading(false);
             }
         };
 
@@ -54,26 +55,42 @@ const SoloTypeResult = () => {
     }
 
     return (
-        <div className="container mx-auto max-w-md px-4 py-8">
-            <div className="bg-white p-8 rounded-2xl">
+        <div className="container mx-auto max-w-xl p-4">
+            <div className="bg-white py-10 px-18 rounded-2xl">
                 <h2 className="text-2xl font-bold text-center mb-6">
                     あなたのソロ活タイプは
                 </h2>
                 {soloTypeData && soloTypeData.solo_type ? (
-                    <h3 className="text-center mb-6 text-pink-500">
-                        {soloTypeData.solo_type}
-                    </h3>
+                    <>
+                        <h2 className="text-center mb-6 text-pink-500 font-bold">
+                            {soloTypeData.solo_type}
+                        </h2>
+                        <div className="flex justify-center mb-6">
+                            <Image
+                                src={SpecialType}
+                                alt={soloTypeData.solo_type}
+                                width={350}
+                                height={350}
+                            />
+                        </div>
+                        <div>
+                            <p className="text-center mb-6 px-10">
+                                現代の優雅な放浪者、それがあなた！財布の中身は「一生に一度の体験」のため。
+                                街でリムジンを見れば「私の車かしら」とつぶやき、休日の予定は「気球で空中ピクニック」。周りはきっと羨望の眼差し！
+                                さぁ、特別な体験を求めて街へ。財布には気をつけて、次はソロ宇宙旅行かも？🚀💫
+                            </p>
+                        </div>
+                    </>
                 ) : (
                     <p className="text-center mb-6">
                         ソロ活タイプが見つかりませんでした
                     </p>
                 )}
-                <p>
-                    現代の優雅な放浪者、それがあなた！財布の中身は「一生に一度の体験」のため。
-                    街でリムジンを見れば「私の車かしら」とつぶやき、休日の予定は「気球で空中ピクニック」。周りはきっと羨望の眼差し！
-                    さぁ、特別な体験を求めて街へ。財布には気をつけて、次はソロ宇宙旅行かも？🚀💫
-                </p>
-                <PinkButton onClick={handleReturnToTop}>TOPに戻る</PinkButton>
+                <div className="flex justify-center px-10">
+                    <PinkButton onClick={handleReturnToTop}>
+                        TOPに戻る
+                    </PinkButton>
+                </div>
             </div>
         </div>
     );
