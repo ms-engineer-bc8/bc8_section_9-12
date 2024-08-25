@@ -53,3 +53,32 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Swiper */
+.custom-swiper {
+  margin: 0 40px;
+}
+
+.custom-swiper .swiper-button-next,
+.custom-swiper .swiper-button-prev {
+    @apply text-pink-300
+}
+
+.custom-swiper .swiper-pagination-bullet-active {
+    @apply bg-pink-500;
+}
+
+/* ホバー*/
+.custom-swiper .swiper-button-next:hover,
+.custom-swiper .swiper-button-prev:hover {
+    @apply text-pink-600;
+}
+
+/* ページネーション */
+.custom-swiper .swiper-pagination-bullet {
+    @apply w-2 h-2 bg-pink-300 opacity-50;
+}
+
+.custom-swiper .swiper-pagination-bullet-active {
+    @apply opacity-100;
+}

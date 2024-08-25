@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { SoloTypeFormProps } from "@/app/commons/types/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import { PinkButton } from "@/app/components/ui-elements/button/button";
-import { questions } from "./questions";
+import { questions } from "../solo-type/test/questions";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 
@@ -20,7 +20,6 @@ const SoloTypeForm: React.FC = () => {
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [userId, setUserId] = useState<string | null>(null);
     const [swiperInstance, setSwiperInstance] = useState<any>(null);
-    const [selections, setSelections] = useState<Partial<SoloTypeFormProps>>({});
 
     useEffect(() => {
         const userIdFromParams = searchParams.get("userId");
@@ -73,7 +72,6 @@ const SoloTypeForm: React.FC = () => {
         value: string | boolean
     ) => {
         setValue(questionId, value);
-        setSelections(prev => ({ ...prev, [questionId]: value }));
         if (swiperInstance && swiperInstance.slideNext) {
             swiperInstance.slideNext();
         }
@@ -103,7 +101,7 @@ const SoloTypeForm: React.FC = () => {
                                         {question.icon}
                                     </div>
                                 </div>
-                                <div className="space-y-4 items-center mx-16 mt-8">
+                                <div className="space-y-4 items-center mx-16">
                                     {question.options.map((option) => (
                                         <button
                                             key={option.value.toString()}
@@ -114,11 +112,7 @@ const SoloTypeForm: React.FC = () => {
                                                     option.value
                                                 )
                                             }
-                                            className={`w-full py-3 px-4 border ${
-                                                selections[question.id as keyof SoloTypeFormProps] === option.value
-                                                    ? 'bg-pink-100 text-pink-500 border-pink-300'
-                                                    : 'border-pink-300 text-pink-500 bg-white hover:bg-pink-100'
-                                            } rounded-full shadow-sm text-lg font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-colors duration-200`}
+                                            className="w-full py-3 px-4 border border-pink-300 rounded-full shadow-sm text-lg font-medium text-pink-500 bg-white hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-colors duration-200"
                                         >
                                             {option.label}
                                         </button>
