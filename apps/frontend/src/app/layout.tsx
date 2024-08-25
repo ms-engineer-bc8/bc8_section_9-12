@@ -3,6 +3,7 @@ import { Zen_Kaku_Gothic_New } from "next/font/google";
 import Background from "./components/layouts/background";
 import "./commons/styles/globals.css";
 import ToastProvider from "./components/layouts/toastProvider";
+import { TokenProvider } from "./commons/contexts/contexts";
 
 const zenKakuGothicNew = Zen_Kaku_Gothic_New({
   weight: ["400", "500", "700", "900"],
@@ -26,7 +27,9 @@ export default function RootLayout({
         <div className="min-h-screen flex flex-col">
           <main className="flex-grow">
             <Background />
-            <ToastProvider>{children}</ToastProvider>
+            <ToastProvider>
+              <TokenProvider>{children}</TokenProvider>
+            </ToastProvider>
           </main>
         </div>
       </body>

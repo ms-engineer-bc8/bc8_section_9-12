@@ -5,17 +5,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import { useAuth } from "@/app/commons/auth/firebaseConfig";
+import { useToken } from "@/app/commons/contexts/contexts";
 import { useRouter } from "next/navigation";
 import { UserMenuProps } from "@/app/commons/types/types";
 
 const UserMenu: React.FC<UserMenuProps> = ({ iconSrc }) => {
   const { signOut } = useAuth();
+  const { token, setToken} = useToken();
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
   const handleLogout = async (event:React.MouseEvent) => {
     event.preventDefault();
     const result = await signOut();
+    setToken("")
     if (result === "Sign out") {
       toast.success("ログアウトしました");
       router.push("/login");

@@ -18,17 +18,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// TODO: useContextを使ってグローバル変数を管理する
 type Auth = {
-  // token: React.RefObject<string | null>;
-  // signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string) => Promise<string>;
   signIn: (email: string, password: string) => Promise<string>;
   signOut: () => Promise<string>;
 };
 
 export const useAuth = (): Auth => {
-  // const token = useToken();
   const signUp = async (email: string, password: string): Promise<string> => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -37,7 +33,6 @@ export const useAuth = (): Auth => {
         password
       );
       const idToken = await userCredential.user.getIdToken();
-      console.log(idToken);
       return idToken;
     } catch (error) {
       return "error";
@@ -45,7 +40,6 @@ export const useAuth = (): Auth => {
   };
 
   const signIn = async (email: string, password: string): Promise<string> => {
-    console.log(email, password);
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -53,7 +47,6 @@ export const useAuth = (): Auth => {
         password
       );
       const idToken = await userCredential.user.getIdToken();
-      console.log(idToken);
       return idToken;
     } catch (error) {
       return "error";
@@ -69,7 +62,6 @@ export const useAuth = (): Auth => {
 
   const signOut = async (): Promise<string> => {
     await firebaseSignOut(auth);
-    // token.value = null;
     return "Sign out";
   };
 
@@ -77,6 +69,5 @@ export const useAuth = (): Auth => {
     signUp,
     signIn,
     signOut,
-    // token
   };
 };
