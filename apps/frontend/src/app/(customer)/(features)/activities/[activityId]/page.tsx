@@ -16,8 +16,8 @@ import SpeechBubble from "./speech";
 const Limousine: React.FC = () => {
     const { token } = useToken();
     const router = useRouter();
-    
-    if (token === ""){
+
+    if (token === "") {
         router.push("/login");
     }
 
@@ -36,7 +36,7 @@ const Limousine: React.FC = () => {
 
     return (
         <div className="min-h-screen py-6 m-3 leading-relaxed">
-            <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden">
+            <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
                 <div className="relative w-full h-96">
                     <Image
                         src={LimousineImage}
@@ -56,7 +56,7 @@ const Limousine: React.FC = () => {
                     </div>
                     <p className="mt-1 text-lg">{activity.description}</p>
                     <div className="text-center p-2 mt-14">
-                        <h2>✨ おすすめポイント by Solocoスタッフ ✨</h2>
+                        <h2>✨ おすすめポイント ✨</h2>
                         <div className="flex flex-col md:flex-row w-full mt-3">
                             <div className="w-full md:w-1/2 py-6">
                                 <div className="rounded-2xl overflow-hidden">
@@ -108,7 +108,7 @@ const Limousine: React.FC = () => {
                     </div>
                     <div className="mt-14">
                         <h2 className="text-center">
-                            🏃‍♀️ Socoloスタッフがソロ活やってみました 🏃‍♀️
+                            🏃‍♀️ Socolo編集部がソロ活やってみました 🏃‍♀️
                         </h2>
                         <div className="mt-3 flex justify-center">
                             <div className="w-full max-w-3xl">
@@ -128,7 +128,7 @@ const Limousine: React.FC = () => {
                                     <div className="w-full md:w-3/4 mx-4 p-3">
                                         <SpeechBubble>
                                             <h2 className="text-center font-bold text-xl mb-2">
-                                                スタッフMegumiの感想
+                                                エディターMegumiの感想
                                             </h2>
                                             <p className="text-lg text-left leading-relaxed">
                                                 「初めてのリムジン」で「誕生日ソロ活」という中々濃い体験をしました🥹でも一生の思い出になりました🫶
@@ -143,34 +143,29 @@ const Limousine: React.FC = () => {
                         </div>
                     </div>
                     <div className="px-4 pb-4 mt-4">
-                        <h2 className="text-center">🏢 会社情報 🏢</h2>
                         <div className="mt-4 space-y-2 bg-pink-50 rounded-2xl p-6">
-                            <p>
-                                <strong>会社名:</strong> OneRide Limousine
-                            </p>
-                            <p>
-                                <strong>メール:</strong>
-                                oneride-limousine@example.com
-                            </p>
-                            <p>
-                                <strong>電話:</strong> 312345678
-                            </p>
-                            <p>
-                                <strong>住所:</strong>
-                                東京都江戸川区南葛西2-1-25
-                            </p>
-                            <p>
-                                <strong>ウェブサイト:</strong>
+                            <h2 className="mb-4">OneRide Limousine</h2>
+                            <div className="grid grid-cols-[auto,1fr] gap-x-8 gap-y-2">
+                                <strong>メール</strong>
+                                <span>oneride-limousine@example.com</span>
+
+                                <strong>電話</strong>
+                                <span>312345678</span>
+
+                                <strong>住所</strong>
+                                <span>東京都江戸川区南葛西2-1-25</span>
+
+                                <strong>ウェブサイト</strong>
                                 <a
                                     href="https://star-limo.jp/"
                                     className="text-pink-500 hover:underline"
                                 >
                                     https://star-limo.jp/
                                 </a>
-                            </p>
-                            <p>
-                                <strong>営業時間:</strong> 年中無休 10:00～19:00
-                            </p>
+
+                                <strong>営業時間</strong>
+                                <span>年中無休 10:00～19:00</span>
+                            </div>
                         </div>
                     </div>
                 </div>

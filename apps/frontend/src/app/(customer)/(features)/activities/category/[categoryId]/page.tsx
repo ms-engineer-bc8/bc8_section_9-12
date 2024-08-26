@@ -13,11 +13,11 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const ActivityPage: React.FC = () => {
     const { token } = useToken();
     const router = useRouter();
-    
+
     if (token === ""){
         router.push("/login");
     }
-  
+
     const categoryId = 2;
     const apiUrl = `${process.env.NEXT_PUBLIC_API_ACTIVITIES_URL}/${categoryId}`;
     const {
