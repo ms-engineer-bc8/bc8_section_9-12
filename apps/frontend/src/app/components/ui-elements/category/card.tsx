@@ -27,11 +27,11 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
                         {description}
                     </span>
                 </div>
-                <div className="flex flex-wrap gap-2 justify-center">
+                <div className="flex flex-wrap gap-2 justify-center text-lg">
                     {tags.map((tag) => (
                         <span
                             key={tag.id}
-                            className="px-2 py-1 bg-pink-100 text-pink-500 text-tiny font-medium rounded-full"
+                            className="px-2 py-1 bg-pink-100 text-pink-500 font-medium rounded-full"
                         >
                             {tag.name}
                         </span>
