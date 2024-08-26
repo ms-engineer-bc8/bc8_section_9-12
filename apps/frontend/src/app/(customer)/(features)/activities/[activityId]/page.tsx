@@ -36,7 +36,7 @@ const Limousine: React.FC = () => {
 
     return (
         <div className="min-h-screen py-6 m-3 leading-relaxed">
-            <div className="max-w-4xl mx-auto bg-white rounded-2xl overflow-hidden">
+            <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
                 <div className="relative w-full h-96">
                     <Image
                         src={LimousineImage}
@@ -144,9 +144,7 @@ const Limousine: React.FC = () => {
                     </div>
                     <div className="px-4 pb-4 mt-4">
                         <div className="mt-4 space-y-2 bg-pink-50 rounded-2xl p-6">
-                            <h2 className="mb-4">
-                                OneRide Limousine
-                            </h2>
+                            <h2 className="mb-4">OneRide Limousine</h2>
                             <div className="grid grid-cols-[auto,1fr] gap-x-8 gap-y-2">
                                 <strong>メール</strong>
                                 <span>oneride-limousine@example.com</span>
@@ -165,7 +163,7 @@ const Limousine: React.FC = () => {
                                     https://star-limo.jp/
                                 </a>
 
-                                <strong>営業時間:</strong>
+                                <strong>営業時間</strong>
                                 <span>年中無休 10:00～19:00</span>
                             </div>
                         </div>

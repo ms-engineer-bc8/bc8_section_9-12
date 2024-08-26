@@ -34,10 +34,12 @@ export default function Reviews() {
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = e.target.files?.[0];
         if (selectedFile) {
+            console.log("画像を選ぶ:", selectedFile.name, selectedFile.type, selectedFile.size);
             setFile(selectedFile);
             const reader = new FileReader();
             reader.onloadend = () => {
                 setPreviewUrl(reader.result as string);
+                console.log("画像プレビュー用URLを設定");
             };
             reader.readAsDataURL(selectedFile);
         }
@@ -45,6 +47,7 @@ export default function Reviews() {
 
     const handleAddReview = async (e: React.FormEvent) => {
         e.preventDefault();
+        console.log("handleAddReviewの呼び出し");
         setPostError(null);
         if (!reviewText.trim()) {
             setPostError("レビューテキストを入力してください。");
@@ -53,10 +56,12 @@ export default function Reviews() {
         let imageUrl = "";
         if (file) {
             try {
+                console.log("画像をアップロード中:", file.name);
                 const formData = new FormData();
                 formData.append("file", file);
                 const result = await uploadFile(formData);
-                imageUrl = result.url;
+                imageUrl = result.url!;
+                console.log("画像アップロード成功. URL:", imageUrl);
             } catch (error) {
                 console.error("画像アップロードエラー:", error);
                 setPostError("画像のアップロードに失敗しました。");
@@ -67,8 +72,10 @@ export default function Reviews() {
         const newReview: ReviewItem = {
             user_id: 1,
             text: reviewText,
-            image: imageUrl,
+            image: imageUrl || "",
         };
+
+        console.log("Attempting to post review:", newReview);
 
         try {
             const response = await fetch(apiUrl, {
@@ -78,8 +85,10 @@ export default function Reviews() {
                 },
                 body: JSON.stringify(newReview),
             });
+            console.log("Response status:", response.status);
             if (!response.ok) {
                 const errorData = await response.json();
+                console.error("Error response:", errorData);
                 throw new Error(
                     errorData.message ||
                         `レビューの投稿に失敗しました: ${response.status} ${response.statusText}`
@@ -106,10 +115,10 @@ export default function Reviews() {
 
     return (
         <div className="container mx-auto p-5">
-            <div className="max-w-xl mx-auto bg-white rounded-2xl p-8">
+            <div className="max-w-xl mx-auto bg-white shadow-lg rounded-2xl p-8">
                 <form onSubmit={handleAddReview} className="mb-8">
                     <textarea
-                        className="w-full p-4 border rounded-lg mb-4"
+                        className="w-full p-4 border rounded-lg mb-4 h-32"
                         placeholder="新しいレビューを書く..."
                         value={reviewText}
                         onChange={(e) => setReviewText(e.target.value)}
@@ -131,25 +140,24 @@ export default function Reviews() {
                     >
                         レビューを投稿
                     </PinkButton>
-                    {postError && (
-                        <p className="text-red-500 mt-2">{postError}</p>
-                    )}
                 </form>
+
+                {postError && <div className="text-red-500 mb-4">{postError}</div>}
 
                 <div className="space-y-4">
                     {sortedReviews.map((review) => (
                         <div
                             key={review.id}
-                            className="bg-gray-50 rounded-lg p-4"
+                            className="bg-white border border-gray-200 rounded-lg p-4"
                         >
-                            <p className="text-lg font-semibold">
+                            <p className="font-semibold">
                                 {review.nickname}
                             </p>
                             <p className="text-gray-600 mt-2">{review.text}</p>
                             {review.image && (
                                 <img
                                     src={review.image}
-                                    alt="Review image"
+                                    alt="image"
                                     className="mt-4 max-w-full h-auto"
                                 />
                             )}
