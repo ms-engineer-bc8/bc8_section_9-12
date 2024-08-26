@@ -6,11 +6,13 @@ import { toast } from "react-toastify";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AuthSchema, authSchema } from "@/app/commons/types/types";
 import { useAuth } from "@/app/commons/auth/firebaseConfig";
+import { useToken } from "@/app/commons/contexts/contexts";
 import { useRouter } from "next/navigation";
 import { PinkButton } from "@/app/components/ui-elements/button/button";
 
 export default function SignUpForm() {
     const { signUp } = useAuth();
+    const { token, setToken } = useToken();
     const router = useRouter();
 
     const {
@@ -29,6 +31,7 @@ export default function SignUpForm() {
             toast.error("Error: 登録できません");
         } else {
             try {
+                setToken(result);
                 const response = await fetch(
                     `${process.env.NEXT_PUBLIC_API_USERS_URL}`,
                     {
