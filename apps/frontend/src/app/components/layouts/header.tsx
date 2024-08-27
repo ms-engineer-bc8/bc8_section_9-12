@@ -7,7 +7,7 @@ import BizIconImage from "../../commons/images/users/icon_business_login.png";
 import CustomerLogoutIconImage from "../../commons/images/users/icon_customer_logout.png";
 import CustomerLoginIconImage from "../../commons/images/users/icon_customer_login.png";
 import Logo from "../../commons/images/logo/soloco_logo.png";
-import BizLogo from "../../commons/images/logo/logo_business_2.png";
+import BizLogo from "../../commons/images/logo/logo_business.png";
 import UserMenu from "../ui-elements/icon/page";
 import Image from "next/image";
 import { useToken } from "@/app/commons/contexts/contexts";
@@ -60,11 +60,11 @@ export const CustomerHeader = () => {
 export const BusinessHeader = () => (
   <header className="relative">
     <div className="mx-auto">
-      <div className="flex items-center justify-between px-10 py-2 h-20">
+      <div className="flex items-center justify-between px-10 py-2 h-24">
         <div className="flex-shrink-0">
           <Link href="/business">
             <div className="text-xl font-bold">
-              <Image src={BizLogo} width={150} height={50} alt="Logo" />
+              <Image src={BizLogo} width={260} height={50} alt="Logo" />
             </div>
           </Link>
         </div>

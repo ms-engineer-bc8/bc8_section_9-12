@@ -2,29 +2,16 @@
 
 import { useRouter } from "next/navigation";
 
-export const Payment = () => {
-    const router = useRouter();
+export default function Payment() {
+  const router = useRouter();
   return (
     <div className="container mx-auto px-4">
       <h1>Stripe Test購入画面</h1>
-      <button
-        onClick={async () => {
-          const response = await fetch("/api/checkout_api", {
-            method: "post",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              customer_id: "cus_QjsI5fGonXREo7",
-              price_id: "prod_QjrwbAgm6RMZt2",
-            }),
-          }).then((data) => data.json());
-          router.push(response.checkout_url);
-        }}
-      >
-        商品購入ボタン
-      </button>
+      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1PsQVpRtrot4hWan7MAzTRcb"
+        publishable-key="pk_test_51Pgl3DRtrot4hWanexfpBtf594N6Wc58azdYCvUF5dkxCHZrTdC6qzHZUiBGbdnv48DrIaNerPUgbX3FoXxD75Ud00M1LwyvKi"
+      ></stripe-buy-button>
     </div>
   );
-};
-export default Payment;
+}
