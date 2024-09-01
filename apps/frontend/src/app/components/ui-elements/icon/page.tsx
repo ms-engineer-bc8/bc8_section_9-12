@@ -7,18 +7,17 @@ import { toast } from "react-toastify";
 import { useAuth } from "@/app/commons/auth/firebaseConfig";
 import { useToken } from "@/app/commons/contexts/contexts";
 import { useRouter } from "next/navigation";
-import { UserMenuProps } from "@/app/commons/types/types";
 
-const UserMenu: React.FC<UserMenuProps> = ({ iconSrc }) => {
+const UserMenu = ({ iconSrc }) => {
   const { signOut } = useAuth();
-  const { token, setToken} = useToken();
+  const { token, setToken } = useToken();
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  const handleLogout = async (event:React.MouseEvent) => {
+  const handleLogout = async (event: React.MouseEvent) => {
     event.preventDefault();
     const result = await signOut();
-    setToken("")
+    setToken("");
     if (result === "Sign out") {
       toast.success("ログアウトしました");
       router.push("/login");
@@ -43,7 +42,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ iconSrc }) => {
         <div className="absolute right-0 mt-2 w-36 bg-white rounded-md shadow-lg py-1 z-10">
           <Link href="/login" onClick={handleLogout}>
             <p className="block px-4 py-2 font-semibold text-base text-gray-700 hover:text-[#FA6183]">
-              ログアウト
+              {token ? "ログアウト" : "ログイン"}
             </p>
           </Link>
         </div>

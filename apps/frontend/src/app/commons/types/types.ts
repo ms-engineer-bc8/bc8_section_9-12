@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { StaticImageData } from "next/image";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, ReactNode } from "react";
 
 export type CategoryTag = {
   id: number;
@@ -123,6 +123,6 @@ export type TokenProps = {
   setToken: Dispatch<SetStateAction<string>>;
 };
 
-export type UserMenuProps = {
-  iconSrc: string;
-}
+export type TokenProviderProps = {
+  children: ReactNode;
+};
