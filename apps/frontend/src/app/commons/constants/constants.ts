@@ -5,7 +5,5 @@ export const CUSTOMER_NAVIGATION_LINKS = [
 
 // to business
 export const BUSINESS_NAVIGATION_LINKS = [
-    { label: "ホーム", href: "/business/lp" },
-    { label: "レポート", href: "/business" },
     { label: "ログイン", href: "/business/login" },
 ];

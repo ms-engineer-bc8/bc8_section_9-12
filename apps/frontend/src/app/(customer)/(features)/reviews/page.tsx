@@ -5,7 +5,7 @@ import useSWR, { mutate } from "swr";
 import { useRouter } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
 import { ReviewProps, ReviewItem } from "@/app/commons/types/types";
-import { uploadFile } from "@/app/commons/images/s3/imageActions";
+import { uploadFile } from "../../../commons/images/s3/imageActions";
 import LikeButton from "@/app/components/ui-elements/button/like/like";
 import FavoriteButton from "@/app/components/ui-elements/button/favorite/favorite";
 import { PinkButton } from "@/app/components/ui-elements/button/button";
