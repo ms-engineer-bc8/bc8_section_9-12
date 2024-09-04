@@ -1,58 +1,76 @@
-import React from "react";
+"use client";
+
+import React from 'react';
 import { PinkButton } from "@/app/components/ui-elements/button/button";
 import Link from "next/link";
+import Image from 'next/image';
+import TopImage from "@/app/commons/images/background/firstView.png"
+import BottomImage from "@/app/commons/images/background/firstView02.png"
 
-export default function LandingPage() {
+const LandingPage = () => {
     return (
-        <>
-            <div className="flex flex-col justify-center">
-                <main className="container mx-auto px-4 py-8">
-                    <section className="text-center mb-16 flex flex-col items-center justify-center m-10">
-                        <h1 className="md:text-6xl font-bold mb-8 text-center inline-block">
-                            <span className="text-pink-500 text-6xl bg-white px-2 py-1 bg-white">
-                                "
-                            </span>
-                            <span className="text-6xl bg-white px-2 py-1">
-                                ひとりで挑戦できること
-                            </span>
-                            <span className="text-pink-500 text-6xl bg-white px-2 py-1 bg-white">
-                                "
-                            </span>
-                        </h1>
-                        <h1 className="md:text-6xl font-bold mb-8 text-center inline-block mt-10 mb-16">
-                            <span className="text-6xl bg-white px-2 py-1">
-                                はもっとある
-                            </span>
-                        </h1>
-                        <Link href="/register">
-                            <div className="inline-block">
-                                <PinkButton className="text-lg px-6 py-3 rounded-full mt-8">
-                                    今すぐ登録
-                                </PinkButton>
-                            </div>
-                        </Link>
-                    </section>
-
-                    <section className="grid md:grid-cols-2 gap-8">
-                        <div className="bg-white p-6 rounded-lg shadow-md">
-                            <h2 className="text-2xl text-pink-5000 font-semibold mb-4">
-                                1. 新しいソロ活を提案
-                            </h2>
-                            <p className="text-gray-600">
-                                今までになかった新しいソロ活のアイディアを提案します。
-                            </p>
+        <div className="relative min-h-screen overflow-hidden">
+            <div className="absolute inset-0 flex flex-col justify-between py-12">
+                <div className="w-full h-1/5 overflow-hidden">
+                    <div className="w-[200%] h-full animate-scroll-left flex">
+                        <div className="w-1/2 h-full flex-shrink-0 relative">
+                            <Image
+                                src={TopImage}
+                                alt="top"
+                                layout="fill"
+                                objectFit="contain"
+                            />
                         </div>
-                        <div className="bg-white p-6 rounded-lg shadow-md">
-                            <h2 className="text-2xl text-pink-5000 font-semibold mb-4">
-                                2. 体験したソロ活をシェア
-                            </h2>
-                            <p className="text-gray-600">
-                                あなたが体験したソロ活を色んな人とシェアして、もっとアイディアを広げましょう！
-                            </p>
+                        <div className="w-1/2 h-full flex-shrink-0 relative">
+                            <Image
+                                src={TopImage}
+                                alt="top"
+                                layout="fill"
+                                objectFit="contain"
+                            />
                         </div>
-                    </section>
-                </main>
+                    </div>
+                </div>
+                <div className="w-full h-1/5 overflow-hidden">
+                    <div className="w-[200%] h-full animate-scroll-right flex">
+                        <div className="w-1/2 h-full flex-shrink-0 relative">
+                            <Image
+                                src={BottomImage}
+                                alt="bottom"
+                                layout="fill"
+                                objectFit="contain"
+                            />
+                        </div>
+                        <div className="w-1/2 h-full flex-shrink-0 relative">
+                            <Image
+                                src={BottomImage}
+                                alt="bottom"
+                                layout="fill"
+                                objectFit="contain"
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
-        </>
+            <div className="relative z-10 flex flex-col items-center justify-center min-h-screen">
+                <div className="text-center max-w-3xl px-4">
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">
+                        <span className="bg-white px-2 py-1">ひとりで挑戦できることは</span>
+                    </h1>
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 mt-4">
+                        <span className="bg-white px-2 py-1">もっとある</span>
+                    </h1>
+                    <Link href="/register">
+                        <div className="inline-block">
+                            <PinkButton className="text-lg px-6 py-3 rounded-full mt-8">
+                                今すぐ登録
+                            </PinkButton>
+                        </div>
+                    </Link>
+                </div>
+            </div>
+        </div>
     );
-}
+};
+
+export default LandingPage;

@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { PinkButton } from "@/app/components/ui-elements/button/button";
 import Image from "next/image";
 import SpecialType from "../../../../../commons/images/types/special.png";
+import BallPulseSyncLoading from "@/app/components/ui-elements/loading/loading";
 
 type SoloTypeResultProp = {
     solo_type: string;
@@ -57,9 +58,7 @@ const SoloTypeResult = () => {
         router.push("/");
     };
 
-    if (isLoading) {
-        return <div className="text-center py-8">読み込み中...</div>;
-    }
+    if (isLoading) return <BallPulseSyncLoading />;
 
     return (
         <div className="container mx-auto max-w-xl p-4">
@@ -70,7 +69,7 @@ const SoloTypeResult = () => {
                 {soloTypeData && soloTypeData.solo_type ? (
                     <>
                         <h2 className="text-center mb-6 text-pink-500 font-bold">
-                            {soloTypeData.solo_type}
+                            「{soloTypeData.solo_type}」
                         </h2>
                         <div className="flex justify-center mb-6">
                             <Image
@@ -81,10 +80,11 @@ const SoloTypeResult = () => {
                             />
                         </div>
                         <div>
-                            <p className="mb-10 mt-4 px-14">
-                                現代の優雅な放浪者、それがあなた！財布の中身は「一生に一度の体験」のため。
-                                街でリムジンを見れば「私の車かしら」とつぶやき、休日の予定は「気球で空中ピクニック」。周りはきっと羨望の眼差し！
-                                さぁ、特別な体験を求めて街へ。財布には気をつけて、次はソロ宇宙旅行かも？🚀💫
+                            <p className="mb-10 mt-4 px-14 text-base text-center">
+                                現代の優雅な冒険者、それがあなた！<br />
+                                財布の中身は「一生に一度の体験」のため💃<br />
+                                街でリムジンを見れば「私の車かしら」とつぶやき、休日の予定は「気球で空中ピクニック」🌌<br />
+                                周りはきっと羨望の眼差し👀
                             </p>
                         </div>
                     </>

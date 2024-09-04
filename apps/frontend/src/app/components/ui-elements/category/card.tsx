@@ -23,7 +23,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
                     <h2 className="font-semibold text-gray-800 mb-2 truncate">
                         {title}
                     </h2>
-                    <span className="text-gray-600 mb-3 line-clamp-2">
+                    <span className="text-base text-gray-600 mb-3 line-clamp-2">
                         {description}
                     </span>
                 </div>

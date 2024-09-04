@@ -7,6 +7,7 @@ import ActivityList from "./activityList";
 import { ActivitiesProps } from "@/app/commons/types/types";
 import Heading from "@/app/components/ui-elements/heading";
 import { useToken } from "@/app/commons/contexts/contexts";
+import BallPulseSyncLoading from "@/app/components/ui-elements/loading/loading"
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -26,7 +27,7 @@ const ActivityPage: React.FC = () => {
         isLoading,
     } = useSWR<ActivitiesProps[]>(apiUrl, fetcher);
 
-    if (isLoading) return <div>ローディング中...</div>;
+    if (isLoading) return <BallPulseSyncLoading />;
     if (error) return <div>エラーが発生しました</div>;
     if (!activities) return <div>アクティビティが見つかりません</div>;
 

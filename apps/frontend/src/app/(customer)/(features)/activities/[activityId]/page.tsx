@@ -12,6 +12,7 @@ import Dress from "../../../../commons/images/activities/dress.jpg";
 import Tokyo_Scenery from "../../../../commons/images/activities/tokyo.jpg";
 import StaffMegumi from "../../../../commons/images/activities/megumi.png";
 import SpeechBubble from "./speech";
+import BallPulseSyncLoading from "@/app/components/ui-elements/loading/loading"
 
 const Limousine: React.FC = () => {
     const { token } = useToken();
@@ -30,7 +31,7 @@ const Limousine: React.FC = () => {
         isLoading,
     } = useSWR<ActivityProps>(apiUrl, fetcher);
 
-    if (isLoading) return <div>ローディング中...</div>;
+    if (isLoading) return <BallPulseSyncLoading />;
     if (error) return <div>エラーが発生しました</div>;
     if (!activity) return <div>アクティビティが見つかりません</div>;
 

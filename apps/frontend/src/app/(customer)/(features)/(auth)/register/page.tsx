@@ -87,7 +87,7 @@ export default function SignUpForm() {
                             htmlFor="password"
                             className="block text-sm font-medium text-gray-700 mb-1"
                         >
-                            パスワード
+                            パスワード（8文字以上）
                             <span className="text-sm font-medium text-red-600 ml-2">
                                 必須
                             </span>

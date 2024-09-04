@@ -9,8 +9,8 @@ export const mockActivities: ActivitiesProps[] = [
         provider_name: "OneRide Limousine",
         time_zone: "夜",
         solo_level: "上級",
-        likes_count: 10,
-        favorites_count: 20,
+        likes_count: 38,
+        favorites_count: 27,
     },
     {
         id: 2,
