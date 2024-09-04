@@ -5,10 +5,11 @@ import useSWR, { mutate } from "swr";
 import { useRouter } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
 import { ReviewProps, ReviewItem } from "@/app/commons/types/types";
-import { uploadFile } from "@/app/commons/images/s3/imageActions";
+import { uploadFile } from "../../../commons/images/s3/imageActions";
 import LikeButton from "@/app/components/ui-elements/button/like/like";
 import FavoriteButton from "@/app/components/ui-elements/button/favorite/favorite";
 import { PinkButton } from "@/app/components/ui-elements/button/button";
+import BallPulseSyncLoading from "@/app/components/ui-elements/loading/loading";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const apiUrl = `${process.env.NEXT_PUBLIC_API_REVIEWS_URL}`;
@@ -105,7 +106,7 @@ export default function Reviews() {
         }
     };
 
-    if (isLoading) return <div>ローディング中...</div>;
+    if (isLoading) return <BallPulseSyncLoading />;
     if (error) return <div>エラーが発生しました: {error.message}</div>;
     if (!reviews) return <div>レビューが見つかりません</div>;
 
