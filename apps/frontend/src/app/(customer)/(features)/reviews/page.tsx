@@ -18,7 +18,7 @@ export default function Reviews() {
     const { token } = useToken();
     const router = useRouter();
 
-    if (token === ""){
+    if (token === "") {
         router.push("/login");
     }
 
@@ -35,7 +35,12 @@ export default function Reviews() {
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = e.target.files?.[0];
         if (selectedFile) {
-            console.log("画像を選ぶ:", selectedFile.name, selectedFile.type, selectedFile.size);
+            console.log(
+                "画像を選ぶ:",
+                selectedFile.name,
+                selectedFile.type,
+                selectedFile.size
+            );
             setFile(selectedFile);
             const reader = new FileReader();
             reader.onloadend = () => {
@@ -51,7 +56,7 @@ export default function Reviews() {
         console.log("handleAddReviewの呼び出し");
         setPostError(null);
         if (!reviewText.trim()) {
-            setPostError("レビューテキストを入力してください。");
+            setPostError("テキストを入力してください。");
             return;
         }
         let imageUrl = "";
@@ -110,8 +115,10 @@ export default function Reviews() {
     if (error) return <div>エラーが発生しました: {error.message}</div>;
     if (!reviews) return <div>レビューが見つかりません</div>;
 
-    const sortedReviews = [...reviews].sort((a, b) =>
-        new Date(b.update_date).getTime() - new Date(a.update_date).getTime()
+    const sortedReviews = [...reviews].sort(
+        (a, b) =>
+            new Date(b.update_date).getTime() -
+            new Date(a.update_date).getTime()
     );
 
     return (
@@ -120,7 +127,7 @@ export default function Reviews() {
                 <form onSubmit={handleAddReview} className="mb-8">
                     <textarea
                         className="w-full p-4 border rounded-lg mb-4 h-32"
-                        placeholder="新しいレビューを書く..."
+                        placeholder="新しいソロ活体験を書く..."
                         value={reviewText}
                         onChange={(e) => setReviewText(e.target.value)}
                     />
@@ -136,47 +143,49 @@ export default function Reviews() {
                             className="mb-4 max-w-full h-auto"
                         />
                     )}
-                    <PinkButton
-                        type="submit"
-                    >
-                        レビューを投稿
-                    </PinkButton>
+                    <PinkButton type="submit">レビューを投稿</PinkButton>
                 </form>
 
-                {postError && <div className="text-red-500 mb-4">{postError}</div>}
+                {postError && (
+                    <div className="text-red-500 mb-4">{postError}</div>
+                )}
 
                 <div className="space-y-4">
                     {sortedReviews.map((review) => (
                         <div
                             key={review.id}
-                            className="bg-white border border-gray-200 rounded-lg p-4"
+                            className="bg-white border border-gray-200 rounded-lg p-5"
                         >
-                            <p className="font-semibold">
-                                {review.nickname}
-                            </p>
-                            <p className="text-gray-600 mt-2">{review.text}</p>
+                            <p className="font-bold">{review.nickname}</p>
+                            <p className="text-gray-700 mt-2">{review.text}</p>
                             {review.image && (
                                 <img
                                     src={review.image}
                                     alt="image"
-                                    className="mt-4 max-w-full h-auto"
+                                    className="mt-4 max-w-full h-auto rounded-xl"
                                 />
                             )}
                             <div className="flex justify-between items-center mt-4">
-                                <p className="text-sm text-gray-500">
-                                    更新日:{" "}
+                                <p className="text-[16px] text-gray-400">
+                                    投稿日：{" "}
                                     {new Date(
                                         review.update_date
                                     ).toLocaleDateString()}
                                 </p>
-                                <div className="flex space-x-4">
-                                <span className="flex items-center">
-                                    <LikeButton initialLikes={review.likes_count} />
-                                </span>
-                                <span className="flex items-center">
-                                    <FavoriteButton initialFavorites={review.favorites_count} />
-                                </span>
-                            </div>
+                                <div className="flex space-x-5">
+                                    <span className="flex items-center">
+                                        <LikeButton
+                                            initialLikes={review.likes_count}
+                                        />
+                                    </span>
+                                    <span className="flex items-center">
+                                        <FavoriteButton
+                                            initialFavorites={
+                                                review.favorites_count
+                                            }
+                                        />
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     ))}

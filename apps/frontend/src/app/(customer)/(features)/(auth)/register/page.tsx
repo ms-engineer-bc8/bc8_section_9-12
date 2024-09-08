@@ -45,7 +45,7 @@ export default function SignUpForm() {
                 const userId = await response.json();
                 console.log("成功", userId);
                 toast.success("ユーザー登録完了！");
-                router.push(`/solo-type/test?userId=${userId}`);
+                router.push(`/solo-type/test?userId=${userId.id}`);
             } catch (error) {
                 console.error("エラー:", error);
             }
