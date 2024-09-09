@@ -100,7 +100,7 @@ export default function LandingPage() {
                                                 特徴①
                                             </p>
                                             <h3 className="text-pink-500 font-bold text-2xl md:text-2xl mb-6">
-                                                様々なソロ活に出会える！
+                                                様々なソロ活を提案してくれる！
                                             </h3>
                                             <p className="text-gray-700 text-lg md:text-lg leading-relaxed">
                                                 ソロ活といえば「映画」「ショッピング」「旅行」「カラオケ」...。

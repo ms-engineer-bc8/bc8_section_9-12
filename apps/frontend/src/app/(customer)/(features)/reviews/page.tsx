@@ -76,7 +76,7 @@ export default function Reviews() {
         }
 
         const newReview: ReviewItem = {
-            user_id: 310,
+            user_id: 317,
             text: reviewText,
             image: imageUrl || "",
         };
