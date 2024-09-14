@@ -72,3 +72,6 @@ yarn-error.log*
 /apps/backend/*~
 /apps/backend/.*.sw?
 /apps/backend/.cache
+
+# macOS
+/apps/.DS_Store

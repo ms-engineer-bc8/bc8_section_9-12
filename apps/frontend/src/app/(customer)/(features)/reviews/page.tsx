@@ -76,7 +76,7 @@ export default function Reviews() {
         }
 
         const newReview: ReviewItem = {
-            user_id: 317,
+            user_id: 318,
             text: reviewText,
             image: imageUrl || "",
         };
@@ -143,7 +143,7 @@ export default function Reviews() {
                             className="mb-4 max-w-full h-auto"
                         />
                     )}
-                    <PinkButton type="submit">レビューを投稿</PinkButton>
+                    <PinkButton type="submit">投稿する</PinkButton>
                 </form>
 
                 {postError && (
