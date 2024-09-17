@@ -1,7 +1,10 @@
-import ActiveCategoryImage from "../../../../../public/images/category/active.jpg";
-import SpecialCategoryImage from "../../../../../public/images/category/special.jpg";
-import RelaxCategoryImage from "../../../../../public/images/category/relax.jpg";
-import GourmetCategoryImage from "../../../../../public/images/category/gourmet.jpg";
+import { getImageUrl } from "@/app/commons/utils/imageUtils";
+
+// S3から画像取得
+const ActiveCategoryImage = getImageUrl("active.jpg");
+const SpecialCategoryImage = getImageUrl("special.jpg");
+const RelaxCategoryImage = getImageUrl("relax.jpg");
+const GourmetCategoryImage = getImageUrl("gourmet.jpg");
 
 export const categoryData = [
     {
