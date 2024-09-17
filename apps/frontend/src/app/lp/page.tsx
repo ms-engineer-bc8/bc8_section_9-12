@@ -3,11 +3,14 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import FVImage from "@public/images/background/firstView.png";
-import Logo from "@public/images/logo/soloco_logo.png";
-import FeatureOne from "@public/images/lp/gallery.jpg";
-import FeatureTwo from "@public/images/lp/sns.jpg";
+import { getImageUrl } from "../commons/utils/imageUtils";
 import { LandingPageHeader } from "../components/layouts/header";
+
+// S3から画像取得
+const FVImage = getImageUrl("firstView.png");
+const FeatureOne = getImageUrl("feature01.jpg");
+const FeatureTwo = getImageUrl("feature02.jpg");
+const Logo = getImageUrl("soloco_logo.png");
 
 export default function LandingPage() {
     return (
@@ -49,6 +52,7 @@ export default function LandingPage() {
                             className="object-contain"
                             priority
                             quality={100}
+                            fill // layout="fill"の代わりにfillを使用
                         />
                     </div>
                 </div>
