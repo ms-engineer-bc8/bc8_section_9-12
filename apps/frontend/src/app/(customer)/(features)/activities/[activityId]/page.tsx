@@ -6,11 +6,11 @@ import useSWR from "swr";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
-import LimousineImage from "../../../../commons/images/activities/limousine.jpg";
+import LimousineImage from "@public/images/activities/limousine.jpg";
 import OneRideLimousineTimeline from "./timeline";
-import Dress from "../../../../commons/images/activities/dress.jpg";
-import Tokyo_Scenery from "../../../../commons/images/activities/tokyo.jpg";
-import StaffMegumi from "../../../../commons/images/activities/megumi.png";
+import Dress from "@public/images/activities/dress.jpg";
+import Tokyo_Scenery from "@public/images/activities/tokyo.jpg";
+import StaffMegumi from "@public/images/activities/megumi.png";
 import SpeechBubble from "./speech";
 import BallPulseSyncLoading from "@/app/components/ui-elements/loading/loading"
 

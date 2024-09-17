@@ -1,7 +1,7 @@
-import ActiveCategoryImage from "@/app/commons/images/category/active.jpg";
-import SpecialCategoryImage from "@/app/commons/images/category/special.jpg"
-import RelaxCategoryImage from "@/app/commons/images/category/relax.jpg"
-import GourmetCategoryImage from "@/app/commons/images/category/gourmet.jpg"
+import ActiveCategoryImage from "../../../../../public/images/category/active.jpg";
+import SpecialCategoryImage from "../../../../../public/images/category/special.jpg";
+import RelaxCategoryImage from "../../../../../public/images/category/relax.jpg";
+import GourmetCategoryImage from "../../../../../public/images/category/gourmet.jpg";
 
 export const categoryData = [
     {

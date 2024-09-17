@@ -3,10 +3,10 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import FVImage from "@/app/commons/images/background/firstView.png";
-import Logo from "@/app/commons/images/logo/soloco_logo.png";
-import FeatureOne from "@/app/commons/images/lp/gallery.jpg";
-import FeatureTwo from "@/app/commons/images/lp/sns.jpg";
+import FVImage from "@public/images/background/firstView.png";
+import Logo from "@public/images/logo/soloco_logo.png";
+import FeatureOne from "@public/images/lp/gallery.jpg";
+import FeatureTwo from "@public/images/lp/sns.jpg";
 import { LandingPageHeader } from "../components/layouts/header";
 
 export default function LandingPage() {
@@ -140,7 +140,6 @@ export default function LandingPage() {
                     </div>
                 </div>
 
-                {/* Footer */}
                 <footer className="py-4">
                     <div className="container mx-auto max-w-6xl">
                         <div className="my-2 text-center">

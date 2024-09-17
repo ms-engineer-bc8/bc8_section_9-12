@@ -11,7 +11,7 @@ const zenKakuGothicNew = Zen_Kaku_Gothic_New({
 export const metadata: Metadata = {
     title: "Soloco",
     description:
-        "ソロの女性が新しいソロ活に出会い、お互いのソロ活をシェアするためのアプリです。",
+        "「ソロ活」する女性が新しい一歩を踏み出すのをお手伝いするアプリです。",
 };
 
 export default function CustomerLayout({
