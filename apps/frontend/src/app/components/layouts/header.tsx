@@ -2,15 +2,18 @@
 
 import React from "react";
 import Link from "next/link";
-import { CUSTOMER_NAVIGATION_LINKS } from "@/app/commons/constants/constants";
-import BizIconImage from "../../../../public/images/users/icon_business_login.png";
-import CustomerLogoutIconImage from "../../../../public/images/users/icon_customer_logout.png";
-import CustomerLoginIconImage from "../../../../public/images/users/icon_customer_login.png";
-import Logo from "../../../../public/images/logo/soloco_logo.png";
-import BizLogo from "../../../../public/images/logo/logo_business.png";
-import UserMenu from "../ui-elements/icon/page";
 import Image from "next/image";
+import { getImageUrl } from "@/app/commons/utils/imageUtils";
+import { CUSTOMER_NAVIGATION_LINKS } from "@/app/commons/constants/constants";
+import UserMenu from "../ui-elements/icon/page";
 import { useToken } from "@/app/commons/contexts/contexts";
+
+// S3から画像取得
+const Logo = getImageUrl("soloco_logo.png");
+const BizLogo = getImageUrl("logo_business.png");
+const CustomerLogoutIconImage = getImageUrl("icon_customer_logout.png");
+const CustomerLoginIconImage = getImageUrl("icon_customer_login.png");
+const BizIconImage = getImageUrl("icon_business_login.png");
 
 const CustomerNavigationMenu = () => (
     <nav className="h-full flex items-center">

@@ -46,6 +46,10 @@ export type ActivityProps = {
   url: string;
 };
 
+export type ActivityCardProps = {
+  activity: ActivitiesProps;
+};
+
 export type ReviewProps = {
   id: number;
   nickname: string;
