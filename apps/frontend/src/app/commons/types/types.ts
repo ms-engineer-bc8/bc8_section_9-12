@@ -80,6 +80,11 @@ export type SoloTypeFormProps = {
   comfort_adventure: string;
 };
 
+export type SoloTypeResultProp = {
+  solo_type: string;
+  userId: string;
+};
+
 export type UserRegisterProps = {
   email: string;
   nickname: string;

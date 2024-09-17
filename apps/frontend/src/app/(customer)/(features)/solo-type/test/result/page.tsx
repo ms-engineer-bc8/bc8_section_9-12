@@ -1,18 +1,15 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
 import { toast } from "react-toastify";
+import { getImageUrl } from "@/app/commons/utils/imageUtils";
 import { PinkButton } from "@/app/components/ui-elements/button/button";
-import Image from "next/image";
-import SpecialType from "../../../../../commons/images/types/special.png";
-import BallPulseSyncLoading from "@/app/components/ui-elements/loading/loading";
+import { SoloTypeResultProp } from "@/app/commons/types/types";
 
-type SoloTypeResultProp = {
-    solo_type: string;
-    userId: string;
-};
+const SpecialType = getImageUrl("special.png");
 
 const SoloTypeResult = () => {
     const { token } = useToken();
@@ -57,8 +54,6 @@ const SoloTypeResult = () => {
     const handleReturnToTop = () => {
         router.push("/");
     };
-
-    if (isLoading) return <BallPulseSyncLoading />;
 
     return (
         <div className="container mx-auto max-w-xl p-4">
