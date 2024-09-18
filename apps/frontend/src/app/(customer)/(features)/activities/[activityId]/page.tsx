@@ -9,13 +9,13 @@ import { useToken } from "@/app/commons/contexts/contexts";
 import { getImageUrl } from "@/app/commons/utils/imageUtils";
 import OneRideLimousineTimeline from "./timeline";
 import SpeechBubble from "./speech";
-import BallPulseSyncLoading from "@/app/components/ui-elements/loading/loading"
+import BallPulseSyncLoading from "@/app/components/ui-elements/Loading/Loading";
 
 // S3から画像取得
 const LimousineImage = getImageUrl("limousine.jpg");
 const Dress = getImageUrl("dress.jpg");
 const Tokyo_Scenery = getImageUrl("tokyo.jpg");
-const StaffMegumi = getImageUrl("megumi.png")
+const StaffMegumi = getImageUrl("megumi.png");
 
 const Limousine: React.FC = () => {
     const { token } = useToken();

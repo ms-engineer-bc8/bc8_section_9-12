@@ -1,9 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import { ActivityGroupProps } from "@/app/commons/types/types";
-import ActivityCard from "@/app/components/ui-elements/activity/activity";
-import ScrollButton from "@/app/components/ui-elements/button/scroll/scroll";
+import ActivityCard from "@/app/components/ui-elements/Activity/Activity";
+import ScrollButton from "@/app/components/ui-elements/Button/Scroll/Scroll";
 
-const ActivityGroup: React.FC<ActivityGroupProps> = ({ subcategory, activities }) => {
+const ActivityGroup: React.FC<ActivityGroupProps> = ({
+    subcategory,
+    activities,
+}) => {
     const [showLeftArrow, setShowLeftArrow] = useState(false);
     const [showRightArrow, setShowRightArrow] = useState(true);
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -24,7 +27,8 @@ const ActivityGroup: React.FC<ActivityGroupProps> = ({ subcategory, activities }
         if (container) {
             setShowLeftArrow(container.scrollLeft > 0);
             setShowRightArrow(
-                container.scrollLeft < container.scrollWidth - container.clientWidth
+                container.scrollLeft <
+                    container.scrollWidth - container.clientWidth
             );
         }
     };
@@ -34,7 +38,8 @@ const ActivityGroup: React.FC<ActivityGroupProps> = ({ subcategory, activities }
         const container = scrollContainerRef.current;
         if (container) {
             container.addEventListener("scroll", checkScrollPosition);
-            return () => container.removeEventListener("scroll", checkScrollPosition);
+            return () =>
+                container.removeEventListener("scroll", checkScrollPosition);
         }
     }, [activities]);
 
@@ -48,12 +53,23 @@ const ActivityGroup: React.FC<ActivityGroupProps> = ({ subcategory, activities }
                 >
                     <div className="flex space-x-4 px-4 transition-transform duration-300 ease-in-out">
                         {activities.map((activity) => (
-                            <ActivityCard key={activity.id} activity={activity} />
+                            <ActivityCard
+                                key={activity.id}
+                                activity={activity}
+                            />
                         ))}
                     </div>
                 </div>
-                <ScrollButton direction="left" onClick={() => scroll("left")} show={showLeftArrow} />
-                <ScrollButton direction="right" onClick={() => scroll("right")} show={showRightArrow} />
+                <ScrollButton
+                    direction="left"
+                    onClick={() => scroll("left")}
+                    show={showLeftArrow}
+                />
+                <ScrollButton
+                    direction="right"
+                    onClick={() => scroll("right")}
+                    show={showRightArrow}
+                />
             </div>
         </div>
     );

@@ -6,10 +6,10 @@ import { useRouter } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
 import { ReviewProps, ReviewItem } from "@/app/commons/types/types";
 import { uploadFile } from "../../../commons/images/s3/imageActions";
-import LikeButton from "@/app/components/ui-elements/button/like/like";
-import FavoriteButton from "@/app/components/ui-elements/button/favorite/favorite";
-import { PinkButton } from "@/app/components/ui-elements/button/button";
-import BallPulseSyncLoading from "@/app/components/ui-elements/loading/loading";
+import LikeButton from "@/app/components/ui-elements/Button/Like/Like";
+import FavoriteButton from "@/app/components/ui-elements/Button/Favorite/Favorite";
+import { PinkButton } from "@/app/components/ui-elements/Button/Button";
+import BallPulseSyncLoading from "@/app/components/ui-elements/Loading/Loading";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const apiUrl = `${process.env.NEXT_PUBLIC_API_REVIEWS_URL}`;

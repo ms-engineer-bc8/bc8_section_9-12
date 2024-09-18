@@ -1,12 +1,11 @@
 export const questions = [
     {
         id: "solo_level",
-        question: "燃費が悪い？",
+        question: "ソロ活の経験は？",
+        icon: "🤔",
         options: [
-            { value: "悪い", label: "悪い" },
-            { value: "問題ない", label: "問題ない" },
-            { value: "まぁまぁ", label: "まぁまぁ" },
-            { value: "超良い", label: "超良い" },
+            { value: "初心者", label: "初心者" },
+            { value: "経験者", label: "経験者" },
         ],
     },
     {

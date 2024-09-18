@@ -3,8 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { getImageUrl } from "../commons/utils/imageUtils";
-import { LandingPageHeader } from "../components/layouts/header";
+import { getImageUrl } from "../../commons/utils/imageUtils";
+import { LandingPageHeader } from "../../components/layouts/Header";
 
 // S3から画像取得
 const FVImage = getImageUrl("firstView.png");
@@ -52,7 +52,8 @@ export default function LandingPage() {
                             className="object-contain"
                             priority
                             quality={100}
-                            fill
+                            width={850}
+                            height={650}
                         />
                     </div>
                 </div>

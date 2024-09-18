@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
 import { toast } from "react-toastify";
 import { getImageUrl } from "@/app/commons/utils/imageUtils";
-import { PinkButton } from "@/app/components/ui-elements/button/button";
+import { PinkButton } from "@/app/components/ui-elements/Button/Button";
 import { SoloTypeResultProp } from "@/app/commons/types/types";
 
 const SpecialType = getImageUrl("special.png");
@@ -15,7 +15,7 @@ const SoloTypeResult = () => {
     const { token } = useToken();
     const router = useRouter();
 
-    if (token === ""){
+    if (token === "") {
         router.push("/login");
     }
 
@@ -76,9 +76,12 @@ const SoloTypeResult = () => {
                         </div>
                         <div>
                             <p className="mb-10 mt-4 px-14 text-base text-center">
-                                現代の優雅な冒険者、それがあなた！<br />
-                                財布の中身は「一生に一度の体験」のため💃<br />
-                                街でリムジンを見れば「私の車かしら」とつぶやき、休日の予定は「気球で空中ピクニック」🌌<br />
+                                現代の優雅な冒険者、それがあなた！
+                                <br />
+                                財布の中身は「一生に一度の体験」のため💃
+                                <br />
+                                街でリムジンを見れば「私の車かしら」とつぶやき、休日の予定は「気球で空中ピクニック」🌌
+                                <br />
                                 周りはきっと羨望の眼差し👀
                             </p>
                         </div>

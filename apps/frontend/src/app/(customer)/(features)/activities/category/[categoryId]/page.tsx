@@ -5,9 +5,9 @@ import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import ActivityList from "./activityList";
 import { ActivitiesProps } from "@/app/commons/types/types";
-import Heading from "@/app/components/ui-elements/heading";
+import Heading from "@/app/components/ui-elements/Heading";
 import { useToken } from "@/app/commons/contexts/contexts";
-import BallPulseSyncLoading from "@/app/components/ui-elements/loading/loading"
+import BallPulseSyncLoading from "@/app/components/ui-elements/Loading/Loading";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -15,7 +15,7 @@ const ActivityPage: React.FC = () => {
     const { token } = useToken();
     const router = useRouter();
 
-    if (token === ""){
+    if (token === "") {
         router.push("/login");
     }
 

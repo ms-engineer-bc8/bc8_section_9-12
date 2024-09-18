@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import CategoryCard from "./card";
-import { categoryData } from "./data";
+import CategoryCard from "./Card";
+import { categoryData } from "./Data";
 
 const CategoryList: React.FC = () => {
     return (
