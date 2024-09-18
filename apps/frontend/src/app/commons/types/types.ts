@@ -46,6 +46,10 @@ export type ActivityProps = {
   url: string;
 };
 
+export type ActivityCardProps = {
+  activity: ActivitiesProps;
+};
+
 export type ReviewProps = {
   id: number;
   nickname: string;
@@ -74,6 +78,11 @@ export type SoloTypeFormProps = {
   weekend_plan_preference: boolean;
   after_work_preference: string;
   comfort_adventure: string;
+};
+
+export type SoloTypeResultProp = {
+  solo_type: string;
+  userId: string;
 };
 
 export type UserRegisterProps = {

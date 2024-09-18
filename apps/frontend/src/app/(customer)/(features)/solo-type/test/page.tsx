@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { SoloTypeFormProps } from "@/app/commons/types/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
-import { PinkButton } from "@/app/components/ui-elements/button/button";
+import { PinkButton } from "@/app/components/ui-elements/Button/Button";
 import { questions } from "./questions";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -18,7 +18,7 @@ const SoloTypeForm: React.FC = () => {
     const { token } = useToken();
     const router = useRouter();
 
-    if (token === ""){
+    if (token === "") {
         router.push("/login");
     }
 
@@ -147,7 +147,9 @@ const SoloTypeForm: React.FC = () => {
                                     <PinkButton
                                         type="submit"
                                         disabled={!isFormComplete}
-                                        className={!isFormComplete ? "opacity-50" : ""}
+                                        className={
+                                            !isFormComplete ? "opacity-50" : ""
+                                        }
                                     >
                                         診断する
                                     </PinkButton>

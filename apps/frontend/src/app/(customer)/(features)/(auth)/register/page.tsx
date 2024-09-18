@@ -8,7 +8,7 @@ import { AuthSchema, authSchema } from "@/app/commons/types/types";
 import { useAuth } from "@/app/commons/auth/firebaseConfig";
 import { useToken } from "@/app/commons/contexts/contexts";
 import { useRouter } from "next/navigation";
-import { PinkButton } from "@/app/components/ui-elements/button/button";
+import { PinkButton } from "@/app/components/ui-elements/Button/Button";
 
 export default function SignUpForm() {
     const { signUp } = useAuth();
@@ -45,7 +45,7 @@ export default function SignUpForm() {
                 const userId = await response.json();
                 console.log("成功", userId);
                 toast.success("ユーザー登録完了！");
-                router.push(`/solo-type/test?userId=${userId}`);
+                router.push(`/solo-type/test?userId=${userId.id}`);
             } catch (error) {
                 console.error("エラー:", error);
             }

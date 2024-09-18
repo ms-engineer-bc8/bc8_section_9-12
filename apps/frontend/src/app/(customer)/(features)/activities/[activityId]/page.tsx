@@ -1,18 +1,21 @@
 "use client";
 
 import React from "react";
-import { ActivityProps } from "@/app/commons/types/types";
 import useSWR from "swr";
 import Image from "next/image";
+import { ActivityProps } from "@/app/commons/types/types";
 import { useRouter } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
-import LimousineImage from "../../../../commons/images/activities/limousine.jpg";
+import { getImageUrl } from "@/app/commons/utils/imageUtils";
 import OneRideLimousineTimeline from "./timeline";
-import Dress from "../../../../commons/images/activities/dress.jpg";
-import Tokyo_Scenery from "../../../../commons/images/activities/tokyo.jpg";
-import StaffMegumi from "../../../../commons/images/activities/megumi.png";
 import SpeechBubble from "./speech";
-import BallPulseSyncLoading from "@/app/components/ui-elements/loading/loading"
+import BallPulseSyncLoading from "@/app/components/ui-elements/Loading/Loading";
+
+// S3から画像取得
+const LimousineImage = getImageUrl("limousine.jpg");
+const Dress = getImageUrl("dress.jpg");
+const Tokyo_Scenery = getImageUrl("tokyo.jpg");
+const StaffMegumi = getImageUrl("megumi.png");
 
 const Limousine: React.FC = () => {
     const { token } = useToken();

@@ -1,27 +1,12 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { ActivitiesProps } from "@/app/commons/types/types";
-import LikeButton from "../button/like/like";
-import FavoriteButton from "../button/favorite/favorite";
-
-type ActivityCardProps = {
-    activity: ActivitiesProps;
-};
-
-const S3_BASE_URL = `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_REGION}.amazonaws.com/`;
+import Image from "next/image";
+import { getImageUrl } from "@/app/commons/utils/imageUtils";
+import LikeButton from "../Button/Like/Like";
+import FavoriteButton from "../Button/Favorite/Favorite";
+import { ActivityCardProps } from "@/app/commons/types/types";
 
 const ActivityCard: React.FC<ActivityCardProps> = ({ activity }) => {
-    const getImageUrl = (image: string) => {
-        if (image.startsWith('http')) {
-            // 完全な URL の場合はそのまま返す
-            return image;
-        } else {
-            // ファイル名のみの場合は S3 の URL を構築
-            return `${S3_BASE_URL}${image}`;
-        }
-    };
-
     const imageUrl = getImageUrl(activity.image);
 
     return (
