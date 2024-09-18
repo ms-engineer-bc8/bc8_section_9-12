@@ -52,7 +52,7 @@ export default function LandingPage() {
                             className="object-contain"
                             priority
                             quality={100}
-                            fill // layout="fill"の代わりにfillを使用
+                            fill
                         />
                     </div>
                 </div>
