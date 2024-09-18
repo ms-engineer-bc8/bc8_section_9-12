@@ -47,8 +47,6 @@ const Limousine: React.FC = () => {
                         alt={activity.provider_name}
                         layout="fill"
                         objectFit="cover"
-                        placeholder="blur"
-                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
                     />
                 </div>
                 <div className="p-9">
@@ -71,7 +69,6 @@ const Limousine: React.FC = () => {
                                         width={550}
                                         height={350}
                                         objectFit="cover"
-                                        placeholder="blur"
                                     />
                                 </div>
                             </div>
@@ -95,7 +92,6 @@ const Limousine: React.FC = () => {
                                         width={550}
                                         height={350}
                                         objectFit="cover"
-                                        placeholder="blur"
                                     />
                                 </div>
                             </div>
@@ -125,7 +121,6 @@ const Limousine: React.FC = () => {
                                                 width={150}
                                                 height={150}
                                                 objectFit="cover"
-                                                placeholder="blur"
                                             />
                                         </div>
                                     </div>
