@@ -13,7 +13,6 @@
     "@aws-sdk/s3-presigned-post": "^3.629.0",
     "@aws-sdk/s3-request-presigner": "^3.629.0",
     "@hookform/resolvers": "^3.9.0",
-    "@stripe/stripe-js": "^4.4.0",
     "aws-sdk": "^2.1671.0",
     "axios": "^1.7.2",
     "firebase": "^10.12.4",
