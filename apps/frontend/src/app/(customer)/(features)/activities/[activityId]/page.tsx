@@ -1,18 +1,21 @@
 "use client";
 
 import React from "react";
-import { ActivityProps } from "@/app/commons/types/types";
 import useSWR from "swr";
 import Image from "next/image";
+import { ActivityProps } from "@/app/commons/types/types";
 import { useRouter } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
-import LimousineImage from "../../../../commons/images/activities/limousine.jpg";
+import { getImageUrl } from "@/app/commons/utils/imageUtils";
 import OneRideLimousineTimeline from "./timeline";
-import Dress from "../../../../commons/images/activities/dress.jpg";
-import Tokyo_Scenery from "../../../../commons/images/activities/tokyo.jpg";
-import StaffMegumi from "../../../../commons/images/activities/megumi.png";
 import SpeechBubble from "./speech";
-import BallPulseSyncLoading from "@/app/components/ui-elements/loading/loading"
+import BallPulseSyncLoading from "@/app/components/ui-elements/Loading/Loading";
+
+// S3から画像取得
+const LimousineImage = getImageUrl("limousine.jpg");
+const Dress = getImageUrl("dress.jpg");
+const Tokyo_Scenery = getImageUrl("tokyo.jpg");
+const StaffMegumi = getImageUrl("megumi.png");
 
 const Limousine: React.FC = () => {
     const { token } = useToken();
@@ -44,8 +47,6 @@ const Limousine: React.FC = () => {
                         alt={activity.provider_name}
                         layout="fill"
                         objectFit="cover"
-                        placeholder="blur"
-                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
                     />
                 </div>
                 <div className="p-9">
@@ -68,7 +69,6 @@ const Limousine: React.FC = () => {
                                         width={550}
                                         height={350}
                                         objectFit="cover"
-                                        placeholder="blur"
                                     />
                                 </div>
                             </div>
@@ -92,7 +92,6 @@ const Limousine: React.FC = () => {
                                         width={550}
                                         height={350}
                                         objectFit="cover"
-                                        placeholder="blur"
                                     />
                                 </div>
                             </div>
@@ -122,7 +121,6 @@ const Limousine: React.FC = () => {
                                                 width={150}
                                                 height={150}
                                                 objectFit="cover"
-                                                placeholder="blur"
                                             />
                                         </div>
                                     </div>
