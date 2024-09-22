@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import getStripe from "@/app/commons/payments/stripejs";
 
 export default function Payment() {
   const router = useRouter();
@@ -12,7 +13,7 @@ export default function Payment() {
           <script async src="https://js.stripe.com/v3/buy-button.js"></script>
           <stripe-buy-button
             buy-button-id="buy_btn_1PxRFJRtrot4hWanNzim3DMV"
-            publishable-key={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
+            publishable-key={getStripe}
           ></stripe-buy-button>
         </div>
       </div>
