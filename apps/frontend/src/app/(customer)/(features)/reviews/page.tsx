@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useSWR, { mutate } from "swr";
 import { useRouter } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
@@ -27,25 +27,26 @@ export default function Reviews() {
         error,
         isLoading,
     } = useSWR<ReviewProps[]>(apiUrl, fetcher);
+    const [userId, setUserId] = useState<number | null>(null)
     const [reviewText, setReviewText] = useState("");
     const [file, setFile] = useState<File | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [postError, setPostError] = useState<string | null>(null);
 
+    useEffect(() => {
+        const storedUserId = localStorage.getItem("userId");
+        if(storedUserId){
+            setUserId(parseInt(storedUserId, 10));
+        }
+    },[]);
+
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = e.target.files?.[0];
         if (selectedFile) {
-            console.log(
-                "画像を選ぶ:",
-                selectedFile.name,
-                selectedFile.type,
-                selectedFile.size
-            );
             setFile(selectedFile);
             const reader = new FileReader();
             reader.onloadend = () => {
                 setPreviewUrl(reader.result as string);
-                console.log("画像プレビュー用URLを設定");
             };
             reader.readAsDataURL(selectedFile);
         }
@@ -53,7 +54,6 @@ export default function Reviews() {
 
     const handleAddReview = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("handleAddReviewの呼び出し");
         setPostError(null);
         if (!reviewText.trim()) {
             setPostError("テキストを入力してください。");
@@ -62,12 +62,10 @@ export default function Reviews() {
         let imageUrl = "";
         if (file) {
             try {
-                console.log("画像をアップロード中:", file.name);
                 const formData = new FormData();
                 formData.append("file", file);
                 const result = await uploadFile(formData);
                 imageUrl = result.url!;
-                console.log("画像アップロード成功. URL:", imageUrl);
             } catch (error) {
                 console.error("画像アップロードエラー:", error);
                 setPostError("画像のアップロードに失敗しました。");
@@ -76,12 +74,10 @@ export default function Reviews() {
         }
 
         const newReview: ReviewItem = {
-            user_id: 318,
+            user_id: userId ?? 318,
             text: reviewText,
             image: imageUrl || "",
         };
-
-        console.log("Attempting to post review:", newReview);
 
         try {
             const response = await fetch(apiUrl, {
@@ -91,17 +87,14 @@ export default function Reviews() {
                 },
                 body: JSON.stringify(newReview),
             });
-            console.log("Response status:", response.status);
             if (!response.ok) {
                 const errorData = await response.json();
-                console.error("Error response:", errorData);
                 throw new Error(
                     errorData.message ||
                         `レビューの投稿に失敗しました: ${response.status} ${response.statusText}`
                 );
             }
             const data = await response.json();
-            console.log("成功:", data);
             mutate(apiUrl);
             setReviewText("");
             setFile(null);
