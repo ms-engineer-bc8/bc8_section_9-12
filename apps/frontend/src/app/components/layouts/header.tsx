@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getImageUrl } from "@/app/commons/utils/imageUtils";
 import { CUSTOMER_NAVIGATION_LINKS } from "@/app/commons/constants/constants";
-import UserMenu from "../ui-elements/Icon/page";
+import UserMenu from "../ui-elements/icon/page";
 import { useToken } from "@/app/commons/contexts/contexts";
 
 // S3から画像取得

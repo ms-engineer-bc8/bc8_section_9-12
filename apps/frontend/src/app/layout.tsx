@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Zen_Kaku_Gothic_New } from "next/font/google";
-import Background from "./components/layouts/Background";
+import Background from "./components/layouts/background";
 import "./commons/styles/globals.css";
-import ToastProvider from "./components/layouts/ToastProvider";
+import ToastProvider from "./components/layouts/toastProvider";
 import { TokenProvider } from "./commons/contexts/contexts";
 
 const zenKakuGothicNew = Zen_Kaku_Gothic_New({
