@@ -21,7 +21,7 @@ def get_wordcloud(text):
         height=400,
         background_color="white",
         colormap="PuRd",
-        stopwords={"ため", "こと", "もの", "よう", "これ", "あれ"},
+        stopwords={"ため", "こと", "もの", "よう", "これ", "あれ", "の", "ところ"},
         font_path=font_path,
     )
 

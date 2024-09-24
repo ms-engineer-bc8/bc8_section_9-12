@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getImageUrl } from "@/app/commons/utils/imageUtils";
-import LikeButton from "../Button/Like/Like";
-import FavoriteButton from "../Button/Favorite/Favorite";
+import LikeButton from "../button/like/like";
+import FavoriteButton from "../button/favorite/favorite";
 import { ActivityCardProps } from "@/app/commons/types/types";
 
 const ActivityCard: React.FC<ActivityCardProps> = ({ activity }) => {

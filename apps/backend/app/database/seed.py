@@ -1,8 +1,8 @@
-# import os
-# import sys
+import os
+import sys
 
-# project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
-# sys.path.insert(0, project_root)
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
+sys.path.insert(0, project_root)
 
 from database import SessionLocal
 from app.models.users import SoloType, User
@@ -112,17 +112,36 @@ def seed_providers():
 
 
 def seed_users():
-    users = User(
-        email="user@example.com", nickname="ソロ活を極めたい女子", age="31~35歳"
-    )
+    users = [
+        User(email="example-12@soloco.com", nickname="test7", age="18-20"),
+        User(email="example-13@soloco.com", nickname="test8", age="21-25"),
+        User(email="example-14@soloco.com", nickname="test9", age="26-30"),
+        User(email="example-15@soloco.com", nickname="test10", age="31-35"),
+        User(email="example-16@soloco.com", nickname="test11", age="36-40"),
+        User(email="example-17@soloco.com", nickname="test12", age="41-45"),
+        User(email="example-18@soloco.com", nickname="test13", age="46-50"),
+        User(email="example-19@soloco.com", nickname="test14", age="51-55"),
+        User(email="example-20@soloco.com", nickname="test15", age="56-60"),
+        User(email="example-21@soloco.com", nickname="test16", age="61-65"),
+        User(email="example-22@soloco.com", nickname="test17", age="66+"),
+    ]
 
-    db.add(users)
+    db.add_all(users)
     db.commit()
 
 
+# def seed_users():
+#     users = User(
+#         email="user@example.com", nickname="ソロ活を極めたい女子", age="31~35歳"
+#     )
+
+#     db.add(users)
+#     db.commit()
+
+
 # seed_solo_types()
-# seed_users()
-seed_reviews()
+seed_users()
+# seed_reviews()
 # seed_activity_categories()
 # seed_activity_subcategories()
 # seed_providers()
