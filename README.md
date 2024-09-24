@@ -1,4 +1,4 @@
-![soloco_logo](https://github.com/user-attachments/assets/f266f2a3-35af-4828-a26c-93b490d2717a)
+# Soloco
 
 
 ## プロダクト概要
