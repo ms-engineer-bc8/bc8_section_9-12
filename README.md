@@ -1,56 +1,40 @@
-## BC8期 最終課題
+![soloco_logo](https://github.com/user-attachments/assets/f266f2a3-35af-4828-a26c-93b490d2717a)
+
 
 ## プロダクト概要
-### プロダクト名
-* Soloco
-### 開発背景・目的
-* 「ソロ活」する女性が新しい一歩を踏み出すのをお手伝いするためのアプリ
+「ソロ活」をする女性が新しい一歩を踏み出すのをお手伝いするアプリです。
 
-### ターゲット
-* ソロ活をする女性
+![home](https://github.com/user-attachments/assets/1d9a190e-0058-4720-b100-0352c4c947fd)
+
 
 ## 開発担当
-* フロントエンド: Risa
-* バックエンド: Kumiko
+* Lisa: フロントエンド
+* Kumiko: バックエンド、認証・認可、決済、toBクチコミ分析
 
--> 詳細はNotion
 
-## プロジェクト管理
-| ツール　| URL　|
-|--------|---------|
-| miro   | https://miro.com/app/board/uXjVK0xlQSY=/ |
-| Notion | https://www.notion.so/aea750c129964eb4b922abe0a6ea0bb8  |
+## 機能
+* toC 新規ユーザー登録
+* toC ログイン
+* toC ソロ活タイプ診断
+* toC ソロ活カテゴリ一覧
+* toC ソロ活アクティビティ詳細
+* toC ソロ活クチコミ投稿・閲覧・いいね＆お気に入り
+* toB クチコミ分析（ワードクラウド、グラフ、AIによる分析）
+* toB 決済
 
-## 使用技術一覧
 
-#### フロントエンドフレームワーク
+## 技術スタック
+![技術スタック](https://github.com/user-attachments/assets/5229638f-2f5f-43d2-80e4-08b2ad1f05d1)
+
+
 * Next.js (App router)
-
-#### フロントエンド言語
 * Typescript
-
-#### バックエンドフレームワーク
 * FastAPI
-* ORM: SQLAlchemy
-
-#### バックエンド言語
+* SQLAlchemy
 * Python
-
-#### DB
 * PostgreSQL
-
-#### Cloud Service
 * Firebase
 * stripe
-
-#### 開発ツール
+* S3
 * Docker
 * VS Code
-
-### ポート
-
-| ツール　| ポート　|
-|--------|---------|
-| フロントエンド | http://localhost:3000 |
-| バックエンド   | http://localhost:8000  |
-| DB            | http://localhost:5432 |
