@@ -27,14 +27,15 @@
 ![技術スタック](https://github.com/user-attachments/assets/5229638f-2f5f-43d2-80e4-08b2ad1f05d1)
 
 
-* Next.js (App router)
-* Typescript
+* Next.js (App router): 14.2.5
+* Typescript: 5.0
+* Tailwind CSS: 3.4.1
 * FastAPI
 * SQLAlchemy
 * Python
 * PostgreSQL
-* Firebase
-* stripe
-* S3
+* Firebase: 10.12.4
+* Stripe
+* AWS S3
 * Docker
 * VS Code

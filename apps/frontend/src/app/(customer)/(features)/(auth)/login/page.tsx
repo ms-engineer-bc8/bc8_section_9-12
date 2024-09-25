@@ -8,8 +8,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SignInSchema, signInSchema } from "@/app/commons/types/types";
 import { useAuth } from "@/app/commons/auth/firebaseConfig";
 import { useToken } from "@/app/commons/contexts/contexts";
-import { WhiteButton } from "@/app/components/ui-elements/Button/Button";
-import { PinkButton } from "@/app/components/ui-elements/Button/Button";
+import { WhiteButton } from "@/app/components/ui-elements/button/button";
+import { PinkButton } from "@/app/components/ui-elements/button/button";
 
 export default function CustomerLogIn() {
     const { signIn } = useAuth();

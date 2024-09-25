@@ -8,7 +8,7 @@ import { AuthSchema, authSchema } from "@/app/commons/types/types";
 import { useAuth } from "@/app/commons/auth/firebaseConfig";
 import { useToken } from "@/app/commons/contexts/contexts";
 import { useRouter } from "next/navigation";
-import { PinkButton } from "@/app/components/ui-elements/Button/Button";
+import { PinkButton } from "@/app/components/ui-elements/button/button";
 
 export default function SignUpForm() {
     const { signUp } = useAuth();
