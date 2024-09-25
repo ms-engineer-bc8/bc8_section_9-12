@@ -30,12 +30,12 @@
 * Next.js (App router): 14.2.5
 * Typescript: 5.0
 * Tailwind CSS: 3.4.1
-* FastAPI
+* FastAPI: 0.111.1
 * SQLAlchemy
 * Python
-* PostgreSQL
+* PostgreSQL: 10.3
 * Firebase: 10.12.4
-* Stripe
+* Stripe: 4.5.0
+* Docker: 26.1.1
 * AWS S3
-* Docker
 * VS Code
