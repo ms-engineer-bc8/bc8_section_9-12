@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
 import { toast } from "react-toastify";
 import { getImageUrl } from "@/app/commons/utils/imageUtils";
-import { PinkButton } from "@/app/components/ui-elements/Button/Button";
+import { PinkButton } from "@/app/components/ui-elements/button/button";
 import { SoloTypeResultProp } from "@/app/commons/types/types";
 
 const SpecialType = getImageUrl("special.png");

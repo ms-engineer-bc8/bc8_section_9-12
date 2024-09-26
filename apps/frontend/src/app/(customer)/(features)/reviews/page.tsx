@@ -6,10 +6,10 @@ import { useRouter } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
 import { ReviewProps, ReviewItem } from "@/app/commons/types/types";
 import { uploadFile } from "../../../commons/images/s3/imageActions";
-import LikeButton from "@/app/components/ui-elements/Button/Like/Like";
-import FavoriteButton from "@/app/components/ui-elements/Button/Favorite/Favorite";
-import { PinkButton } from "@/app/components/ui-elements/Button/Button";
-import BallPulseSyncLoading from "@/app/components/ui-elements/Loading/Loading";
+import LikeButton from "@/app/components/ui-elements/button/like/like";
+import FavoriteButton from "@/app/components/ui-elements/button/favorite/favorite";
+import { PinkButton } from "@/app/components/ui-elements/button/button";
+import BallPulseSyncLoading from "@/app/components/ui-elements/loading/loading";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const apiUrl = `${process.env.NEXT_PUBLIC_API_REVIEWS_URL}`;
@@ -27,7 +27,7 @@ export default function Reviews() {
         error,
         isLoading,
     } = useSWR<ReviewProps[]>(apiUrl, fetcher);
-    const [userId, setUserId] = useState<number | null>(null)
+    const [userId, setUserId] = useState<number | null>(null);
     const [reviewText, setReviewText] = useState("");
     const [file, setFile] = useState<File | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -35,10 +35,10 @@ export default function Reviews() {
 
     useEffect(() => {
         const storedUserId = localStorage.getItem("userId");
-        if(storedUserId){
+        if (storedUserId) {
             setUserId(parseInt(storedUserId, 10));
         }
-    },[]);
+    }, []);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = e.target.files?.[0];

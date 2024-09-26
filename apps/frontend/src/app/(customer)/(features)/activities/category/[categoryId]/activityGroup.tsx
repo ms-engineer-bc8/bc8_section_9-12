@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { ActivityGroupProps } from "@/app/commons/types/types";
-import ActivityCard from "@/app/components/ui-elements/Activity/Activity";
-import ScrollButton from "@/app/components/ui-elements/Button/Scroll/Scroll";
+import ActivityCard from "@/app/components/ui-elements/activity/activity";
+import ScrollButton from "@/app/components/ui-elements/button/scroll/scroll";
 
 const ActivityGroup: React.FC<ActivityGroupProps> = ({
     subcategory,

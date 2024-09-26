@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { SoloTypeFormProps } from "@/app/commons/types/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
-import { PinkButton } from "@/app/components/ui-elements/Button/Button";
+import { PinkButton } from "@/app/components/ui-elements/button/button";
 import { questions } from "./questions";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";

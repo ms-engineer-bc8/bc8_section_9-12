@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Zen_Kaku_Gothic_New } from "next/font/google";
-import { BusinessHeader } from "../components/layouts/Header";
+import { BusinessHeader } from "../components/layouts/header";
 import "../commons/styles/globals.css";
 
 const zenKakuGothicNew = Zen_Kaku_Gothic_New({

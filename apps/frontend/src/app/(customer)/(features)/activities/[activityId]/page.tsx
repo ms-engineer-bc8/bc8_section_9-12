@@ -9,7 +9,7 @@ import { useToken } from "@/app/commons/contexts/contexts";
 import { getImageUrl } from "@/app/commons/utils/imageUtils";
 import OneRideLimousineTimeline from "./timeline";
 import SpeechBubble from "./speech";
-import BallPulseSyncLoading from "@/app/components/ui-elements/Loading/Loading";
+import BallPulseSyncLoading from "@/app/components/ui-elements/loading/loading";
 
 // S3から画像取得
 const LimousineImage = getImageUrl("limousine.jpg");
