@@ -97,7 +97,7 @@ export const LandingPageHeader = () => (
             <div className="flex items-center justify-between px-10 py-2 h-24">
                 <div className="flex-shrink-0">
                     <Link href="/">
-                        <div className="text-xl font-bold">
+                        <div className="text-xl font-bold md:items-center">
                             <Image
                                 src={Logo}
                                 width={150}
