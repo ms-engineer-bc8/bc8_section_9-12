@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getImageUrl } from "../../commons/utils/imageUtils";
 import { LandingPageHeader } from "@/app/components/layouts/header";
+import { Footer } from "@/app/components/layouts/footer";
 
 // S3から画像取得
 const FVImage = getImageUrl("firstView.png");
@@ -144,16 +145,7 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </div>
-
-                <footer className="py-4">
-                    <div className="container mx-auto max-w-6xl">
-                        <div className="my-2 text-center">
-                            <p className="text-lg">
-                                &copy; 2024 Soloco. All rights reserved.
-                            </p>
-                        </div>
-                    </div>
-                </footer>
+                <Footer />
             </div>
         </div>
     );
