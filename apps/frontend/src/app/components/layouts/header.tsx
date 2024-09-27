@@ -36,22 +36,23 @@ export const CustomerHeader = () => {
     return (
         <header className="relative">
             <div className="mx-auto">
-                <div className="flex items-center justify-between px-10 py-2 h-24">
+                <div className="flex items-center justify-between px-5 lg:px-10 py-2 h-20 lg:h-24">
                     <div className="flex-shrink-0">
                         <Link href="/">
-                            <div className="text-xl font-bold">
+                            <div className="text-lg lg:text-xl font-bold">
                                 <Image
                                     src={Logo}
-                                    width={150}
-                                    height={50}
+                                    width={120}
+                                    height={40}
                                     alt="Logo"
+                                    className="w-[120px] lg:w-[150px]" // PCの幅とサイズ
                                 />
                             </div>
                         </Link>
                     </div>
-                    <div className="flex items-center h-full text-lg">
+                    <div className="flex items-center h-full text-base lg:text-lg">
                         <CustomerNavigationMenu />
-                        <div className="ml-5">
+                        <div className="ml-3 lg:ml-5">
                             {token ? (
                                 <UserMenu iconSrc={CustomerLoginIconImage} />
                             ) : (
@@ -65,24 +66,26 @@ export const CustomerHeader = () => {
     );
 };
 
+
 export const BusinessHeader = () => (
     <header className="relative">
         <div className="mx-auto">
-            <div className="flex items-center justify-between px-10 py-2 h-24">
+            <div className="flex items-center justify-between px-5 lg:px-10 py-2 h-20 lg:h-24">
                 <div className="flex-shrink-0">
                     <Link href="/business">
-                        <div className="text-xl font-bold">
+                        <div className="text-lg lg:text-xl font-bold">
                             <Image
                                 src={BizLogo}
-                                width={260}
-                                height={50}
+                                width={180}
+                                height={35}
                                 alt="Logo"
+                                className="w-[200px] lg:w-[260px]" // モバイル時のサイズ
                             />
                         </div>
                     </Link>
                 </div>
-                <div className="flex items-center h-full text-lg">
-                    <div className="ml-5">
+                <div className="flex items-center h-full text-base lg:text-lg">
+                    <div className="ml-3 lg:ml-5">
                         <UserMenu iconSrc={BizIconImage} />
                     </div>
                 </div>
@@ -94,15 +97,16 @@ export const BusinessHeader = () => (
 export const LandingPageHeader = () => (
     <header className="relative">
         <div className="mx-auto">
-            <div className="flex items-center justify-between px-10 py-2 h-24">
+            <div className="flex items-center justify-between px-5 lg:px-10 py-2 h-20 lg:h-24">
                 <div className="flex-shrink-0">
                     <Link href="/">
-                        <div className="text-xl font-bold md:items-center">
+                        <div className="text-lg lg:text-xl font-bold md:items-center">
                             <Image
                                 src={Logo}
-                                width={150}
-                                height={50}
+                                width={120}
+                                height={35}
                                 alt="Logo"
+                                className="w-[120px] lg:w-[150px]"  // モバイル時のサイズ
                             />
                         </div>
                     </Link>
@@ -111,3 +115,4 @@ export const LandingPageHeader = () => (
         </div>
     </header>
 );
+

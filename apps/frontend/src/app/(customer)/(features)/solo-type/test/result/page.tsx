@@ -11,7 +11,7 @@ import { SoloTypeResultProp } from "@/app/commons/types/types";
 
 const SpecialType = getImageUrl("special.png");
 
-const SoloTypeResult = () => {
+export default function SoloTypeResult() {
     const { token } = useToken();
     const router = useRouter();
 
@@ -19,9 +19,7 @@ const SoloTypeResult = () => {
         router.push("/login");
     }
 
-    const [soloTypeData, setSoloTypeData] = useState<SoloTypeResultProp | null>(
-        null
-    );
+    const [soloTypeData, setSoloTypeData] = useState<SoloTypeResultProp | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const searchParams = useSearchParams();
 
@@ -47,7 +45,6 @@ const SoloTypeResult = () => {
                 setIsLoading(false);
             }
         };
-
         fetchSoloType();
     }, [router, searchParams]);
 
@@ -101,4 +98,3 @@ const SoloTypeResult = () => {
     );
 };
 
-export default SoloTypeResult;
