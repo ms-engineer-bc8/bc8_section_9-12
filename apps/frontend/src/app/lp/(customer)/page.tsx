@@ -63,7 +63,7 @@ export default function LandingPage() {
                 </div>
 
                 {/* レスポンシブでボタンの下に表示する画像 */}
-                <div className="w-full lg:hidden mt-7">
+                <div className="w-full lg:hidden mt-6">
                     <Image
                         src={FVImageSp}
                         alt="firstView mobile"
