@@ -9,6 +9,7 @@ import { Footer } from "@/app/components/layouts/footer";
 
 // S3から画像取得
 const FVImage = getImageUrl("firstView.png");
+const FVImageSp = getImageUrl("firstView_sp.png");
 const FeatureOne = getImageUrl("feature01.jpg");
 const FeatureTwo = getImageUrl("feature02.jpg");
 const Logo = getImageUrl("soloco_logo.png");
@@ -18,19 +19,17 @@ export default function LandingPage() {
         <div>
             <LandingPageHeader />
             <div className="min-h-screen flex flex-col items-center justify-center text-center lg:text-left relative">
-                {/* 背景画像（レスポンシブ用） */}
-                <div className="absolute inset-0 bg-cover bg-center opacity-50 lg:hidden before:content-[''] before:absolute before:inset-0 before:bg-[url('/path/to/your/image.jpg')] before:bg-cover before:bg-center before:opacity-50"></div>
-
+                {/* メインコンテンツ */}
                 <div className="relative flex flex-col-reverse lg:flex-row items-center lg:items-start overflow-hidden mb-6">
                     <div className="lg:w-2/5 sm:w-full z-10 flex flex-col items-center lg:items-start md:pl-16 lg:pl-18">
-                        <div className="max-w-3xl text-center lg:text-left mt-20 lg:mt-48">
+                        <div className="max-w-3xl text-center lg:text-left mt-16 lg:mt-48">
                             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-7">
-                                <span className="text-[44px] sm:text-[44px] lg:text-[54px] text-pink-500 bg-white px-3 py-1 sm:px-5 sm:py-2">
+                                <span className="text-[40px] sm:text-[44px] lg:text-[54px] text-pink-500 bg-white px-3 py-1 sm:px-5 sm:py-2">
                                     ひとりで挑戦できる
                                 </span>
                             </h1>
                             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mt-4 mb-14">
-                                <span className="text-[40px] sm:text-[40px] lg:text-[50px] bg-white px-3 py-2 sm:px-5 sm:py-2">
+                                <span className="text-[36px] sm:text-[40px] lg:text-[50px] bg-white px-3 py-2 sm:px-5 sm:py-2">
                                     ことは、もっとある
                                 </span>
                             </h1>
@@ -61,6 +60,19 @@ export default function LandingPage() {
                             height={650}
                         />
                     </div>
+                </div>
+
+                {/* レスポンシブでボタンの下に表示する画像 */}
+                <div className="w-full lg:hidden mt-7">
+                    <Image
+                        src={FVImageSp}
+                        alt="firstView mobile"
+                        className="object-cover w-full h-auto"
+                        priority
+                        quality={100}
+                        width={700}
+                        height={550}
+                    />
                 </div>
 
                 <div className="py-16 px-5">
