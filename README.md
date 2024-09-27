@@ -31,8 +31,8 @@
 * Typescript: 5.0
 * Tailwind CSS: 3.4.1
 * FastAPI: 0.111.1
-* SQLAlchemy
-* Python
+* SQLAlchemy: 2.0.31
+* Python: 3.12.5
 * PostgreSQL: 10.3
 * Firebase: 10.12.4
 * Stripe: 4.5.0
