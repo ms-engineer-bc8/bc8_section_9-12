@@ -1,5 +1,5 @@
 from typing import List
-from fastapi import APIRouter, status, Depends, HTTPException
+from fastapi import APIRouter, status, Depends, HTTPException, Request
 from app.database.database import get_db
 from sqlalchemy.orm import Session
 from app.models.users import User
@@ -121,8 +121,12 @@ def get_report(db: Session = Depends(get_db), keyword: str = ""):
 
 
 @router.post("/", tags=["reviews"], status_code=status.HTTP_201_CREATED)
-def post_review(item: ReviewItem, db: Session = Depends(get_db)):
-    db_review = Review(user_id=item.user_id, text=item.text, image=item.image)
+def post_review(item: ReviewItem, request: Request, db: Session = Depends(get_db)):
+    token = request.headers.get("authorization")
+    print(token)
+    # TODO: tokenをFirebaseに渡す
+
+    db_review = Review(user_id=1, text=item.text, image=item.image)
     db.add(db_review)
     db.commit()
     db.refresh(db_review)

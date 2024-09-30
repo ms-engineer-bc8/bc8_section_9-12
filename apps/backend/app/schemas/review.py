@@ -25,7 +25,7 @@ class ReviewReportResponse(BaseModel):
 
 
 class ReviewItem(BaseModel):
-    user_id: int
+    # user_id: int
     text: str = Field(
         examples=[
             "ひとりサンリオピューロランドに行ってきた〜！キティちゃんは平和の象徴。"
