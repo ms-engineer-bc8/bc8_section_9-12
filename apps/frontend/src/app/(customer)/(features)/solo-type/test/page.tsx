@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { SoloTypeFormProps } from "@/app/commons/types/types";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -22,23 +22,14 @@ const SoloTypeForm: React.FC = () => {
         router.push("/login");
     }
 
-    const { register, handleSubmit, setValue, watch } =
-        useForm<SoloTypeFormProps>();
-    const searchParams = useSearchParams();
-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
-    const [userId, setUserId] = useState<string | null>(null);
+    const { handleSubmit, setValue, watch } = useForm<SoloTypeFormProps>();
     const [swiperInstance, setSwiperInstance] = useState<any>(null);
+    const searchParams = useSearchParams();
 
     const watchedFields = watch();
 
-    useEffect(() => {
-        const userIdFromParams = searchParams.get("userId");
-        if (userIdFromParams) {
-            setUserId(userIdFromParams);
-        } else {
-            console.error("ユーザIDが見つかりません");
-        }
-    }, [searchParams]);
+    const userIdFromParams = searchParams.get("userId");
+    const [userId, setUserId] = useState<string | null>(userIdFromParams);
 
     const isFormComplete = questions.every(
         (question) =>
@@ -66,7 +57,6 @@ const SoloTypeForm: React.FC = () => {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const result = await response.json();
-            console.log("成功", result);
 
             const queryParams = new URLSearchParams({
                 solo_type: result.solo_type,
@@ -76,9 +66,6 @@ const SoloTypeForm: React.FC = () => {
             router.push(`/solo-type/test/result?${queryParams}`);
         } catch (error) {
             console.error("エラー:", error);
-            setErrorMessage(
-                "診断の送信中にエラーが発生しました。もう一度お試しください。"
-            );
         }
     };
 
