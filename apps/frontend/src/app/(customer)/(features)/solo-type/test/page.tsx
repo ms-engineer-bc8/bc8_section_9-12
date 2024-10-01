@@ -23,25 +23,18 @@ const SoloTypeForm: React.FC = () => {
     }
 
     const { handleSubmit, setValue, watch } = useForm<SoloTypeFormProps>();
+    const watchedFields = watch();
     const [swiperInstance, setSwiperInstance] = useState<any>(null);
     const searchParams = useSearchParams();
-
-    const watchedFields = watch();
-
     const userIdFromParams = searchParams.get("userId");
     const [userId, setUserId] = useState<string | null>(userIdFromParams);
 
-    const isFormComplete = questions.every(
-        (question) =>
-            watchedFields[question.id as keyof SoloTypeFormProps] !== undefined
-    );
-
+    // 回答を送付
     const onSubmit: SubmitHandler<SoloTypeFormProps> = async (data) => {
         if (!userId) {
             console.error("ユーザIDが空です");
             return;
         }
-
         try {
             const response = await fetch(
                 `${process.env.NEXT_PUBLIC_API_USERS_TYPETEST_URL}/${userId}`,
@@ -53,22 +46,24 @@ const SoloTypeForm: React.FC = () => {
                     body: JSON.stringify(data),
                 }
             );
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
             const result = await response.json();
-
             const queryParams = new URLSearchParams({
                 solo_type: result.solo_type,
                 userId: userId,
             }).toString();
-
             router.push(`/solo-type/test/result?${queryParams}`);
         } catch (error) {
             console.error("エラー:", error);
         }
     };
 
+    // 全ての項目を選択したかチェック
+    const isFormComplete = questions.every(
+        (question) =>
+            watchedFields[question.id as keyof SoloTypeFormProps] !== undefined
+    );
+
+    // 回答を選択したら自動で次の画面に遷移
     const handleOptionSelect = (
         questionId: keyof SoloTypeFormProps,
         value: string | boolean
@@ -81,9 +76,7 @@ const SoloTypeForm: React.FC = () => {
 
     return (
         <div className="container mx-auto my-5 max-w-xl bg-white p-10 rounded-2xl">
-            <h2 className="text-center mb-4 mt-2">
-                あなたのソロ活タイプを診断🔍
-            </h2>
+            <h2 className="text-center mb-4 mt-2">あなたのソロ活タイプを診断🔍</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <Swiper
                     modules={[Navigation, Pagination]}
