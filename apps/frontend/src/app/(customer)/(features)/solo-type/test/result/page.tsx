@@ -4,8 +4,7 @@ import { redirect } from "next/navigation";
 import { getImageUrl } from "@/app/commons/utils/imageUtils";
 import { PinkButton } from "@/app/components/ui-elements/button/button";
 import { SoloTypeResultProp } from "@/app/commons/types/types";
-
-const SpecialType = getImageUrl("special.png");
+import { soloTypeDataList, SoloTypeData } from "./soloTypeData";
 
 async function getSoloType(solo_type: string | null, userId: string | null): Promise<SoloTypeResultProp | null> {
     if (solo_type && userId) {
@@ -25,6 +24,12 @@ export default async function SoloTypeResult({
         redirect("/solo-type/test");
     }
 
+    const typeData = soloTypeDataList.find(data => data.type === soloTypeData.solo_type);
+
+    if (!typeData) {
+        redirect("/solo-type/test");
+    }
+
     return (
         <div className="container mx-auto max-w-xl p-4">
             <div className="bg-white py-10 px-18 rounded-2xl">
@@ -32,25 +37,24 @@ export default async function SoloTypeResult({
                     あなたのソロ活タイプは
                 </h2>
                 <h2 className="text-center mb-6 text-pink-500 font-bold">
-                    「{soloTypeData.solo_type}」
+                    「{typeData.type}」
                 </h2>
                 <div className="flex justify-center mb-6">
                     <Image
-                        src={SpecialType}
-                        alt={soloTypeData.solo_type}
+                        src={getImageUrl(typeData.imageSrc)}
+                        alt={typeData.type}
                         width={350}
                         height={350}
                     />
                 </div>
                 <div>
                     <p className="mb-10 mt-4 px-14 text-base text-center">
-                        現代の優雅な冒険者、それがあなた！
-                        <br />
-                        財布の中身は「一生に一度の体験」のため💃
-                        <br />
-                        街でリムジンを見れば「私の車かしら」とつぶやき、休日の予定は「気球で空中ピクニック」🌌
-                        <br />
-                        周りはきっと羨望の眼差し👀
+                        {typeData.description.split('\n').map((line, index) => (
+                            <React.Fragment key={index}>
+                                {line}
+                                <br />
+                            </React.Fragment>
+                        ))}
                     </p>
                 </div>
                 <div className="flex justify-center px-14">
@@ -60,4 +64,3 @@ export default async function SoloTypeResult({
         </div>
     );
 }
-
