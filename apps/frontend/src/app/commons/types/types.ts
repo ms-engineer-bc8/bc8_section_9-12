@@ -61,7 +61,7 @@ export type ReviewProps = {
 };
 
 export type ReviewItem = {
-  user_id: number;
+  // user_id: number;
   text: string;
   image: string;
 };
