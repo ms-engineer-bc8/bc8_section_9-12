@@ -164,7 +164,6 @@ def put_review(review_id: int, item: ReviewItem, db: Session = Depends(get_db)):
     if db_review is None:
         return {"message": "Review not found"}, status.HTTP_404_NOT_FOUND
 
-    db_review.user_id = item.user_id
     db_review.text = item.text
     db_review.image = item.image
 
