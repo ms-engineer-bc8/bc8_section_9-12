@@ -41,6 +41,7 @@ yarn-error.log*
 /apps/backend/.ipynb_checkpoints
 /apps/backend/.mypy_cache
 /apps/backend/.vscode
+/apps/backend/app/static/credentials
 /apps/backend/app/__pycache__
 /apps/backend/app/tests/__pycache__
 /apps/backend/app/core/__pycache__

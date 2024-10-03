@@ -74,7 +74,7 @@ export default function Reviews() {
         }
 
         const newReview: ReviewItem = {
-            user_id: userId ?? 318,
+            // user_id: userId ?? 318,
             text: reviewText,
             image: imageUrl || "",
         };
@@ -84,6 +84,7 @@ export default function Reviews() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
                 },
                 body: JSON.stringify(newReview),
             });

@@ -1,5 +1,5 @@
 from typing import List
-from fastapi import APIRouter, status, Depends, HTTPException
+from fastapi import APIRouter, status, Depends, HTTPException, Request
 from app.database.database import get_db
 from sqlalchemy.orm import Session
 from app.models.users import User
@@ -13,6 +13,8 @@ from app.schemas.review import (
 from app.analysis.word_cloud import get_wordcloud
 from app.analysis.age_count import get_age_count
 from app.analysis.llm import get_llm_analysis
+from app.core.auth import admin
+from firebase_admin.auth import verify_id_token
 
 router = APIRouter()
 
@@ -121,13 +123,38 @@ def get_report(db: Session = Depends(get_db), keyword: str = ""):
 
 
 @router.post("/", tags=["reviews"], status_code=status.HTTP_201_CREATED)
-def post_review(item: ReviewItem, db: Session = Depends(get_db)):
-    db_review = Review(user_id=item.user_id, text=item.text, image=item.image)
-    db.add(db_review)
-    db.commit()
-    db.refresh(db_review)
+def post_review(item: ReviewItem, request: Request, db: Session = Depends(get_db)):
+    try:
+        token = request.headers.get("authorization")
 
-    return {"message": "Review created"}
+    except ValueError:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Token not found")
+
+    try:
+        token = token.split()[1]
+
+        admin()
+        decoded_token = verify_id_token(token)
+        print(decoded_token)
+
+        email = decoded_token["email"]
+        print(email)
+
+        user_item = db.query(User).filter(User.email == email).first()
+
+        if not user_item:
+            raise HTTPException(status.HTTP_404_NOT_FOUND, detail="User not found")
+
+        print(user_item.id)
+        db_review = Review(user_id=user_item.id, text=item.text, image=item.image)
+        db.add(db_review)
+        db.commit()
+        db.refresh(db_review)
+
+        return {"message": "Review created"}
+
+    except Exception as e:
+        {"message": {e}}
 
 
 @router.put("/{review_id}", tags=["reviews"], status_code=status.HTTP_200_OK)
@@ -137,7 +164,6 @@ def put_review(review_id: int, item: ReviewItem, db: Session = Depends(get_db)):
     if db_review is None:
         return {"message": "Review not found"}, status.HTTP_404_NOT_FOUND
 
-    db_review.user_id = item.user_id
     db_review.text = item.text
     db_review.image = item.image
 

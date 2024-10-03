@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from app.core.logging_config import setup_logging
-from app.routers import users, activities, reviews
+from app.routers import users, activities, reviews, webhooks
 
 
 logger = setup_logging(__name__)
@@ -26,3 +26,4 @@ app.add_middleware(
 app.include_router(users.router, prefix="/users")
 app.include_router(activities.router, prefix="/activities")
 app.include_router(reviews.router, prefix="/reviews")
+app.include_router(webhooks.router, prefix="/webhooks")
