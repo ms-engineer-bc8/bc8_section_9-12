@@ -1,5 +1,3 @@
-// data/soloTypeData.ts
-
 export type SoloTypeData = {
   type: string;
   imageSrc: string;
