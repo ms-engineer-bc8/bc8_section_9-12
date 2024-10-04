@@ -8,9 +8,8 @@ import { toast } from "react-toastify";
 import { getImageUrl } from "@/app/commons/utils/imageUtils";
 import { PinkButton } from "@/app/components/ui-elements/button/button";
 
+// TODO:画像の追加
 const SpecialType = getImageUrl("special.png");
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function SoloTypeResult() {
     const { token } = useToken();
@@ -30,6 +29,8 @@ export default function SoloTypeResult() {
         );
         router.push("/solo-type/test");
     };
+
+    // TODO:ソロタイプ別に画像を表示するロジック
 
     const handleReturnToTop = () => {
         router.push("/");
