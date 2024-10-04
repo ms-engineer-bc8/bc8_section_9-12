@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useToken } from "@/app/commons/contexts/contexts";
 import { toast } from "react-toastify";
 import { getImageUrl } from "@/app/commons/utils/imageUtils";
 import { PinkButton } from "@/app/components/ui-elements/button/button";
-import { soloTypeDataList } from "./soloTypeData";
 
 const SpecialType = getImageUrl("special.png");
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function SoloTypeResult() {
     const { token } = useToken();
@@ -23,14 +24,12 @@ export default function SoloTypeResult() {
     const solo_type = searchParams.get("solo_type");
     const userId = searchParams.get("userId");
 
-    if(!solo_type || !userId) {
+    if (!solo_type || !userId) {
         toast.error(
             "ソロ活タイプの取得に失敗しました。もう一度診断を行ってください。"
         );
         router.push("/solo-type/test");
     };
-
-    const typeData = soloTypeDataList.find(data => data.type == solo_type);
 
     const handleReturnToTop = () => {
         router.push("/");
@@ -42,27 +41,19 @@ export default function SoloTypeResult() {
                 <h2 className="text-2xl font-bold text-center mb-6">
                     あなたのソロ活タイプは
                 </h2>
-                {typeData ? (
+                {solo_type ? (
                     <>
                         <h2 className="text-center mb-6 text-pink-500 font-bold">
-                            「{typeData.type}」
+                            「{solo_type}」
                         </h2>
                         <div className="flex justify-center mb-6">
                             <Image
-                                src={getImageUrl(typeData.imageSrc)}
-                                alt={typeData.type}
+                                src={getImageUrl(SpecialType)}
+                                alt={solo_type}
                                 width={350}
                                 height={350}
                             />
                         </div>
-                        <p className="mb-10 mt-4 px-14 text-base text-center">
-                            {typeData.description.split('\n').map((line, index) => (
-                                <React.Fragment key={index}>
-                                    {line}
-                                    <br />
-                                </React.Fragment>
-                            ))}
-                        </p>
                     </>
                 ) : (
                     <p className="text-center mb-6">
@@ -78,4 +69,3 @@ export default function SoloTypeResult() {
         </div>
     );
 }
-
