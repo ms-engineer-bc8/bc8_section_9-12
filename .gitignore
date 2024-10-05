@@ -44,6 +44,8 @@ yarn-error.log*
 /apps/backend/app/static/credentials
 /apps/backend/app/__pycache__
 /apps/backend/app/tests/__pycache__
+/apps/backend/app/routers/__pycache__
+/apps/backend/app/schemas/__pycache__
 /apps/backend/app/core/__pycache__
 /apps/backend/app/models/__pycache__
 /apps/backend/app/database/__pycache__
