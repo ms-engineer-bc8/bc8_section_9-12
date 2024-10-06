@@ -8,15 +8,14 @@ import { toast } from "react-toastify";
 import { getImageUrl } from "@/app/commons/utils/imageUtils";
 import { PinkButton } from "@/app/components/ui-elements/button/button";
 
-// TODO:画像の追加
 const SpecialType = getImageUrl("test_result_special.png");
 const ActiveType = getImageUrl("test_result_active.png");
 const GourmetType = getImageUrl("test_result_gourmet.png");
 const RelaxType = getImageUrl("test_result_relax.png");
 
-
-export default function SoloTypeResult() {    const { token } = useToken();
-    const router = useRouter()
+export default function SoloTypeResult() {
+    const { token } = useToken();
+    const router = useRouter();
 
     if (token === "") {
         router.push("/login");
@@ -31,9 +30,20 @@ export default function SoloTypeResult() {    const { token } = useToken();
             "ソロ活タイプの取得に失敗しました。もう一度診断を行ってください。"
         );
         router.push("/solo-type/test");
-    };
+    }
 
-    // TODO:ソロタイプ別に画像を表示するロジック
+    const getTypeImage = () => {
+        switch (solo_type) {
+            case "スペシャル体験エクスプローラー":
+                return SpecialType;
+            case "アクティブ冒険家":
+                return ActiveType;
+            case "グルメ探検家":
+                return GourmetType;
+            case "リラックスシーカー":
+                return RelaxType;
+        }
+    };
 
     const handleReturnToTop = () => {
         router.push("/");
@@ -52,7 +62,7 @@ export default function SoloTypeResult() {    const { token } = useToken();
                         </h2>
                         <div className="flex justify-center mb-6">
                             <Image
-                                src={getImageUrl(SpecialType)}
+                                src={getTypeImage()}
                                 alt={solo_type}
                                 width={350}
                                 height={350}
