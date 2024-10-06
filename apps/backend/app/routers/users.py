@@ -17,7 +17,7 @@ router = APIRouter()
 logger = setup_logging(__name__)
 
 
-# TODO: MYページ機能を追加時に作りこむ
+# TODO: WIP MYページ機能追加時に作りこむ
 @router.get(
     "/me", tags=["users"], response_model=UserResponse, status_code=status.HTTP_200_OK
 )
@@ -116,11 +116,11 @@ def put_user_type(user_id: int, item: UserType, db: Session = Depends(get_db)):
         )
 
     logger.info("User updated")
-    logger.debug("id", item.id)
+    logger.debug("solo_type", solo_type_name)
     return UserTypeResponse(solo_type=solo_type_name)
 
 
-# TODO: MYページ機能を追加時に作りこむ
+# TODO: WIP MYページ機能追加時に作りこむ
 @router.put("/{user_id}", tags=["users"], status_code=status.HTTP_200_OK)
 def put_user(user_id: int, item: UserUpdate, db: Session = Depends(get_db)):
     user_item = db.query(User).filter(User.id == user_id).first()
