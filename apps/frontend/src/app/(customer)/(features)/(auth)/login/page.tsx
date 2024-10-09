@@ -15,7 +15,6 @@ export default function CustomerLogIn() {
     const { signIn } = useAuth();
     const { token, setToken } = useToken();
     const router = useRouter();
-    console.log("トークン", token);
 
     const {
         register,
