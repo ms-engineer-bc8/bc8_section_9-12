@@ -13,6 +13,9 @@ COPY ./requirements.txt /backend/requirements.txt
 # 
 RUN pip install --no-cache-dir --upgrade -r /backend/requirements.txt
 
+#
+RUN pip install pytest
+
 # 
 COPY ./app /backend/app
 
