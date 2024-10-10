@@ -53,7 +53,7 @@ const SoloTypeForm: React.FC = () => {
 
         try {
             const response = await fetch(
-                `${process.env.NEXT_PUBLIC_API_USERS_TYPETEST_URL}/1`,
+                `${process.env.NEXT_PUBLIC_API_USERS_TYPETEST_URL}/${userId}`,
                 {
                     method: "PUT",
                     headers: {
