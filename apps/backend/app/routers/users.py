@@ -70,7 +70,8 @@ def post_user(item: UserCreate, db: Session = Depends(get_db)):
         )
 
     logger.info("User created")
-    logger.debug("id", item.id)
+    # TODO: ログ修正する
+    # logger.debug("id", user_item.id) 
     return UserIdResponse(id=user_item.id)
 
 
@@ -116,7 +117,8 @@ def put_user_type(user_id: int, item: UserType, db: Session = Depends(get_db)):
         )
 
     logger.info("User updated")
-    logger.debug("solo_type", solo_type_name)
+    # TODO: ログ修正する
+    # logger.debug("solo_type", solo_type_name)
     return UserTypeResponse(solo_type=solo_type_name)
 
 
