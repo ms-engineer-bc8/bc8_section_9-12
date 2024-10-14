@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import { PinkButton } from "@/app/components/ui-elements/button/button";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { SoloTypeResultProp } from "@/app/commons/types/types";
 import { soloTypeDataList, SoloTypeData } from "./soloTypeData";
 import { getImageUrl } from "@/app/commons/utils/imageUtils";
@@ -12,6 +14,7 @@ export default function SoloTypeResult() {
     const [soloTypeResult, setSoloTypeResult] = useState<SoloTypeResultProp | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const searchParams = useSearchParams();
+    const router = useRouter();
 
     useEffect(() => {
         const fetchSoloType = () => {

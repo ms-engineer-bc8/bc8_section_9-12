@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { SoloTypeFormProps } from "@/app/commons/types/types";
 import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { PinkButton } from "@/app/components/ui-elements/button/button";
 import { questions } from "./questions";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -20,6 +21,7 @@ const SoloTypeForm: React.FC = () => {
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [userId, setUserId] = useState<string | null>(null);
     const [swiperInstance, setSwiperInstance] = useState<any>(null);
+    const router = useRouter();
 
     const watchedFields = watch();
 
