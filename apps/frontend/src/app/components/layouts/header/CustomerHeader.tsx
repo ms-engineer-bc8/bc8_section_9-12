@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CustomerNavigationMenu } from "./CustomerNavitaion";
-import UserMenu from "../../ui-elements/icon/icon";
 import { getImageUrl } from "@/utils/image";
 
 // S3から画像取得
@@ -29,9 +28,6 @@ export const CustomerHeader = () => {
                     </div>
                     <div className="flex items-center h-full text-base lg:text-lg">
                         <CustomerNavigationMenu />
-                        <div className="ml-3 lg:ml-5">
-                            <UserMenu iconSrc={CustomerLoginIconImage} />
-                        </div>
                     </div>
                 </div>
             </div>
