@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { supabase } from "@/utils/supabase";
-import { SignUpForm } from "@/app/components/ui-elements/Form/SignUpForm";
+import { SignUpForm } from "@/components/ui-elements/Form/SignUpForm";
 
 export default function Register() {
     const [email, setEmail] = useState("");
