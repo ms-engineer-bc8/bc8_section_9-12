@@ -21,15 +21,15 @@
 ToC向けサービス「Soloco」、ToB向けサービス「Soloco for Business」を展開。
 ![Service Model](/docs/service_model.png) 
 
-■ Soloco（ToC向けサービス）<br>
+**■ Soloco（ToC向けサービス）**<br>
 旅行やアクティビティなど、ユーザーの好みに応じたソロ活を提案し、体験のシェアの場を提供します。
 
-■ Soloco for Business（ToB向けサービス）<br>
-ソロ活に関するユーザーの行動データを活用し、企業が商品やマーケティング戦略を最適化するための貴重なインサイトを提供します。
+**■ Soloco for Business（ToB向けサービス）**<br>
+ソロ活に関するユーザーの行動データを活用し、企業が商品やマーケティング戦略を最適化するためのインサイトを提供します。
 
 
 ## アプリケーションのイメージ
-![home](https://github.com/user-attachments/assets/1d9a190e-0058-4720-b100-0352c4c947fd)
+[!['Solocoデモ動画'](/docs/thumbnail.png)](https://www.youtube.com/watch?v=kj6kOwGP2LE)
 
 
 ## 機能一覧
