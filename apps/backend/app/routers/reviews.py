@@ -10,9 +10,9 @@ from app.schemas.review import (
     ReviewReportResponse,
     ReviewReportItem,
 )
-from app.analysis.word_cloud import get_wordcloud
-from app.analysis.age_count import get_age_count
-from app.analysis.llm import get_llm_analysis
+from app.utils.analysis.word_cloud import get_wordcloud
+from app.utils.analysis.age_count import get_age_count
+from app.utils.analysis.llm import get_llm_analysis
 from app.core.auth import admin
 from firebase_admin.auth import verify_id_token
 from app.core.logging_config import setup_logging
