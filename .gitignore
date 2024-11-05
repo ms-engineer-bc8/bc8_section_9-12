@@ -78,3 +78,6 @@ yarn-error.log*
 
 # macOS
 /apps/.DS_Store
+
+/.pytest_cache
+/.env
