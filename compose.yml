@@ -32,8 +32,8 @@ services:
     image: postgres:10.3
     container_name: postgres_container
     environment:
-      POSTGRES_USER: bc8admin
-      POSTGRES_PASSWORD: bc8pass
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: bc8db
     volumes:
       - postgres_data:/var/lib/postgresql/data

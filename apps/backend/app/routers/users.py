@@ -10,7 +10,7 @@ from app.schemas.user import (
     UserIdResponse,
     UserTypeResponse,
 )
-from app.analysis.solo_type import get_solo_type_id
+from app.utils.analysis.solo_type import get_solo_type_id
 from app.core.logging_config import setup_logging
 
 router = APIRouter()

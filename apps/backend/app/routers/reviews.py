@@ -10,9 +10,9 @@ from app.schemas.review import (
     ReviewReportResponse,
     ReviewReportItem,
 )
-from app.analysis.word_cloud import get_wordcloud
-from app.analysis.age_count import get_age_count
-from app.analysis.llm import get_llm_analysis
+from app.utils.analysis.word_cloud import get_wordcloud
+from app.utils.analysis.age_count import get_age_count
+from app.utils.analysis.llm import get_llm_analysis
 from app.core.auth import admin
 from firebase_admin.auth import verify_id_token
 from app.core.logging_config import setup_logging
@@ -159,8 +159,16 @@ def post_review(item: ReviewItem, request: Request, db: Session = Depends(get_db
 
         token = token.split()[1]
 
-        admin()
-        decoded_token = verify_id_token(token)
+        try:
+            admin()
+            decoded_token = verify_id_token(token)
+        except Exception as e:
+            logger.exception("Raise Exception: %s", str(e))
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid authentication credentials.",
+            )
+
         email = decoded_token["email"]
         logger.debug(decoded_token)
         logger.debug(email)
