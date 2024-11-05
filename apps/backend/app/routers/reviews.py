@@ -159,8 +159,16 @@ def post_review(item: ReviewItem, request: Request, db: Session = Depends(get_db
 
         token = token.split()[1]
 
-        admin()
-        decoded_token = verify_id_token(token)
+        try:
+            admin()
+            decoded_token = verify_id_token(token)
+        except Exception as e:
+            logger.exception("Raise Exception: %s", str(e))
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid authentication credentials.",
+            )
+
         email = decoded_token["email"]
         logger.debug(decoded_token)
         logger.debug(email)
